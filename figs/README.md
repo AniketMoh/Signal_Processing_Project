@@ -16,4 +16,5 @@ All plots are simulation results: level L1 (floating point, ideal Gaussian noise
 - `fig_P3_*` — P3 continuous-variation **pilot**.
 - `fig_ber_vs_S_*`, `fig_rho_vs_S_*`, `fig_eps_heatmap_*`, `fig_mu_opt_*`, `fig_boundaries_vs_mu.png` — final L1 sweep (N_T = 30000, 100 final seeds).
 - `fig_P6a_T4_coefficients.png` — L2 fixed-point model.
+- `fig_P5_audio_L1_supervised.png` — P5 recorded-audio demonstration (owner's voice, L1, supervised LMS, one noise realization).
 - `fig_audit_execution_flow.png`, `fig_explain_S_and_mu.png` — diagrams.
