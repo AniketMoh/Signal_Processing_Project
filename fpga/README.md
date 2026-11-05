@@ -21,7 +21,7 @@ L3 = RTL simulation, L4 = Vivado synthesis/implementation, L5 = measured on the 
 | `sim/` | Testbenches and bit-exact regressions (`run_lms_syn_tests.py`, `run_xsim_check.py`, `run_chain_syn_tests.py`, `run_top_test.py`), shared L2 reference `l2_ref.py`, protocol `protocol.py`; logs in `sim/results/` | per file |
 | `vivado/` | `build_top.tcl` (full design + bitstream), `ooc_lms_rx_syn.tcl` (core only), `program_board.tcl`; reports in `vivado/reports/` | Bhavyam Shankar |
 | `host/` | `run_board.py` (board vs L2, BER/MSE sweeps), `plot_board.py`; results in `host/results/` | Gautam Garg |
-| `report/s_fpga.tex`, `report/figs/board.pdf` | FPGA section for the final report (same LaTeX preamble as `midterm_mtr-22/1_report_source`; insert with `\input{s_fpga}` after the P5–P6 section and copy the figure to `figs/`) | all |
+| `../final_report/s_fpga.tex`, `../final_report/figs/board.pdf` | FPGA section of the final report (made by `host/plot_board.py --report` for the figure) | all |
 | `vivado/bitstreams/` | Ready bitstreams: `top_boolean_m12_a16_r1.bit` (default, demo) and `top_boolean_m12_a26_r1.bit`; load with `program_board.tcl` (JTAG, volatile) | Bhavyam Shankar |
 
 ## Running

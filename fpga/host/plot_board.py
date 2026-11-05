@@ -1,7 +1,7 @@
 # plot_board.py -- figure of the board sweeps (level L5): BER of R1/R2/R3 and R3 MSE against the variation rate S.
 # Reads results/board_sweep_<build>_*.json written by run_board.py.
 #   python plot_board.py            -> results/fig_L5_board_tracking.png (screen version, with a title line)
-#   python plot_board.py --report   -> ../report/figs/board.pdf (print size for the two-column report; the caption carries the title)
+#   python plot_board.py --report   -> final_report/figs/board.pdf (print size for the two-column report; the caption carries the title)
 # Responsible member: Gautam Garg (review, verification, viva)
 # Written with AI assistance (Claude, Anthropic), project decision D-06.
 import json, os, sys
@@ -92,7 +92,7 @@ def main():
     ax.legend(frameon=False, fontsize=k["f_leg"], labelcolor=INK, loc="center left", bbox_to_anchor=(0.0, 0.62))
     if report:
         fig.tight_layout(pad=0.4, w_pad=1.2)
-        out = os.path.join(HERE, "..", "report", "figs", "board.pdf")
+        out = os.path.join(HERE, "..", "..", "final_report", "figs", "board.pdf")
         os.makedirs(os.path.dirname(out), exist_ok=True)
         fig.savefig(out, facecolor=SURF)
     else:

@@ -1,0 +1,37 @@
+\section{Conclusions, Limitations and Remaining Work}
+\label{sec:conclusion}
+The PPR asked how fast the channel may change before a fixed-point LMS equalizer can no longer follow it. For the channels, step sizes and SNRs studied, this has been answered in software. All findings are \lvl{L1} or \lvl{L2} with supervised adaptation unless stated; none is a hardware result.
+
+\begin{enumerate}\itemsep1pt
+\item \emph{A tracking boundary exists and was located for every step size.} \nb{In MSE it follows $S^\star_{\rm MSE}\approx0.11/\mu$ for $\mu\le2^{-7.5}$, identically on both channels at 14 and 16\,dB: halving the step size requires the channel to change half as often. This holds for the tested channels and step sizes; it is not a universal law. The PPR's BER boundary lies 1--3 grid steps slower and depends on SNR, so the two criteria answer different questions and are reported separately.}
+\item \nb{\emph{The boundary is predicted by theory.} A first-order mean-weight model on the exact channel statistics, with the correlated-error gradient noise \eqref{eq:corrmis} and no fitted constant, reproduces $S^\star_{\rm MSE}$ at grid resolution in all 40 small-step cases; the $1/\mu$ law holds because the lag depends on $\mu S$ only.}
+\item \emph{An optimum step size exists and grows with the variation rate}, as the PPR predicted, \nb{with exponent 0.52 on the primary and 0.58--0.59 on the control channel. The primary-channel value is consistent with 1/2 within its systematic uncertainty, the control-channel value lies between 1/2 and 2/3, and neither reference slope holds in general; the model explains the value from the slowest eigen-direction of $\mathbf R$.}
+\item \nb{\emph{The textbook misadjustment is 1.47 times too small on an ISI channel}, because the residual Wiener error is correlated; the corrected formula matches the measurement.}
+\item \emph{Reacquisition after an abrupt change} \nb{takes a time proportional to $1/\mu$, as the mean-weight model predicts}, while the frozen receiver never recovers.
+\item \emph{The adaptive receiver stays useful long after it stops tracking accurately.} \nb{R3 keeps a significant BER advantage over both controls at every rate down to $S=1$ for $\mu\le2^{-6}$, and loses it only at $\mu=2^{-5}$, $S\le2$, where R2 also beats it in the image payload. At 14\,dB decision-directed operation matches supervised operation for $\mu\le2^{-6}$.}
+\item \emph{In fixed point the accumulator width, not the multiplier width, sets the boundary.} \nb{With round-to-nearest updates and a 12-bit multiplier, a 16-bit accumulator preserves the MSE tracking boundary of the 26-bit baseline at all seven FPGA step sizes (\lvl{L2}, 16\,dB, 20 seeds); truncation needs about two more bits. This is a software-supported width recommendation, still to be confirmed by synthesis, timing and board tests.}
+\item \emph{The results are anchored in the literature:} \nb{of seven published results rebuilt, six were reproduced (R5 and R7 with stated exceptions) and one documented mismatch, the misadjustment of item 4, is explained (\cref{sec:replication}).}
+\end{enumerate}
+
+\noindent\textbf{Limitations.} \nb{Small residual offsets of R2 after the abrupt steps (up to 1.7\,\%) and the excess static MSE at the smallest step sizes are unexplained. The theory model is first-order; its gradient-noise term is too small at large $\mu$, and BER boundaries are not modelled. The audio and image results use one recording and one image and are supervised. Two PPR references still need a library check.}
+
+\noindent\textbf{Remaining work for the final report (P9--P10).} The hardware half of the PPR plan remains. \emph{Synthesis and timing (P9):} the behavioural RTL must be made synthesis-ready (trimmed widths, multipliers mapped to DSP48E1 slices) and synthesised at each word length, recording DSP, LUT and flip-flop use, maximum frequency and timing slack beside $S^\star$, so that the \lvl{L2} word-length result can be confirmed and costed; the PPR estimated 51 of 120 DSP48E1 slices for the fully parallel design\nb{, about 54 once the noise scaling and the MSE counters are included (still an estimate)}. Whether the unpipelined update loop meets timing, or needs a divided clock or delayed LMS, will be decided there. \emph{Board (P10):} UART transfer with transport framing, block-RAM payload buffers, and the board controls (switches for the channel, rate and noise presets, pushbuttons, status LEDs), followed by bring-up and hardware BER measurements, quoted only down to about $10^{-4}$. \nb{For a visible demonstration the rate presets should bracket $S^\star\approx0.085/\mu$ (e.g.\ $S\in\{1000,112,28,5\}$ at $\mu=2^{-8}$), with the noise near 10\,dB, where the image shows both R2's progressive degradation and R3's failure.} NLMS \cite{nagumo1967,slock1993} and live audio remain optional extensions, gated on completion of the core.
+
+\noindent\textbf{Significant changes since the PPR} (full register in \cref{app:register}).
+\begin{itemize}\itemsep0pt
+\item The misadjustment formula $\mu\,\mathrm{tr}(\mathbf R)/2$ \nb{is replaced by the correlated-error result \eqref{eq:corrmis}, 1.47 times larger on this channel.}
+\item ``$\mu_{\rm opt}$ scales as the square root of the variation rate'' \nb{holds for the increment variance of a random walk; for our ramps the exponent is measured (0.52--0.59) and explained.}
+\item The BER boundary and $S_{\rm cross}$ are kept; \nb{an oracle-normalised MSE boundary, paired seed-bootstrap statistics and a trajectory-averaged static reference are added.}
+\item The PPR channel range is kept as a control; a harsher primary channel and an 18-rate grid are used, and $N_{\rm rec}$ is measured against the post-transition level.
+\item ``A PRBS gives $\mathbf R\approx\sigma^2\mathbf I$'' \nb{becomes $\mathbf R\approx\mathbf H\mathbf H^T+\sigma^2\mathbf I$}; the single word length $B$ is split into $B_{\rm acc}$ and $B_{\rm mul}$; the mismatch caused by underflow is bounded rather than unbounded.
+\end{itemize}
+
+\section{AI Usage Disclosure}
+\label{sec:ai}
+\nb{The AI assistant Claude (Anthropic) \cite{claude} was used for the mid-term work, under the team's direction. This replaces the PPR's statement that no simulation output is AI-generated, which does not describe this report.}
+\begin{itemize}\itemsep0pt
+\item \nb{\emph{Code.} The code was written by the AI: the Python simulation code (floating-point and bit-true fixed-point models, experiment and analysis scripts, the theory model, the replication scripts, the figure script) and the Verilog modules and testbenches. Every number in this report comes from running that code, and the logs are in the code package. The team checked that the resulting plots are consistent with one another and that they match the results reported in the reviewed literature (\cref{sec:literature,sec:replication}).}
+\item \nb{\emph{Literature review.} The AI helped to find the sources. The team checked the sources independently.}
+\item \nb{\emph{Team.} The team set the research question and the PPR, approved or rejected every change in the register, decided which experiments to run, supplied the audio recording and listened to the audio outputs.}
+\end{itemize}
+\nb{The team has checked the AI output in this way and is responsible for explaining and defending every part of this report.}
