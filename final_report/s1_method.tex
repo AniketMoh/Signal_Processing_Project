@@ -41,7 +41,7 @@ The hardware noise is the sum of 12 uniform variates drawn from separate LFSRs w
 \draw[dashed, rounded corners] ($(uart.north west)+(-0.15,1.25)$) rectangle ($(cnt.south east)+(0.15,-1.35)$);
 \node[font=\footnotesize, anchor=south east] at ($(cnt.south east)+(0.15,-1.35)$) {Spartan-7 XC7S50};
 \end{tikzpicture}}
-\caption{The experiment of the PPR. A variation controller drives the channel along a specified trajectory; one channel and one noise realisation feed three concurrent receivers, so differences between them are due to the adaptation rule alone. At mid-term the blocks from the BPSK mapper to the counters exist as Verilog (simulation only, \cref{sec:rtl}); UART, framing and host software do not.}
+\caption{The experiment of the PPR. A variation controller drives the channel along a specified trajectory; one channel and one noise realisation feed three concurrent receivers, so differences between them are due to the adaptation rule alone. \nb{All blocks are implemented on the XC7S50 (\cref{sec:fpga}); the payload is generated on the chip, and the UART link (fixed command and report frames with a checksum) carries the experiment configuration from a host script and the counters back.}}
 \label{fig:system}
 \end{figure*}
 

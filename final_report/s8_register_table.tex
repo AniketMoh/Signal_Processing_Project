@@ -15,11 +15,11 @@ R-5 & 4.2: one channel & PPR range kept as control; harsher primary channel $c=4
 R-6 & 5.4: PRBS gives $\mathbf R\approx\sigma^2\mathbf I$ & $\mathbf R\approx\mathbf H\mathbf H^T+\sigma^2\mathbf I$; PRBS still the right excitation \emph{(The equalizer sees the symbols through the channel)}\\
 R-7 & 6.2: mismatch grows without bound & Bounded by the plateau; stalling is a deadband \emph{(Bounded trajectory)}\\
 R-8 & 6.2/6.4: single word length $B$ & $B_{\rm acc}$ and $B_{\rm mul}$ \emph{(They have different roles (\cref{sec:fxp}))}\\
-R-9 & 6.5: fully parallel, 51 DSP & Unchanged (a time-multiplexed alternative was withdrawn); $\approx$54 DSP with counters, estimate only\\
+R-9 & 6.5: fully parallel, 51 DSP & Unchanged (a time-multiplexed alternative was withdrawn); measured 51 DSP48E1 for the complete design (\lvl{L4}, \cref{sec:fpgasyn}) \emph{(The channel FIR needs no multiplier)}\\
 R-10 & 3/5.1: SNR not defined & $E_b/N_0$ relative to transmitted symbol energy \emph{(Needed for the BER baseline)}\\
-R-11/12 & 15: no simulation output is AI-generated & Disclosure revised (\cref{sec:ai}) \emph{(The sentence does not describe the mid-term work)}\\
+R-11/12 & 15: no simulation output is AI-generated & Disclosure revised (\cref{sec:ai}) \emph{(The sentence does not describe the work of this report)}\\
 R-13 & 5.2: misadjustment $\approx\mu\,\mathrm{tr}(\mathbf R)/2$ & 1.47$\times$ larger on this channel; correlated-error model \eqref{eq:corrmis} \emph{(White-error assumption fails under ISI)}\\
-R-14 & 9: mid-term = P1--P6 & Done; P7--P8 started at \lvl{L3}\\
+R-14 & 9: mid-term = P1--P6 & Done; P7--P10 also done, up to \lvl{L5} (\cref{sec:fpga})\\
 R-15 & 4.3: BER quoted only to $\approx10^{-4}$ & Applies to the hardware noise; \lvl{L1} uses Gaussian noise, $10^{-4}$ drawn on figures \emph{(Different generator at \lvl{L1})}\\
 R-16 & Table 2: presets S1--S4 & 18-value $S$ grid, 14 step sizes \emph{(Fixed after simulation to bracket the boundary, as planned)}\\
 R-17 & 10: one operating SNR & 16\,dB (MSE), 14\,dB, and 12/14\,dB for BER \emph{(Static BER unmeasurable at 16\,dB for small $\mu$)}\\
@@ -32,6 +32,7 @@ R-24 & 5.6: decision-directed mode with gated switch & Implemented: gate at runn
 R-25 & 14: prior $128\times72$ image result & Unreproducible (settings not recorded); superseded\\
 R-26 & 13: a very slow rate where R2 and R3 are indistinguishable & Not seen on the primary channel; needs a mild or static preset \emph{(Slow ramps still sweep the full range)}\\
 R-27 & (P6 front end) & Channel and noise formed in integers ($h_2=6554/65536$) so RTL can match bit for bit \emph{(One-LSB changes in 3.4\,\% of samples)}\\
+R-28 & 6.3: about $10^4$ symbols/s over the UART & 6.25\,Msymbol/s with the payload generated on the chip; the UART carries only configuration and counters \emph{(Lets the board be compared count for count with \lvl{L2})}\\
 \bottomrule
 \end{tabular}
 \end{table}
