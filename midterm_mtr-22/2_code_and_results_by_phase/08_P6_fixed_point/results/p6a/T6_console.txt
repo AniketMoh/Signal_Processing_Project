@@ -1,0 +1,2 @@
+T6 vectors exported: 34000 symbols (training 30000 + 4000 payload), columns n,c,r_q,d_q,yA_q,eA_q,yF_q,eF_q; coefficients every 100 symbols; BER R3 in payload 0.00e+00
+[T6 done in 0 s]

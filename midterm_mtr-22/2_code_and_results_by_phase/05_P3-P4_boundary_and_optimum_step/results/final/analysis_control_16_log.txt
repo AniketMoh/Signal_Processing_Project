@@ -1,0 +1,196 @@
+FINAL L1 analysis control_16 (seeds 2000-2099)
+
+######## Eb/N0 = 16 dB  channel c 26..77  eps_plateau = 0.976  seeds = 100  paired = True  bursts stored = True
+
+  mu = 2^-5.0:  static-reference interpolation lin  (node errors: 17)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):        -0.01 -0.01 -0.01 -0.01 -0.01 -0.00 -0.00 -0.00  0.00  0.01  0.02  0.04  0.09  0.17  0.30  0.91  2.46  3.42
+     R3 BER:            4e-08 5e-08 0e+00 0e+00 6e-08 0e+00 0e+00 0e+00 0e+00 0e+00 7e-08 1e-07 7e-08 7e-08 0e+00 0e+00 9e-07 3e-06
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPPPPPPPPPFFF  S*_MSE 10   (.25/.75: 14/10; literal: 14)
+     BER f=2 PRIMARY:      ppppppppppp?ppppFF  S*_BER None [None] (mono False; bracket if not demonstrated: None);  f=1.5: None  f=5: None
+       sens. linear:       ppppppppppp?ppppFF  S* None
+       sens. plain Wilson: ppppppppppp?ppppFF  S* None
+       sens. burst Wilson: g10: ppppppppppp?ppppFF  g20: ppppppppppp?ppppFF  g40: ppppppppppp?ppppFF
+       sens. literal ref:  ppppppppppp?ppppFF  S* None
+     S_cross: advantage demonstrated down to S = 56; first S without it = 40 (inconclusive (advantage no longer demonstrated))   [status AAAAAAAAAA?AAAAA?L; z-test sens. AAAAAAAAAA-AAAAA--]
+
+  mu = 2^-5.5:  static-reference interpolation lin  (node errors: 0)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):        -0.00 -0.00 -0.00 -0.00 -0.00 -0.00  0.00  0.00  0.01  0.01  0.03  0.05  0.10  0.18  0.31  0.79  1.60  1.96
+     R3 BER:            0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 1e-07 1e-07
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPPPPPPPPPFFF  S*_MSE 10   (.25/.75: 14/10; literal: 10)
+     BER f=2 PRIMARY:      pppppppppppppppp??  S*_BER None [None] (mono False; bracket if not demonstrated: None);  f=1.5: None  f=5: None
+       sens. linear:       pppppppppppppppp??  S* None
+       sens. plain Wilson: pppppppppppppppp??  S* None
+       sens. burst Wilson: g10: pppppppppppppppp??  g20: pppppppppppppppp??  g40: pppppppppppppppp??
+       sens. literal ref:  pppppppppppppppp??  S* None
+     S_cross: advantage demonstrated down to S = 2000; first S without it = 1000 (inconclusive (advantage no longer demonstrated))   [status AA?AAAAAAAAAA??A??; z-test sens. AAAAAAAAAAAAA-AA--]
+
+  mu = 2^-6.0:  static-reference interpolation lin  (node errors: 0)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):        -0.00 -0.00 -0.00 -0.00  0.00  0.00  0.00  0.01  0.01  0.02  0.04  0.08  0.14  0.24  0.40  0.84  1.36  1.53
+     R3 BER:            0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPPPPPPPPPFFF  S*_MSE 10   (.25/.75: 14/10; literal: 10)
+     BER f=2 PRIMARY:      pppppppppppppppppp  S*_BER None [None] (mono True; bracket if not demonstrated: None);  f=1.5: None  f=5: None
+       sens. linear:       pppppppppppppppppp  S* None
+       sens. plain Wilson: pppppppppppppppppp  S* None
+       sens. burst Wilson: g10: pppppppppppppppppp  g20: pppppppppppppppppp  g40: pppppppppppppppppp
+       sens. literal ref:  pppppppppppppppppp  S* None
+     S_cross: advantage demonstrated down to S = 2000; first S without it = 1000 (inconclusive (advantage no longer demonstrated))   [status AA???A?????A?????A; z-test sens. AA-AAAA-A--AA--A-A]
+
+  mu = 2^-6.5:  static-reference interpolation lin  (node errors: 0)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):        -0.00 -0.00 -0.00  0.00  0.00  0.00  0.01  0.01  0.02  0.04  0.07  0.12  0.21  0.35  0.52  0.90  1.24  1.33
+     R3 BER:            0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPPPPPPPPFFFF  S*_MSE 14   (.25/.75: 20/10; literal: 14)
+     BER f=2 PRIMARY:      pppppppppppppppppp  S*_BER None [None] (mono True; bracket if not demonstrated: None);  f=1.5: None  f=5: None
+       sens. linear:       pppppppppppppppppp  S* None
+       sens. plain Wilson: pppppppppppppppppp  S* None
+       sens. burst Wilson: g10: pppppppppppppppppp  g20: pppppppppppppppppp  g40: pppppppppppppppppp
+       sens. literal ref:  pppppppppppppppppp  S* None
+     S_cross: advantage demonstrated down to S = 5000; first S without it = 2000 (inconclusive (advantage no longer demonstrated))   [status A??A?A???????????A; z-test sens. AA-A-A-----AA--A-A]
+
+  mu = 2^-7.0:  static-reference interpolation lin  (node errors: 0)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):        -0.00 -0.00 -0.00  0.00  0.00  0.00  0.01  0.02  0.03  0.06  0.11  0.19  0.31  0.48  0.65  0.96  1.17  1.22
+     R3 BER:            0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPPPPPPPPFFFF  S*_MSE 14   (.25/.75: 28/10; literal: 14)
+     BER f=2 PRIMARY:      pppppppppppppppppp  S*_BER None [None] (mono True; bracket if not demonstrated: None);  f=1.5: None  f=5: None
+       sens. linear:       pppppppppppppppppp  S* None
+       sens. plain Wilson: pppppppppppppppppp  S* None
+       sens. burst Wilson: g10: pppppppppppppppppp  g20: pppppppppppppppppp  g40: pppppppppppppppppp
+       sens. literal ref:  pppppppppppppppppp  S* None
+     S_cross: advantage demonstrated down to S = 5000; first S without it = 2000 (inconclusive (advantage no longer demonstrated))   [status A?????????????????; z-test sens. A--A--A----A---A-A]
+
+  mu = 2^-7.5:  static-reference interpolation lin  (node errors: 0)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):        -0.00 -0.00  0.00  0.00  0.00  0.01  0.02  0.03  0.06  0.11  0.18  0.30  0.44  0.61  0.77  1.00  1.13  1.15
+     R3 BER:            0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPPPPPPPFFFFF  S*_MSE 20   (.25/.75: 40/14; literal: 20)
+     BER f=2 PRIMARY:      pppppppppppppppppp  S*_BER None [None] (mono True; bracket if not demonstrated: None);  f=1.5: None  f=5: None
+       sens. linear:       pppppppppppppppppp  S* None
+       sens. plain Wilson: pppppppppppppppppp  S* None
+       sens. burst Wilson: g10: pppppppppppppppppp  g20: pppppppppppppppppp  g40: pppppppppppppppppp
+       sens. literal ref:  pppppppppppppppppp  S* None
+     S_cross: advantage demonstrated down to S = 5000; first S without it = 2000 (inconclusive (advantage no longer demonstrated))   [status A?????????????????; z-test sens. A-----A----A---A-A]
+
+  mu = 2^-8.0:  static-reference interpolation lin  (node errors: 0)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):        -0.00  0.00  0.00  0.00  0.01  0.02  0.03  0.06  0.10  0.18  0.28  0.43  0.58  0.74  0.86  1.02  1.09  1.11
+     R3 BER:            0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPPPPPPFFFFFF  S*_MSE 28   (.25/.75: 56/14; literal: 28)
+     BER f=2 PRIMARY:      pppppppppppppppppp  S*_BER None [None] (mono True; bracket if not demonstrated: None);  f=1.5: None  f=5: None
+       sens. linear:       pppppppppppppppppp  S* None
+       sens. plain Wilson: pppppppppppppppppp  S* None
+       sens. burst Wilson: g10: pppppppppppppppppp  g20: pppppppppppppppppp  g40: pppppppppppppppppp
+       sens. literal ref:  pppppppppppppppppp  S* None
+     S_cross: advantage demonstrated down to S = 5000; first S without it = 2000 (inconclusive (advantage no longer demonstrated))   [status A?????????????????; z-test sens. A-----A----A---A-A]
+
+  mu = 2^-8.5:  static-reference interpolation lin  (node errors: 0)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):         0.00  0.00  0.00  0.01  0.02  0.03  0.06  0.10  0.17  0.28  0.41  0.57  0.71  0.84  0.93  1.03  1.07  1.08
+     R3 BER:            0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPPPPPFFFFFFF  S*_MSE 40   (.25/.75: 80/20; literal: 40)
+     BER f=2 PRIMARY:      pppppppppppppppppp  S*_BER None [None] (mono True; bracket if not demonstrated: None);  f=1.5: None  f=5: None
+       sens. linear:       pppppppppppppppppp  S* None
+       sens. plain Wilson: pppppppppppppppppp  S* None
+       sens. burst Wilson: g10: pppppppppppppppppp  g20: pppppppppppppppppp  g40: pppppppppppppppppp
+       sens. literal ref:  pppppppppppppppppp  S* None
+     S_cross: advantage demonstrated down to S = none; first S without it = 5000 (inconclusive (advantage no longer demonstrated))   [status ??????????????????; z-test sens. A-----A--------A-A]
+
+  mu = 2^-9.0:  static-reference interpolation lin  (node errors: 0)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):         0.00  0.00  0.00  0.01  0.03  0.06  0.10  0.17  0.27  0.41  0.56  0.70  0.82  0.91  0.97  1.03  1.05  1.06
+     R3 BER:            0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPPPPFFFFFFFF  S*_MSE 56   (.25/.75: 112/28; literal: 56)
+     BER f=2 PRIMARY:      pppppppppppppppppp  S*_BER None [None] (mono True; bracket if not demonstrated: None);  f=1.5: None  f=5: None
+       sens. linear:       pppppppppppppppppp  S* None
+       sens. plain Wilson: pppppppppppppppppp  S* None
+       sens. burst Wilson: g10: pppppppppppppppppp  g20: pppppppppppppppppp  g40: pppppppppppppppppp
+       sens. literal ref:  pppppppppppppppppp  S* None
+     S_cross: advantage demonstrated down to S = none; first S without it = 5000 (inconclusive (advantage no longer demonstrated))   [status ??????????????????; z-test sens. A-----A----------A]
+
+  mu = 2^-9.5:  static-reference interpolation lin  (node errors: 0)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):         0.00  0.00  0.01  0.02  0.05  0.10  0.17  0.27  0.40  0.55  0.69  0.81  0.89  0.96  1.00  1.03  1.04  1.04
+     R3 BER:            0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPPPFFFFFFFFF  S*_MSE 80   (.25/.75: 160/40; literal: 80)
+     BER f=2 PRIMARY:      pppppppppppppppppp  S*_BER None [None] (mono True; bracket if not demonstrated: None);  f=1.5: None  f=5: None
+       sens. linear:       pppppppppppppppppp  S* None
+       sens. plain Wilson: pppppppppppppppppp  S* None
+       sens. burst Wilson: g10: pppppppppppppppppp  g20: pppppppppppppppppp  g40: pppppppppppppppppp
+       sens. literal ref:  pppppppppppppppppp  S* None
+     S_cross: advantage demonstrated down to S = none; first S without it = 5000 (inconclusive (advantage no longer demonstrated))   [status ??????????????????; z-test sens. A-----A----------A]
+
+  mu = 2^-10.0:  static-reference interpolation lin  (node errors: 0)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):         0.00  0.00  0.01  0.05  0.10  0.17  0.27  0.40  0.55  0.69  0.80  0.89  0.95  0.99  1.01  1.03  1.04  1.04
+     R3 BER:            0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPPFFFFFFFFFF  S*_MSE 112   (.25/.75: 224/56; literal: 112)
+     BER f=2 PRIMARY:      pppppppppppppppppp  S*_BER None [None] (mono True; bracket if not demonstrated: None);  f=1.5: None  f=5: None
+       sens. linear:       pppppppppppppppppp  S* None
+       sens. plain Wilson: pppppppppppppppppp  S* None
+       sens. burst Wilson: g10: pppppppppppppppppp  g20: pppppppppppppppppp  g40: pppppppppppppppppp
+       sens. literal ref:  pppppppppppppppppp  S* None
+     S_cross: advantage demonstrated down to S = none; first S without it = 5000 (inconclusive (advantage no longer demonstrated))   [status ??????????????????; z-test sens. A-----A----------A]
+
+  mu = 2^-10.5:  static-reference interpolation lin  (node errors: 0)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):         0.00  0.01  0.02  0.08  0.16  0.27  0.40  0.55  0.68  0.80  0.89  0.95  0.98  1.01  1.02  1.03  1.03  1.03
+     R3 BER:            0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPFFFFFFFFFFF  S*_MSE 160   (.25/.75: 320/80; literal: 160)
+     BER f=2 PRIMARY:      pppppppppppppppppp  S*_BER None [None] (mono True; bracket if not demonstrated: None);  f=1.5: None  f=5: None
+       sens. linear:       pppppppppppppppppp  S* None
+       sens. plain Wilson: pppppppppppppppppp  S* None
+       sens. burst Wilson: g10: pppppppppppppppppp  g20: pppppppppppppppppp  g40: pppppppppppppppppp
+       sens. literal ref:  pppppppppppppppppp  S* None
+     S_cross: advantage demonstrated down to S = none; first S without it = 5000 (inconclusive (advantage no longer demonstrated))   [status ??????????????????; z-test sens. A-----A----------A]
+
+  mu = 2^-11.0:  static-reference interpolation lin  (node errors: 0)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):         0.00  0.01  0.04  0.14  0.27  0.40  0.54  0.68  0.80  0.89  0.95  0.99  1.01  1.02  1.03  1.03  1.03  1.04
+     R3 BER:            0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPFFFFFFFFFFFF  S*_MSE 224   (.25/.75: 500/112; literal: 224)
+     BER f=2 PRIMARY:      pppppppppppppppppp  S*_BER None [None] (mono True; bracket if not demonstrated: None);  f=1.5: None  f=5: None
+       sens. linear:       pppppppppppppppppp  S* None
+       sens. plain Wilson: pppppppppppppppppp  S* None
+       sens. burst Wilson: g10: pppppppppppppppppp  g20: pppppppppppppppppp  g40: pppppppppppppppppp
+       sens. literal ref:  pppppppppppppppppp  S* None
+     S_cross: advantage demonstrated down to S = 5000; first S without it = 2000 (inconclusive (advantage no longer demonstrated))   [status A?????????????????; z-test sens. A-----A----------A]
+
+  mu = 2^-11.5:  static-reference interpolation lin  (node errors: 0)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):         0.00  0.02  0.08  0.23  0.40  0.55  0.68  0.80  0.89  0.95  0.99  1.01  1.03  1.03  1.04  1.04  1.04  1.04
+     R3 BER:            0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPFFFFFFFFFFFFF  S*_MSE 320   (.25/.75: 500/160; literal: 320)
+     BER f=2 PRIMARY:      pppppppppppppppppp  S*_BER None [None] (mono True; bracket if not demonstrated: None);  f=1.5: None  f=5: None
+       sens. linear:       pppppppppppppppppp  S* None
+       sens. plain Wilson: pppppppppppppppppp  S* None
+       sens. burst Wilson: g10: pppppppppppppppppp  g20: pppppppppppppppppp  g40: pppppppppppppppppp
+       sens. literal ref:  pppppppppppppppppp  S* None
+     S_cross: advantage demonstrated down to S = 5000; first S without it = 2000 (inconclusive (advantage no longer demonstrated))   [status A?????????????????; z-test sens. A-----A----------A]
+
+  mu_opt(S): S=5000: 2^-11.17  S=2000: 2^-10.31  S=1000: 2^-9.67  S=500: 2^-9.03  S=320: 2^-8.63  S=224: 2^-8.31  S=160: 2^-8.01  S=112: 2^-7.71  S=80: 2^-7.41  S=56: 2^-7.12  S=40: 2^-6.85  S=28: 2^-6.58  S=20: 2^-6.33  S=14: 2^-6.10  S=10: 2^-5.91  S=5: 2^-5.70  S=2: 2^-10.54  S=1: 2^-10.57
+  exponent d log2 mu_opt / d log2(1/S):
+     V0 baseline (3-pt parabola, bracketed, rho<=0.75)  slope 0.593  (15 points)
+     V1 no refinement (grid argmin)                     slope 0.582  (15 points)
+     V2 5-point quadratic refinement                    slope 0.57  (15 points)
+     V3 stricter range rho<=0.5                         slope 0.593  (15 points)
+     V4 drop the two slowest S                          slope 0.572  (13 points)
+     V5 drop the two fastest S                          slope 0.61  (13 points)
+     V6 only S <= 1000                                  slope 0.572  (13 points)
+     statistical (seed bootstrap, baseline variant) 95% (0.5932024260561485, 0.5936559983456855);  systematic spread across variants (0.5699960175082388, 0.6103284809648121)

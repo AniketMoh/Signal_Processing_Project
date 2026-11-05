@@ -1,0 +1,17 @@
+20 independent replicates x 12 points (2e6 bits each, min errors 210)
+(i)  pooled mean z = +0.190, standard error 0.065, p = 0.003   -> BIAS FLAG
+(ii) pooled chi2 = 243.8 for 240 dof (expected 240 +- 22), two-sided p = 0.838   -> consistent
+(iii) per-point mean z over replicates (z-score of the mean, p):
+       0.00 dB: mean z -0.09  scaled -0.42  p 0.672  
+       0.75 dB: mean z -0.01  scaled -0.04  p 0.971  
+       1.50 dB: mean z +0.25  scaled +1.10  p 0.271  
+       2.25 dB: mean z +0.20  scaled +0.92  p 0.360  
+       3.00 dB: mean z +0.53  scaled +2.35  p 0.019  
+       3.75 dB: mean z +0.26  scaled +1.18  p 0.240  
+       4.50 dB: mean z +0.06  scaled +0.26  p 0.793  
+       5.25 dB: mean z +0.14  scaled +0.63  p 0.528  
+       6.00 dB: mean z +0.25  scaled +1.13  p 0.258  
+       6.75 dB: mean z +0.26  scaled +1.15  p 0.249  
+       7.50 dB: mean z +0.29  scaled +1.31  p 0.191  
+       8.25 dB: mean z +0.14  scaled +0.61  p 0.540  
+(iv) replicates failing a single-run criterion (nominal false-alarm rates 1 %, 1 %, 5 %): pooled chi2 0/20, sign test 0/20, familywise intervals 1/20

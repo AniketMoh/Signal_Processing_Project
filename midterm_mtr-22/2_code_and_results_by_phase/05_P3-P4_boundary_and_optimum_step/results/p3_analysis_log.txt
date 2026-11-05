@@ -1,0 +1,392 @@
+
+################ control  c 26..77 (a 0.203..0.602)  Eb/N0 14 dB   eps_plateau (analytic, Delta=2) 0.604   eps_frozen(c_lo) 2.25   cond(R) max 10.4   min|H| 0.498   R1 BER at a_hi (exact) 4.35e-03
+  mu=2^- 6: eps_static lit  16.9% / traj(S=1000)  23.6%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):          24    24    24    24    25    30    41    61    85    94
+      rho (lit)  mean:   0.15  0.16  0.15  0.16  0.18  0.29  0.56  1.02  1.58  1.77
+      rho (traj) mean:  -0.00 -0.00  0.00  0.01  0.03  0.16  0.48  1.03  1.68  1.91
+      MSE status th=.5 lit/traj: PPPPPPFFFF / PPPPPPPFFF   S*_MSE lit 20 traj 10   (th .25: 50/20; th .75: 10/10)  monotonic lit/traj True/True
+      BER R1:           5e-04 5e-04 5e-04 5e-04 6e-04 5e-04 5e-04 5e-04 5e-04 5e-04
+      BER R2:           8e-06 1e-05 1e-05 7e-06 1e-05 1e-05 9e-06 1e-05 7e-06 9e-06
+      BER R3:           0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 3e-07 4e-06
+      static-BER reference along the trajectory (traj): 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06
+      BER status f=2 (traj baseline): PPPPPPPPPF  S*_BER 2 (f=1.5: 5, f=5: 2) 
+      BER status f=2 (literal S0 at c_lo): PPPPPPPPPF  S*_BER 2 (f=1.5: 5, f=5: 2)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu=2^- 7: eps_static lit   7.9% / traj(S=1000)  10.7%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):          11    11    11    12    15    27    45    62    74    77
+      rho (lit)  mean:   0.05  0.06  0.06  0.08  0.13  0.37  0.71  1.03  1.25  1.31
+      rho (traj) mean:   0.00  0.00  0.01  0.02  0.08  0.33  0.69  1.03  1.27  1.32
+      MSE status th=.5 lit/traj: PPPPPPFFFF / PPPPPPFFFF   S*_MSE lit 20 traj 20   (th .25: 50/50; th .75: 10/10)  monotonic lit/traj True/True
+      BER R1:           5e-04 5e-04 5e-04 5e-04 6e-04 5e-04 5e-04 5e-04 5e-04 5e-04
+      BER R2:           5e-06 6e-06 7e-06 5e-06 5e-06 7e-06 7e-06 6e-06 3e-06 7e-06
+      BER R3:           0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 3e-07 0e+00 0e+00 3e-07
+      static-BER reference along the trajectory (traj): 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06
+      BER status f=2 (traj baseline): PPPPPPPPPP  S*_BER None (f=1.5: None, f=5: None) no failure within the S grid
+      BER status f=2 (literal S0 at c_lo): PPPPPPPPPP  S*_BER None (f=1.5: None, f=5: None)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu=2^- 8: eps_static lit   3.8% / traj(S=1000)   5.2%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):           5     5     6     9    17    38    54    63    68    69
+      rho (lit)  mean:   0.02  0.03  0.04  0.09  0.23  0.61  0.89  1.05  1.13  1.14
+      rho (traj) mean:   0.00  0.00  0.02  0.07  0.21  0.60  0.88  1.05  1.13  1.15
+      MSE status th=.5 lit/traj: PPPPPFFFFF / PPPPPFFFFF   S*_MSE lit 50 traj 50   (th .25: 50/50; th .75: 20/20)  monotonic lit/traj True/True
+      BER R1:           5e-04 5e-04 5e-04 5e-04 6e-04 5e-04 5e-04 5e-04 5e-04 5e-04
+      BER R2:           4e-06 4e-06 5e-06 4e-06 4e-06 5e-06 6e-06 5e-06 3e-06 5e-06
+      BER R3:           0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 3e-07 0e+00 0e+00 3e-07
+      static-BER reference along the trajectory (traj): 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06
+      BER status f=2 (traj baseline): PPPPPPPPPP  S*_BER None (f=1.5: None, f=5: None) no failure within the S grid
+      BER status f=2 (literal S0 at c_lo): PPPPPPPPPP  S*_BER None (f=1.5: None, f=5: None)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu=2^- 9: eps_static lit   1.9% / traj(S=1000)   2.6%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):           3     3     6    14    29    50    59    63    65    65
+      rho (lit)  mean:   0.02  0.02  0.08  0.21  0.47  0.83  0.98  1.05  1.07  1.08
+      rho (traj) mean:   0.00  0.01  0.07  0.20  0.46  0.83  0.98  1.05  1.07  1.08
+      MSE status th=.5 lit/traj: PPPPPFFFFF / PPPPPFFFFF   S*_MSE lit 50 traj 50   (th .25: 100/100; th .75: 50/50)  monotonic lit/traj True/True
+      BER R1:           5e-04 5e-04 5e-04 5e-04 6e-04 5e-04 5e-04 5e-04 5e-04 5e-04
+      BER R2:           4e-06 3e-06 4e-06 4e-06 3e-06 5e-06 4e-06 4e-06 2e-06 4e-06
+      BER R3:           0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 3e-07 0e+00 0e+00 3e-07
+      static-BER reference along the trajectory (traj): 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06
+      BER status f=2 (traj baseline): PPPPPPPPPP  S*_BER None (f=1.5: None, f=5: None) no failure within the S grid
+      BER status f=2 (literal S0 at c_lo): PPPPPPPPPP  S*_BER None (f=1.5: None, f=5: None)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu=2^-10: eps_static lit   1.0% / traj(S=1000)   1.3%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):           2     4    13    28    44    58    62    63    63    63
+      rho (lit)  mean:   0.02  0.05  0.20  0.45  0.73  0.96  1.02  1.04  1.05  1.05
+      rho (traj) mean:   0.01  0.04  0.19  0.44  0.73  0.96  1.02  1.04  1.05  1.05
+      MSE status th=.5 lit/traj: PPPPFFFFFF / PPPPFFFFFF   S*_MSE lit 100 traj 100   (th .25: 200/200; th .75: 50/50)  monotonic lit/traj True/True
+      BER R1:           5e-04 5e-04 5e-04 5e-04 6e-04 5e-04 5e-04 5e-04 5e-04 5e-04
+      BER R2:           3e-06 3e-06 4e-06 3e-06 3e-06 5e-06 4e-06 3e-06 2e-06 4e-06
+      BER R3:           0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 3e-07 0e+00 0e+00 0e+00
+      static-BER reference along the trajectory (traj): 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06
+      BER status f=2 (traj baseline): PPPPPPPPPP  S*_BER None (f=1.5: None, f=5: None) no failure within the S grid
+      BER status f=2 (literal S0 at c_lo): PPPPPPPPPP  S*_BER None (f=1.5: None, f=5: None)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu_opt(S) preview (grid argmin of eps_R3, parabolic refinement; * = at grid boundary):  S=1000: 2^-10.0*  S=500: 2^-9.3  S=200: 2^-8.5  S=100: 2^-7.9  S=50: 2^-7.3  S=20: 2^-6.7  S=10: 2^-6.0*  S=5: 2^-6.0*  S=2: 2^-10.0*  S=1: 2^-10.0*
+  >>> selection criteria: C1 False (plateau 0.60)  C2 True  C3a True (R1 4.4e-03 vs 10x R3-static-ref 9.9e-06)  C3b False  C4 (MSE, rho_th=.5) lit: ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']  traj: ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']
+
+################ control  c 26..77 (a 0.203..0.602)  Eb/N0 16 dB   eps_plateau (analytic, Delta=2) 0.976   eps_frozen(c_lo) 3.61   cond(R) max 10.6   min|H| 0.498   R1 BER at a_hi (exact) 9.69e-04
+  mu=2^- 6: eps_static lit  16.8% / traj(S=1000)  23.5%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):          24    24    24    24    26    34    53    86   124   138
+      rho (lit)  mean:   0.08  0.08  0.08  0.09  0.11  0.21  0.45  0.85  1.33  1.49
+      rho (traj) mean:  -0.00 -0.00  0.00  0.01  0.03  0.14  0.40  0.84  1.36  1.54
+      MSE status th=.5 lit/traj: PPPPPPPFFF / PPPPPPPFFF   S*_MSE lit 10 traj 10   (th .25: 20/20; th .75: 10/10)  monotonic lit/traj True/True
+      BER R1:           7e-05 8e-05 8e-05 8e-05 9e-05 8e-05 8e-05 8e-05 9e-05 9e-05
+      BER R2:           0e+00 0e+00 7e-07 0e+00 0e+00 7e-07 3e-07 3e-07 3e-07 3e-07
+      BER R3:           0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+      static-BER reference along the trajectory (traj): 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06
+      BER status f=2 (traj baseline): PPPPPPPPPP  S*_BER None (f=1.5: None, f=5: None) no failure within the S grid
+      BER status f=2 (literal S0 at c_lo): PPPPPPPPPP  S*_BER None (f=1.5: None, f=5: None)   S_cross set (smallest S with significant R3 advantage over both): none
+  mu=2^- 7: eps_static lit   7.9% / traj(S=1000)  10.7%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):          11    11    11    13    17    38    67    94   113   117
+      rho (lit)  mean:   0.03  0.03  0.04  0.05  0.11  0.34  0.66  0.96  1.17  1.22
+      rho (traj) mean:   0.00  0.00  0.01  0.02  0.08  0.31  0.65  0.96  1.17  1.22
+      MSE status th=.5 lit/traj: PPPPPPFFFF / PPPPPPFFFF   S*_MSE lit 20 traj 20   (th .25: 50/50; th .75: 10/10)  monotonic lit/traj True/True
+      BER R1:           7e-05 8e-05 8e-05 8e-05 9e-05 8e-05 8e-05 8e-05 9e-05 9e-05
+      BER R2:           0e+00 0e+00 3e-07 0e+00 0e+00 3e-07 0e+00 0e+00 0e+00 0e+00
+      BER R3:           0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+      static-BER reference along the trajectory (traj): 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06
+      BER status f=2 (traj baseline): PPPPPPPPPP  S*_BER None (f=1.5: None, f=5: None) no failure within the S grid
+      BER status f=2 (literal S0 at c_lo): PPPPPPPPPP  S*_BER None (f=1.5: None, f=5: None)   S_cross set (smallest S with significant R3 advantage over both): none
+  mu=2^- 8: eps_static lit   3.8% / traj(S=1000)   5.2%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):           5     6     7    12    25    59    85    99   106   108
+      rho (lit)  mean:   0.02  0.02  0.03  0.08  0.22  0.59  0.86  1.02  1.09  1.11
+      rho (traj) mean:   0.00  0.00  0.02  0.07  0.21  0.58  0.86  1.02  1.09  1.11
+      MSE status th=.5 lit/traj: PPPPPFFFFF / PPPPPFFFFF   S*_MSE lit 50 traj 50   (th .25: 50/50; th .75: 20/20)  monotonic lit/traj True/True
+      BER R1:           7e-05 8e-05 8e-05 8e-05 9e-05 8e-05 8e-05 8e-05 9e-05 9e-05
+      BER R2:           0e+00 0e+00 3e-07 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+      BER R3:           0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+      static-BER reference along the trajectory (traj): 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06
+      BER status f=2 (traj baseline): PPPPPPPPPP  S*_BER None (f=1.5: None, f=5: None) no failure within the S grid
+      BER status f=2 (literal S0 at c_lo): PPPPPPPPPP  S*_BER None (f=1.5: None, f=5: None)   S_cross set (smallest S with significant R3 advantage over both): none
+  mu=2^- 9: eps_static lit   1.9% / traj(S=1000)   2.6%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):           3     4     9    22    46    80    95   101   103   103
+      rho (lit)  mean:   0.01  0.02  0.07  0.21  0.46  0.82  0.97  1.03  1.05  1.06
+      rho (traj) mean:   0.00  0.01  0.07  0.20  0.46  0.82  0.97  1.03  1.05  1.06
+      MSE status th=.5 lit/traj: PPPPPFFFFF / PPPPPFFFFF   S*_MSE lit 50 traj 50   (th .25: 100/100; th .75: 50/50)  monotonic lit/traj True/True
+      BER R1:           7e-05 8e-05 8e-05 8e-05 9e-05 8e-05 8e-05 8e-05 9e-05 9e-05
+      BER R2:           0e+00 0e+00 3e-07 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+      BER R3:           0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+      static-BER reference along the trajectory (traj): 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06
+      BER status f=2 (traj baseline): PPPPPPPPPP  S*_BER None (f=1.5: None, f=5: None) no failure within the S grid
+      BER status f=2 (literal S0 at c_lo): PPPPPPPPPP  S*_BER None (f=1.5: None, f=5: None)   S_cross set (smallest S with significant R3 advantage over both): none
+  mu=2^-10: eps_static lit   1.0% / traj(S=1000)   1.3%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):           3     6    20    44    71    93    99   101   101   101
+      rho (lit)  mean:   0.02  0.05  0.20  0.45  0.73  0.95  1.01  1.03  1.04  1.04
+      rho (traj) mean:   0.01  0.05  0.20  0.45  0.73  0.95  1.01  1.03  1.04  1.04
+      MSE status th=.5 lit/traj: PPPPFFFFFF / PPPPFFFFFF   S*_MSE lit 100 traj 100   (th .25: 200/200; th .75: 50/50)  monotonic lit/traj True/True
+      BER R1:           7e-05 8e-05 8e-05 8e-05 9e-05 8e-05 8e-05 8e-05 9e-05 9e-05
+      BER R2:           0e+00 0e+00 3e-07 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+      BER R3:           0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00
+      static-BER reference along the trajectory (traj): 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06
+      BER status f=2 (traj baseline): PPPPPPPPPP  S*_BER None (f=1.5: None, f=5: None) no failure within the S grid
+      BER status f=2 (literal S0 at c_lo): PPPPPPPPPP  S*_BER None (f=1.5: None, f=5: None)   S_cross set (smallest S with significant R3 advantage over both): none
+  mu_opt(S) preview (grid argmin of eps_R3, parabolic refinement; * = at grid boundary):  S=1000: 2^-10.0*  S=500: 2^-9.0  S=200: 2^-8.2  S=100: 2^-7.6  S=50: 2^-7.0  S=20: 2^-6.0*  S=10: 2^-6.0*  S=5: 2^-6.0*  S=2: 2^-10.0*  S=1: 2^-10.0*
+  >>> selection criteria: C1 False (plateau 0.98)  C2 True  C3a True (R1 9.7e-04 vs 10x R3-static-ref 9.9e-06)  C3b False  C4 (MSE, rho_th=.5) lit: ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']  traj: ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']
+
+################ candidate_A  c 64..115 (a 0.500..0.898)  Eb/N0 14 dB   eps_plateau (analytic, Delta=2) 0.514   eps_frozen(c_lo) 1.76   cond(R) max 48.7   min|H| 0.202   R1 BER at a_hi (exact) 1.43e-01
+  mu=2^- 6: eps_static lit  26.7% / traj(S=1000)  42.6%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):          42    43    43    44    47    59    75    90   104   109
+      rho (lit)  mean:   0.64  0.65  0.65  0.70  0.83  1.31  1.94  2.57  3.13  3.34
+      rho (traj) mean:  -0.03 -0.02  0.01  0.14  0.51  1.89  3.72  5.56  7.19  7.81
+      MSE status th=.5 lit/traj: FFFFFFFFFF / PPPP?FFFFF   S*_MSE lit None traj 100   (th .25: None/100; th .75: 100/50)  monotonic lit/traj True/True
+      BER R1:           4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02
+      BER R2:           2e-04 3e-04 2e-04 2e-04 2e-04 3e-04 3e-04 3e-04 2e-04 2e-04
+      BER R3:           3e-05 3e-05 3e-05 3e-05 3e-05 4e-05 8e-05 1e-04 2e-04 2e-04
+      static-BER reference along the trajectory (traj): 3e-05 4e-05 3e-05 4e-05 4e-05 4e-05 4e-05 4e-05 4e-05 4e-05
+      BER status f=2 (traj baseline): PPPPPPFFFF  S*_BER 20 (f=1.5: 20, f=5: 5) 
+      BER status f=2 (literal S0 at c_lo): FFFFFFFFFF  S*_BER None (f=1.5: None, f=5: None)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu=2^- 7: eps_static lit  12.1% / traj(S=1000)  18.1%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):          18    18    20    22    30    46    59    68    75    77
+      rho (lit)  mean:   0.15  0.16  0.19  0.27  0.45  0.87  1.19  1.42  1.59  1.65
+      rho (traj) mean:   0.00  0.01  0.04  0.13  0.34  0.85  1.23  1.50  1.71  1.77
+      MSE status th=.5 lit/traj: PPPPPFFFFF / PPPPPFFFFF   S*_MSE lit 50 traj 50   (th .25: 200/100; th .75: 50/50)  monotonic lit/traj True/True
+      BER R1:           4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02
+      BER R2:           2e-04 2e-04 2e-04 2e-04 2e-04 2e-04 2e-04 2e-04 2e-04 2e-04
+      BER R3:           3e-06 3e-06 5e-06 3e-06 6e-06 9e-06 3e-05 4e-05 5e-05 5e-05
+      static-BER reference along the trajectory (traj): 4e-06 5e-06 4e-06 5e-06 5e-06 5e-06 5e-06 5e-06 5e-06 5e-06
+      BER status f=2 (traj baseline): PPPPP?FFFF  S*_BER 50 (f=1.5: None, f=5: 20) 
+      BER status f=2 (literal S0 at c_lo): ??F?FFFFFF  S*_BER None (f=1.5: None, f=5: None)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu=2^- 8: eps_static lit   5.8% / traj(S=1000)   8.5%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):           9     9    13    19    31    47    55    60    63    64
+      rho (lit)  mean:   0.06  0.08  0.15  0.30  0.55  0.89  1.07  1.19  1.26  1.27
+      rho (traj) mean:   0.01  0.02  0.10  0.26  0.53  0.89  1.08  1.20  1.27  1.29
+      MSE status th=.5 lit/traj: PPPPFFFFFF / PPPPFFFFFF   S*_MSE lit 100 traj 100   (th .25: 200/200; th .75: 50/50)  monotonic lit/traj True/True
+      BER R1:           4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02
+      BER R2:           2e-04 2e-04 2e-04 2e-04 2e-04 2e-04 2e-04 2e-04 2e-04 2e-04
+      BER R3:           2e-06 7e-07 3e-06 2e-06 4e-06 9e-06 2e-05 2e-05 2e-05 2e-05
+      static-BER reference along the trajectory (traj): 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06
+      BER status f=2 (traj baseline): PP?P?FFFFF  S*_BER None (f=1.5: None, f=5: 50) not monotonic: passing set reported
+      BER status f=2 (literal S0 at c_lo): ????FFFFFF  S*_BER None (f=1.5: None, f=5: None)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu=2^- 9: eps_static lit   2.9% / traj(S=1000)   4.1%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):           5     7    15    26    38    49    54    56    58    58
+      rho (lit)  mean:   0.05  0.09  0.25  0.47  0.72  0.95  1.05  1.11  1.13  1.14
+      rho (traj) mean:   0.02  0.06  0.23  0.46  0.71  0.95  1.05  1.11  1.13  1.14
+      MSE status th=.5 lit/traj: PPPPFFFFFF / PPPPFFFFFF   S*_MSE lit 100 traj 100   (th .25: 500/200; th .75: 50/50)  monotonic lit/traj True/True
+      BER R1:           4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02
+      BER R2:           2e-04 2e-04 2e-04 2e-04 2e-04 2e-04 2e-04 2e-04 2e-04 2e-04
+      BER R3:           2e-06 3e-07 3e-06 2e-06 7e-06 9e-06 1e-05 1e-05 2e-05 1e-05
+      static-BER reference along the trajectory (traj): 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06
+      BER status f=2 (traj baseline): PP??FFFFFF  S*_BER 500 (f=1.5: None, f=5: 100) 
+      BER status f=2 (literal S0 at c_lo): ?P??FFFFFF  S*_BER None (f=1.5: None, f=5: None)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu=2^-10: eps_static lit   1.5% / traj(S=1000)   2.1%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):           5    10    24    35    44    51    54    55    55    55
+      rho (lit)  mean:   0.07  0.18  0.45  0.67  0.86  1.00  1.05  1.07  1.08  1.08
+      rho (traj) mean:   0.06  0.17  0.44  0.67  0.86  1.00  1.05  1.07  1.08  1.08
+      MSE status th=.5 lit/traj: PPPFFFFFFF / PPPFFFFFFF   S*_MSE lit 200 traj 200   (th .25: 500/500; th .75: 100/100)  monotonic lit/traj True/True
+      BER R1:           4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02 4e-02
+      BER R2:           2e-04 2e-04 2e-04 2e-04 2e-04 2e-04 2e-04 2e-04 2e-04 2e-04
+      BER R3:           1e-06 0e+00 4e-06 7e-06 7e-06 9e-06 1e-05 1e-05 1e-05 1e-05
+      static-BER reference along the trajectory (traj): 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06
+      BER status f=2 (traj baseline): ?P?FFFFFFF  S*_BER None (f=1.5: None, f=5: 200) fails already at the slowest S (but later points pass: not monotonic)
+      BER status f=2 (literal S0 at c_lo): ?PFFFFFFFF  S*_BER None (f=1.5: None, f=5: 500)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu_opt(S) preview (grid argmin of eps_R3, parabolic refinement; * = at grid boundary):  S=1000: 2^-10.0*  S=500: 2^-8.9  S=200: 2^-8.2  S=100: 2^-7.8  S=50: 2^-7.4  S=20: 2^-7.5  S=10: 2^-9.5  S=5: 2^-10.0*  S=2: 2^-10.0*  S=1: 2^-10.0*
+  >>> selection criteria: C1 False (plateau 0.51)  C2 True  C3a True (R1 1.4e-01 vs 10x R3-static-ref 9.9e-06)  C3b True  C4 (MSE, rho_th=.5) lit: ['2^-7', '2^-8', '2^-9', '2^-10']  traj: ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']
+
+################ candidate_A  c 64..115 (a 0.500..0.898)  Eb/N0 16 dB   eps_plateau (analytic, Delta=2) 0.851   eps_frozen(c_lo) 2.83   cond(R) max 53.5   min|H| 0.202   R1 BER at a_hi (exact) 1.33e-01
+  mu=2^- 6: eps_static lit  26.7% / traj(S=1000)  43.1%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):          43    43    44    46    52    73   100   125   146   154
+      rho (lit)  mean:   0.28  0.28  0.29  0.33  0.43  0.80  1.25  1.68  2.05  2.19
+      rho (traj) mean:  -0.01 -0.00  0.01  0.06  0.21  0.72  1.35  1.95  2.47  2.66
+      MSE status th=.5 lit/traj: PPPPPFFFFF / PPPPPFFFFF   S*_MSE lit 50 traj 50   (th .25: None/50; th .75: 50/20)  monotonic lit/traj True/True
+      BER R1:           3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02
+      BER R2:           3e-05 4e-05 4e-05 4e-05 4e-05 3e-05 4e-05 4e-05 3e-05 4e-05
+      BER R3:           1e-06 2e-06 2e-06 3e-07 1e-06 2e-06 7e-06 2e-05 4e-05 4e-05
+      static-BER reference along the trajectory (traj): 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06
+      BER status f=2 (traj baseline): P?PPP?FFFF  S*_BER None (f=1.5: None, f=5: 10) not monotonic: passing set reported
+      BER status f=2 (literal S0 at c_lo): ???P??FFFF  S*_BER None (f=1.5: None, f=5: 20)   S_cross set (smallest S with significant R3 advantage over both): 5
+  mu=2^- 7: eps_static lit  12.1% / traj(S=1000)  18.3%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):          18    19    21    27    40    68    88   102   113   116
+      rho (lit)  mean:   0.09  0.09  0.12  0.20  0.38  0.76  1.04  1.23  1.38  1.42
+      rho (traj) mean:   0.00  0.01  0.04  0.12  0.32  0.74  1.04  1.25  1.41  1.46
+      MSE status th=.5 lit/traj: PPPPPFFFFF / PPPPPFFFFF   S*_MSE lit 50 traj 50   (th .25: 100/100; th .75: 50/20)  monotonic lit/traj True/True
+      BER R1:           3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02
+      BER R2:           2e-05 3e-05 3e-05 3e-05 3e-05 2e-05 3e-05 3e-05 2e-05 3e-05
+      BER R3:           0e+00 0e+00 0e+00 0e+00 0e+00 1e-06 2e-06 3e-06 3e-06 5e-06
+      static-BER reference along the trajectory (traj): 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06
+      BER status f=2 (traj baseline): PPPPP????F  S*_BER 50 (f=1.5: 50, f=5: 10) 
+      BER status f=2 (literal S0 at c_lo): PPPPP????F  S*_BER 50 (f=1.5: 50, f=5: 10)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu=2^- 8: eps_static lit   5.8% / traj(S=1000)   8.6%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):           9    11    17    29    49    73    86    94    99   100
+      rho (lit)  mean:   0.04  0.06  0.14  0.29  0.54  0.85  1.01  1.12  1.18  1.19
+      rho (traj) mean:   0.01  0.03  0.11  0.27  0.52  0.85  1.01  1.12  1.18  1.20
+      MSE status th=.5 lit/traj: PPPPFFFFFF / PPPPFFFFFF   S*_MSE lit 100 traj 100   (th .25: 200/200; th .75: 50/50)  monotonic lit/traj True/True
+      BER R1:           3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02
+      BER R2:           2e-05 3e-05 3e-05 2e-05 2e-05 2e-05 2e-05 3e-05 2e-05 3e-05
+      BER R3:           0e+00 0e+00 0e+00 0e+00 0e+00 7e-07 7e-07 3e-07 1e-06 7e-07
+      static-BER reference along the trajectory (traj): 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06
+      BER status f=2 (traj baseline): PPPPP??P??  S*_BER None (f=1.5: 50, f=5: None) not monotonic: passing set reported
+      BER status f=2 (literal S0 at c_lo): PPPPP??P??  S*_BER None (f=1.5: 50, f=5: None)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu=2^- 9: eps_static lit   2.9% / traj(S=1000)   4.2%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):           6    10    24    43    62    79    87    91    93    93
+      rho (lit)  mean:   0.04  0.09  0.26  0.48  0.72  0.93  1.02  1.07  1.09  1.10
+      rho (traj) mean:   0.02  0.07  0.25  0.48  0.71  0.93  1.03  1.07  1.10  1.10
+      MSE status th=.5 lit/traj: PPPPFFFFFF / PPPPFFFFFF   S*_MSE lit 100 traj 100   (th .25: 500/500; th .75: 50/50)  monotonic lit/traj True/True
+      BER R1:           3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02
+      BER R2:           2e-05 3e-05 3e-05 2e-05 2e-05 2e-05 2e-05 3e-05 2e-05 3e-05
+      BER R3:           0e+00 0e+00 0e+00 0e+00 0e+00 3e-07 3e-07 3e-07 7e-07 0e+00
+      static-BER reference along the trajectory (traj): 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06
+      BER status f=2 (traj baseline): PPPPPPPP?P  S*_BER None (f=1.5: None, f=5: None) not monotonic: passing set reported
+      BER status f=2 (literal S0 at c_lo): PPPPPPPP?P  S*_BER None (f=1.5: None, f=5: None)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu=2^-10: eps_static lit   1.5% / traj(S=1000)   2.1%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):           8    17    40    59    73    84    88    90    90    91
+      rho (lit)  mean:   0.08  0.19  0.47  0.69  0.86  0.99  1.04  1.05  1.06  1.07
+      rho (traj) mean:   0.07  0.18  0.46  0.68  0.86  0.99  1.04  1.05  1.06  1.07
+      MSE status th=.5 lit/traj: PPPFFFFFFF / PPPFFFFFFF   S*_MSE lit 200 traj 200   (th .25: 500/500; th .75: 100/100)  monotonic lit/traj True/True
+      BER R1:           3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02
+      BER R2:           2e-05 3e-05 3e-05 2e-05 2e-05 2e-05 2e-05 3e-05 2e-05 3e-05
+      BER R3:           0e+00 0e+00 3e-07 0e+00 0e+00 3e-07 0e+00 7e-07 3e-07 0e+00
+      static-BER reference along the trajectory (traj): 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06
+      BER status f=2 (traj baseline): PPPPPPP?PP  S*_BER None (f=1.5: None, f=5: None) not monotonic: passing set reported
+      BER status f=2 (literal S0 at c_lo): PPPPPPP?PP  S*_BER None (f=1.5: None, f=5: None)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu_opt(S) preview (grid argmin of eps_R3, parabolic refinement; * = at grid boundary):  S=1000: 2^-9.1  S=500: 2^-8.6  S=200: 2^-7.9  S=100: 2^-7.4  S=50: 2^-7.1  S=20: 2^-7.0  S=10: 2^-8.2  S=5: 2^-10.0*  S=2: 2^-10.0*  S=1: 2^-10.0*
+  >>> selection criteria: C1 False (plateau 0.85)  C2 True  C3a True (R1 1.3e-01 vs 10x R3-static-ref 9.9e-06)  C3b True  C4 (MSE, rho_th=.5) lit: ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']  traj: ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']
+
+################ primary  c 40..116 (a 0.312..0.906)  Eb/N0 14 dB   eps_plateau (analytic, Delta=2) 1.122   eps_frozen(c_lo) 3.89   cond(R) max 50.9   min|H| 0.194   R1 BER at a_hi (exact) 1.51e-01
+  mu=2^- 6: eps_static lit  19.5% / traj(S=1000)  38.9%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):          38    38    39    39    42    54    76   110   154   173
+      rho (lit)  mean:   0.20  0.20  0.21  0.22  0.24  0.37  0.61  0.98  1.45  1.66
+      rho (traj) mean:  -0.01 -0.01 -0.00  0.01  0.04  0.20  0.50  0.98  1.57  1.83
+      MSE status th=.5 lit/traj: PPPPPPFFFF / PPPPPP?FFF   S*_MSE lit 20 traj 20   (th .25: 50/20; th .75: 10/10)  monotonic lit/traj True/True
+      BER R1:           3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02
+      BER R2:           2e-03 2e-03 2e-03 2e-03 2e-03 2e-03 2e-03 2e-03 2e-03 2e-03
+      BER R3:           2e-05 2e-05 3e-05 3e-05 2e-05 4e-05 8e-05 2e-04 6e-04 7e-04
+      static-BER reference along the trajectory (traj): 4e-05 4e-05 4e-05 4e-05 4e-05 4e-05 4e-05 4e-05 4e-05 4e-05
+      BER status f=2 (traj baseline): PPPPPP?FFF  S*_BER 20 (f=1.5: 20, f=5: 10) 
+      BER status f=2 (literal S0 at c_lo): FFFFFFFFFF  S*_BER None (f=1.5: None, f=5: None)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu=2^- 7: eps_static lit   9.0% / traj(S=1000)  16.7%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):          16    17    18    20    27    50    80   108   132   141
+      rho (lit)  mean:   0.07  0.07  0.09  0.11  0.17  0.40  0.69  0.96  1.20  1.28
+      rho (traj) mean:  -0.00  0.00  0.01  0.04  0.11  0.35  0.66  0.96  1.21  1.30
+      MSE status th=.5 lit/traj: PPPPPPFFFF / PPPPPPFFFF   S*_MSE lit 20 traj 20   (th .25: 50/50; th .75: 10/10)  monotonic lit/traj True/True
+      BER R1:           3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02
+      BER R2:           2e-03 2e-03 2e-03 2e-03 2e-03 2e-03 2e-03 2e-03 2e-03 2e-03
+      BER R3:           2e-06 4e-06 3e-06 4e-06 4e-06 1e-05 5e-05 1e-04 2e-04 2e-04
+      static-BER reference along the trajectory (traj): 5e-06 5e-06 5e-06 5e-06 5e-06 5e-06 5e-06 5e-06 5e-06 5e-06
+      BER status f=2 (traj baseline): PPPPPFFFFF  S*_BER 50 (f=1.5: 50, f=5: 20) 
+      BER status f=2 (literal S0 at c_lo): ?F?FFFFFFF  S*_BER None (f=1.5: None, f=5: 1000)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu=2^- 8: eps_static lit   4.4% / traj(S=1000)   7.8%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):           8     9    12    18    33    68    94   112   124   127
+      rho (lit)  mean:   0.03  0.04  0.07  0.13  0.26  0.59  0.83  1.00  1.11  1.14
+      rho (traj) mean:   0.00  0.01  0.04  0.10  0.24  0.57  0.82  1.00  1.11  1.14
+      MSE status th=.5 lit/traj: PPPPPFFFFF / PPPPPFFFFF   S*_MSE lit 50 traj 50   (th .25: 100/50; th .75: 20/20)  monotonic lit/traj True/True
+      BER R1:           3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02
+      BER R2:           2e-03 2e-03 2e-03 2e-03 2e-03 2e-03 2e-03 2e-03 2e-03 2e-03
+      BER R3:           1e-06 2e-06 1e-06 3e-06 3e-06 2e-05 5e-05 8e-05 1e-04 8e-05
+      static-BER reference along the trajectory (traj): 3e-06 3e-06 3e-06 3e-06 3e-06 3e-06 3e-06 3e-06 3e-06 3e-06
+      BER status f=2 (traj baseline): PPP??FFFFF  S*_BER 200 (f=1.5: 200, f=5: 50) 
+      BER status f=2 (literal S0 at c_lo): ?????FFFFF  S*_BER None (f=1.5: None, f=5: 200)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu=2^- 9: eps_static lit   2.2% / traj(S=1000)   3.8%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):           5     6    14    29    53    87   105   115   119   120
+      rho (lit)  mean:   0.02  0.04  0.11  0.24  0.46  0.77  0.93  1.02  1.07  1.07
+      rho (traj) mean:   0.01  0.02  0.09  0.23  0.45  0.77  0.93  1.02  1.07  1.07
+      MSE status th=.5 lit/traj: PPPPPFFFFF / PPPPPFFFFF   S*_MSE lit 50 traj 50   (th .25: 100/100; th .75: 50/50)  monotonic lit/traj True/True
+      BER R1:           3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02
+      BER R2:           1e-03 1e-03 1e-03 2e-03 1e-03 2e-03 1e-03 1e-03 1e-03 2e-03
+      BER R3:           1e-06 1e-06 1e-06 6e-06 9e-06 4e-05 6e-05 6e-05 7e-05 6e-05
+      static-BER reference along the trajectory (traj): 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06
+      BER status f=2 (traj baseline): PPP?FFFFFF  S*_BER 200 (f=1.5: 1000, f=5: 100) 
+      BER status f=2 (literal S0 at c_lo): ???FFFFFFF  S*_BER None (f=1.5: None, f=5: 200)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu=2^-10: eps_static lit   1.1% / traj(S=1000)   1.9%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):           4     9    26    51    77   101   111   116   117   117
+      rho (lit)  mean:   0.03  0.07  0.23  0.45  0.68  0.90  0.99  1.03  1.04  1.05
+      rho (traj) mean:   0.02  0.07  0.22  0.44  0.68  0.90  0.99  1.03  1.05  1.05
+      MSE status th=.5 lit/traj: PPPPFFFFFF / PPPPFFFFFF   S*_MSE lit 100 traj 100   (th .25: 200/200; th .75: 50/50)  monotonic lit/traj True/True
+      BER R1:           3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02 3e-02
+      BER R2:           1e-03 1e-03 1e-03 2e-03 1e-03 1e-03 1e-03 1e-03 1e-03 1e-03
+      BER R3:           1e-06 2e-06 2e-06 1e-05 2e-05 5e-05 6e-05 5e-05 6e-05 5e-05
+      static-BER reference along the trajectory (traj): 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06
+      BER status f=2 (traj baseline): P??FFFFFFF  S*_BER 1000 (f=1.5: None, f=5: 200) 
+      BER status f=2 (literal S0 at c_lo): ???FFFFFFF  S*_BER None (f=1.5: None, f=5: 200)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu_opt(S) preview (grid argmin of eps_R3, parabolic refinement; * = at grid boundary):  S=1000: 2^-10.0*  S=500: 2^-8.9  S=200: 2^-8.2  S=100: 2^-7.7  S=50: 2^-7.2  S=20: 2^-6.7  S=10: 2^-6.0*  S=5: 2^-6.9  S=2: 2^-10.0*  S=1: 2^-10.0*
+  >>> selection criteria: C1 True (plateau 1.12)  C2 True  C3a True (R1 1.5e-01 vs 10x R3-static-ref 9.9e-06)  C3b True  C4 (MSE, rho_th=.5) lit: ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']  traj: ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']
+
+################ primary  c 40..116 (a 0.312..0.906)  Eb/N0 16 dB   eps_plateau (analytic, Delta=2) 1.829   eps_frozen(c_lo) 6.19   cond(R) max 56.0   min|H| 0.194   R1 BER at a_hi (exact) 1.41e-01
+  mu=2^- 6: eps_static lit  19.4% / traj(S=1000)  39.4%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):          39    39    40    41    46    67   105   162   231   261
+      rho (lit)  mean:   0.12  0.12  0.12  0.13  0.16  0.29  0.52  0.87  1.29  1.48
+      rho (traj) mean:  -0.01 -0.00  0.00  0.01  0.05  0.19  0.46  0.86  1.33  1.55
+      MSE status th=.5 lit/traj: PPPPPPFFFF / PPPPPPPFFF   S*_MSE lit 20 traj 10   (th .25: 50/20; th .75: 10/10)  monotonic lit/traj True/True
+      BER R1:           2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02
+      BER R2:           7e-04 7e-04 7e-04 7e-04 7e-04 7e-04 7e-04 7e-04 7e-04 7e-04
+      BER R3:           1e-06 1e-06 7e-07 1e-06 3e-07 1e-06 1e-05 4e-05 2e-04 3e-04
+      static-BER reference along the trajectory (traj): 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06 2e-06
+      BER status f=2 (traj baseline): PPPPPPFFFF  S*_BER 20 (f=1.5: 20, f=5: 20) 
+      BER status f=2 (literal S0 at c_lo): ????P?FFFF  S*_BER None (f=1.5: None, f=5: 20)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu=2^- 7: eps_static lit   9.0% / traj(S=1000)  16.9%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):          17    17    19    24    36    76   125   170   207   220
+      rho (lit)  mean:   0.04  0.05  0.06  0.09  0.15  0.39  0.66  0.92  1.14  1.21
+      rho (traj) mean:  -0.00  0.00  0.01  0.04  0.11  0.36  0.65  0.92  1.15  1.22
+      MSE status th=.5 lit/traj: PPPPPPFFFF / PPPPPPFFFF   S*_MSE lit 20 traj 20   (th .25: 50/50; th .75: 10/10)  monotonic lit/traj True/True
+      BER R1:           2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02
+      BER R2:           6e-04 6e-04 6e-04 6e-04 6e-04 6e-04 6e-04 6e-04 6e-04 6e-04
+      BER R3:           0e+00 3e-07 0e+00 0e+00 0e+00 7e-07 8e-06 1e-05 4e-05 4e-05
+      static-BER reference along the trajectory (traj): 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06
+      BER status f=2 (traj baseline): PPPPP?FFFF  S*_BER 50 (f=1.5: None, f=5: 20) 
+      BER status f=2 (literal S0 at c_lo): PPPPP?FFFF  S*_BER 50 (f=1.5: None, f=5: 20)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu=2^- 8: eps_static lit   4.4% / traj(S=1000)   7.9%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):           8     9    15    27    52   109   150   179   198   202
+      rho (lit)  mean:   0.02  0.03  0.06  0.13  0.27  0.59  0.82  0.98  1.08  1.11
+      rho (traj) mean:   0.00  0.01  0.04  0.11  0.25  0.58  0.81  0.98  1.08  1.11
+      MSE status th=.5 lit/traj: PPPPPFFFFF / PPPPPFFFFF   S*_MSE lit 50 traj 50   (th .25: 100/100; th .75: 20/20)  monotonic lit/traj True/True
+      BER R1:           2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02
+      BER R2:           5e-04 5e-04 5e-04 5e-04 5e-04 5e-04 5e-04 5e-04 5e-04 5e-04
+      BER R3:           0e+00 0e+00 0e+00 0e+00 3e-07 1e-06 9e-06 5e-06 2e-05 1e-05
+      static-BER reference along the trajectory (traj): 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06
+      BER status f=2 (traj baseline): PPPPP?FFFF  S*_BER 50 (f=1.5: 100, f=5: 20) 
+      BER status f=2 (literal S0 at c_lo): PPPPP?FFFF  S*_BER 50 (f=1.5: 100, f=5: 20)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu=2^- 9: eps_static lit   2.2% / traj(S=1000)   3.9%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):           5     9    22    48    88   142   169   185   192   194
+      rho (lit)  mean:   0.02  0.04  0.11  0.25  0.47  0.77  0.92  1.01  1.05  1.06
+      rho (traj) mean:   0.01  0.03  0.10  0.24  0.47  0.77  0.92  1.01  1.05  1.06
+      MSE status th=.5 lit/traj: PPPPPFFFFF / PPPPPFFFFF   S*_MSE lit 50 traj 50   (th .25: 200/100; th .75: 50/50)  monotonic lit/traj True/True
+      BER R1:           2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02
+      BER R2:           5e-04 5e-04 5e-04 5e-04 5e-04 5e-04 5e-04 5e-04 5e-04 5e-04
+      BER R3:           0e+00 0e+00 0e+00 0e+00 7e-07 4e-06 7e-06 4e-06 8e-06 7e-06
+      static-BER reference along the trajectory (traj): 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06
+      BER status f=2 (traj baseline): PPPP?FFFFF  S*_BER 100 (f=1.5: 100, f=5: 50) 
+      BER status f=2 (literal S0 at c_lo): PPPP?FFFFF  S*_BER 100 (f=1.5: 100, f=5: 50)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu=2^-10: eps_static lit   1.1% / traj(S=1000)   2.0%  R3 static BER 0.0e+00 (ref 9.9e-07)
+      S:                 1000   500   200   100    50    20    10     5     2     1
+      eps_R3 (%):           7    16    45    86   127   165   181   187   190   190
+      rho (lit)  mean:   0.03  0.08  0.24  0.47  0.69  0.90  0.99  1.02  1.04  1.04
+      rho (traj) mean:   0.03  0.08  0.24  0.46  0.69  0.90  0.99  1.02  1.04  1.04
+      MSE status th=.5 lit/traj: PPPPFFFFFF / PPPPFFFFFF   S*_MSE lit 100 traj 100   (th .25: 200/200; th .75: 50/50)  monotonic lit/traj True/True
+      BER R1:           2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02 2e-02
+      BER R2:           5e-04 5e-04 5e-04 5e-04 5e-04 5e-04 5e-04 5e-04 5e-04 5e-04
+      BER R3:           0e+00 0e+00 0e+00 3e-07 2e-06 6e-06 7e-06 5e-06 8e-06 6e-06
+      static-BER reference along the trajectory (traj): 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06 1e-06
+      BER status f=2 (traj baseline): PPPP?FFFFF  S*_BER 100 (f=1.5: 200, f=5: 50) 
+      BER status f=2 (literal S0 at c_lo): PPPP?FFFFF  S*_BER 100 (f=1.5: 200, f=5: 50)   S_cross set (smallest S with significant R3 advantage over both): 1
+  mu_opt(S) preview (grid argmin of eps_R3, parabolic refinement; * = at grid boundary):  S=1000: 2^-9.2  S=500: 2^-8.6  S=200: 2^-7.9  S=100: 2^-7.4  S=50: 2^-6.9  S=20: 2^-6.0*  S=10: 2^-6.0*  S=5: 2^-6.0*  S=2: 2^-10.0*  S=1: 2^-10.0*
+  >>> selection criteria: C1 True (plateau 1.83)  C2 True  C3a True (R1 1.4e-01 vs 10x R3-static-ref 9.9e-06)  C3b True  C4 (MSE, rho_th=.5) lit: ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']  traj: ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']
+
+==== SUMMARY OF SELECTION CRITERIA (pilot, L1) ====
+  control|14         C1 False C2 True  C3a True  C3b False C4(lit) ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']  C4(traj) ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']
+  control|16         C1 False C2 True  C3a True  C3b False C4(lit) ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']  C4(traj) ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']
+  candidate_A|14     C1 False C2 True  C3a True  C3b True  C4(lit) ['2^-7', '2^-8', '2^-9', '2^-10']  C4(traj) ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']
+  candidate_A|16     C1 False C2 True  C3a True  C3b True  C4(lit) ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']  C4(traj) ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']
+  primary|14         C1 True  C2 True  C3a True  C3b True  C4(lit) ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']  C4(traj) ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']
+  primary|16         C1 True  C2 True  C3a True  C3b True  C4(lit) ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']  C4(traj) ['2^-6', '2^-7', '2^-8', '2^-9', '2^-10']

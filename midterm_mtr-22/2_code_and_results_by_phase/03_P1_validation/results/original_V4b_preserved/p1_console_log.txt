@@ -1,0 +1,45 @@
+[PASS] V0 reproducibility: same seed identical=True, other seed differs=True, receiver settings do not change data=True
+[PASS] V1 noise generator: mean/sigma=-2.09e-04, var error=-0.307%, max |autocorr| lag1-50=3.0e-03 (limit 4.0e-03), P(|v|>3sigma)=0.00276 (theory 0.00270), max|v|/sigma=5.04, cross-seed corr=3.1e-04, repeatable=True. Note: this is the numpy Gaussian source of L1; the LFSR-sum generator is validated in P6.
+   Eb/N0= 0.00 dB  errors= 156898  BER=7.845e-02  theory=7.865e-02  in95=True  in99=True
+   Eb/N0= 0.75 dB  errors= 123057  BER=6.153e-02  theory=6.157e-02  in95=True  in99=True
+   Eb/N0= 1.50 dB  errors=  92586  BER=4.629e-02  theory=4.640e-02  in95=True  in99=True
+   Eb/N0= 2.25 dB  errors=  66890  BER=3.345e-02  theory=3.345e-02  in95=True  in99=True
+   Eb/N0= 3.00 dB  errors=  45213  BER=2.261e-02  theory=2.288e-02  in95=False  in99=True
+   Eb/N0= 3.75 dB  errors=  29296  BER=1.465e-02  theory=1.471e-02  in95=True  in99=True
+   Eb/N0= 4.50 dB  errors=  17717  BER=8.859e-03  theory=8.794e-03  in95=True  in99=True
+   Eb/N0= 5.25 dB  errors=   9662  BER=4.831e-03  theory=4.823e-03  in95=True  in99=True
+   Eb/N0= 6.00 dB  errors=   4874  BER=2.437e-03  theory=2.388e-03  in95=True  in99=True
+   Eb/N0= 6.75 dB  errors=   2178  BER=1.089e-03  theory=1.048e-03  in95=True  in99=True
+   Eb/N0= 7.50 dB  errors=    798  BER=3.990e-04  theory=3.988e-04  in95=True  in99=True
+   Eb/N0= 8.25 dB  errors=    247  BER=1.235e-04  theory=1.281e-04  in95=True  in99=True
+[PASS] V2 flat-channel BER vs theory: 11/12 points inside the 95% interval, 12/12 inside the 99% interval, min errors per point = 247
+[PASS] V5 delay sweep: chosen Delta=2 (within 1.34% of the best Delta everywhere on the primary trajectory at 14 and 16 dB); oracle argmin per case={'a=0.60, 14 dB': 6, 'a=0.60, 16 dB': 6, 'a=0.91, 14 dB': 4, 'a=0.91, 16 dB': 3}; LMS argmin per case={'a=0.60, 14 dB': 2, 'a=0.60, 16 dB': 2, 'a=0.91, 14 dB': 4, 'a=0.91, 16 dB': 3}
+[PASS] V3 alignment: R3 correlation peak at lag 2 (Delta=2), R1 peak at lag 0; BER with correct delay=0/200000; BER with wrong delays {0: 0.499, 3: 0.503, 5: 0.498}
+   mu=2^-8: coefficient error 0.18%, excess MSE 6.75% (+-0.13), textbook formula 4.55%, ratio 1.48
+   mu=2^-9: coefficient error 0.17%, excess MSE 3.29% (+-0.12), textbook formula 2.22%, ratio 1.48
+   mu=2^-10: coefficient error 0.17%, excess MSE 1.62% (+-0.12), textbook formula 1.10%, ratio 1.48
+[PASS] V4a LMS coefficients vs Wiener: mu=2^-8: 0.18%; mu=2^-9: 0.17%; mu=2^-10: 0.17%
+[FAIL] V4b excess MSE vs textbook formula mu*tr(R)/2/(1-mu*tr(R)/2): mu=2^-8: 6.75% vs 4.55% (x1.48); mu=2^-9: 3.29% vs 2.22% (x1.48); mu=2^-10: 1.62% vs 1.10% (x1.48). Criterion was within 20%. See finding F-1: the formula underestimates for this ISI channel.
+[PASS] V4c pipeline control and linear scaling in mu: white-input flat channel matches the formula 2^-8: 3.33% vs 3.29%, 2^-9: 1.65% vs 1.62%, 2^-10: 0.83% vs 0.80%; ISI-channel excess ratios between successive mu = 2.05, 2.02 (ideal 2)
+[PASS] V6 training excitation: PRBS ones=16384 (expect 16384), max off-peak autocorrelation=3.05e-05 (theory 3.05e-05); frozen-filter MSE on random data: PRBS-trained 0.0281, alternating-trained 0.9645, oracle 0.0274
+   symbols until the moving-average MSE is within 10% of its final value: {7: 965, 8: 1392, 9: 2378, 10: 4009}  (N_T = 30000)
+   control a = 0.60  6.0 dB: errors R1=70153 R2=7012 R3=8457  (of 1000000);  R1 exact=6.992e-02
+   control a = 0.60  8.0 dB: errors R1=45809 R2=1159 R3=1509  (of 1000000);  R1 exact=4.571e-02
+   control a = 0.60 10.0 dB: errors R1=25945 R2=67 R3=102  (of 1000000);  R1 exact=2.597e-02
+   control a = 0.60 12.0 dB: errors R1=12236 R2=1 R3=2  (of 1000000);  R1 exact=1.224e-02
+   control a = 0.60 14.0 dB: errors R1=4353 R2=0 R3=0  (of 1000000);  R1 exact=4.352e-03
+   control a = 0.60 16.0 dB: errors R1=992 R2=0 R3=0  (of 1000000);  R1 exact=9.692e-04
+   primary a = 0.91  6.0 dB: errors R1=200113 R2=17679 R3=23074  (of 1000000);  R1 exact=1.998e-01
+   primary a = 0.91  8.0 dB: errors R1=188929 R2=6521 R3=9131  (of 1000000);  R1 exact=1.886e-01
+   primary a = 0.91 10.0 dB: errors R1=176368 R2=1589 R3=2458  (of 1000000);  R1 exact=1.761e-01
+   primary a = 0.91 12.0 dB: errors R1=163143 R2=184 R3=345  (of 1000000);  R1 exact=1.629e-01
+   primary a = 0.91 14.0 dB: errors R1=150997 R2=7 R3=20  (of 1000000);  R1 exact=1.506e-01
+   primary a = 0.91 16.0 dB: errors R1=141424 R2=0 R3=0  (of 1000000);  R1 exact=1.410e-01
+[PASS] V2b static ISI: R1 matches the exact 4-pattern formula (where >=100 errors); at 16 dB on a=0.91: R1 BER=1.414e-01, R3 BER <= 3.0e-06
+[PASS] V7a oracle vs Monte-Carlo (S=1): exact oracle J=0.04190, Monte-Carlo MSE of the exact oracle filter=0.04177 (-0.32%), best filter fitted from samples=0.04177, coefficient difference 0.11%. Quasi-static oracle filter would lose 1.83% in MSE here (J_qs formula=0.03954).
+   S= 1000: J_oracle=0.0302  J_R3=0.0324 (excess 7%)  J_R2=0.1516 (excess 402%)   [pilot seed 1000, mu=2^-8, supervised]
+   S=  200: J_oracle=0.0302  J_R3=0.0336 (excess 11%)  J_R2=0.1524 (excess 405%)   [pilot seed 1000, mu=2^-8, supervised]
+   S=   50: J_oracle=0.0302  J_R3=0.0398 (excess 32%)  J_R2=0.1518 (excess 403%)   [pilot seed 1000, mu=2^-8, supervised]
+[PASS] V7b measured MSE >= oracle: R2 and R3 MSE are not below the oracle MSE at any tested rate (one pilot seed; not a tracking result)
+
+11/12 tests passed, runtime 8.8 s

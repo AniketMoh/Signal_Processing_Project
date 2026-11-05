@@ -1,0 +1,112 @@
+
+===== 16 dB grid pilot (L1 pilot, 20 seeds), f = 2, trajectory reference (linear interpolation, as in the pilot analysis)
+  mu=2^ -5.0 D=1.90  plain PPPPPPPPPPPPPPPPFF  S*_BER 5
+                       burst PPPPPPPPPPPPPPPPFF  S*_BER 5
+                                               
+  mu=2^ -5.5 D=1.90  plain Pppppppppppppp?FFF  S*_BER None
+                       burst Pppppppppppppp?FFF  S*_BER None
+                                               
+  mu=2^ -6.0 D=1.90  plain ppppppppppppp?FFFF  S*_BER None
+                       burst pp???p???p????FFFF  S*_BER None
+                               ^^^ ^^^ ^^^     
+  mu=2^ -6.5 D=1.25  plain pppppppppp?pp?FFFF  S*_BER None
+                       burst ppp?pp?pp?????FFFF  S*_BER None
+                                ^  ^  ^ ^^     
+  mu=2^ -7.0 D=1.25  plain pppppppppp?p??FFFF  S*_BER None
+                       burst ppp?ppppp?????FFFF  S*_BER None
+                                ^     ^ ^      
+  mu=2^ -7.5 D=1.25  plain pppppppppp?p??FFFF  S*_BER None
+                       burst ppppppppp?????FFFF  S*_BER None
+                                      ^ ^      
+  mu=2^ -8.0 D=1.25  plain pppppppppp????FFFF  S*_BER None
+                       burst ppppppppp?????FFFF  S*_BER None
+                                      ^        
+  mu=2^ -8.5 D=1.25  plain pppppppppp???FFFFF  S*_BER None
+                       burst pppppppp?????FFFFF  S*_BER None
+                                     ^^        
+  mu=2^ -9.0 D=1.25  plain pppppppppp??FFFFFF  S*_BER None
+                       burst ppppppp??????FF?FF  S*_BER None
+                                    ^^^  ^  ^  
+  mu=2^ -9.5 D=1.25  plain ppppp?ppp???FFFFFF  S*_BER None
+                       burst ppppp?p?????FFFFFF  S*_BER None
+                                    ^^         
+  mu=2^-10.0 D=1.25  plain ppppp?pp????FFFFFF  S*_BER None
+                       burst ppppp?p?????FFFFFF  S*_BER None
+                                    ^          
+  mu=2^-10.5 D=1.25  plain ppppp?????FFFFFFFF  S*_BER None
+                       burst ppppp??????FFFFFFF  S*_BER None
+                                       ^       
+  mu=2^-11.0 D=1.25  plain ppppp?????FFFFFFFF  S*_BER None
+                       burst ppppp?????FFFFFFFF  S*_BER None
+                                               
+  mu=2^-11.5 D=1.25  plain ppppp???FFFFFFFFFF  S*_BER None
+                       burst ppppp???FFFFFFFFFF  S*_BER None
+                                               
+  total status changes: 31 of 252 grid points
+  R2 vs R3 MSE and BER at the static control (S = inf) and at S = 5000 (pooled over 20 seeds):
+     S= None mu=2^ -5.0: MSE R2 0.01736  R3 0.01992  (R2 better);  errors R2 0  R3 0
+     S= None mu=2^ -6.5: MSE R2 0.01464  R3 0.01536  (R2 better);  errors R2 0  R3 0
+     S= None mu=2^ -8.0: MSE R2 0.01393  R3 0.01417  (R2 better);  errors R2 0  R3 0
+     S= None mu=2^ -9.5: MSE R2 0.01372  R3 0.01379  (R2 better);  errors R2 0  R3 0
+     S= None mu=2^-11.0: MSE R2 0.01364  R3 0.01366  (R2 better);  errors R2 0  R3 0
+     S= 5000 mu=2^ -5.0: MSE R2 0.14459  R3 0.04282  (R3 better);  errors R2 14983  R3 4347
+     S= 5000 mu=2^ -6.5: MSE R2 0.14238  R3 0.02445  (R3 better);  errors R2 9174  R3 3
+     S= 5000 mu=2^ -8.0: MSE R2 0.14165  R3 0.02111  (R3 better);  errors R2 7655  R3 1
+     S= 5000 mu=2^ -9.5: MSE R2 0.14117  R3 0.02014  (R3 better);  errors R2 7229  R3 0
+     S= 5000 mu=2^-11.0: MSE R2 0.14092  R3 0.02000  (R3 better);  errors R2 6991  R3 0
+
+===== 14 dB grid pilot (L1 pilot, 20 seeds), f = 2, trajectory reference (linear interpolation, as in the pilot analysis)
+  mu=2^ -5.0 D=1.90  plain PPPPPPPPPPPPPPPPFF  S*_BER 5
+                       burst PPPPPPPPPPPPPPPPFF  S*_BER 5
+                                               
+  mu=2^ -5.5 D=1.90  plain PPPPPPPPPPPPPPPFFF  S*_BER 10
+                       burst PPPPPPPPPPPPPPPFFF  S*_BER 10
+                                               
+  mu=2^ -6.0 D=1.90  plain PPppppppppppp?FFFF  S*_BER None
+                       burst PPppppppppppp?FFFF  S*_BER None
+                                               
+  mu=2^ -6.5 D=1.25  plain Ppppppppppp??FFFFF  S*_BER None
+                       burst Ppppppppppp??FFFFF  S*_BER None
+                                               
+  mu=2^ -7.0 D=1.25  plain pppppppp????FFFFFF  S*_BER None
+                       burst ppp?pp?p????FFFFFF  S*_BER None
+                                ^  ^           
+  mu=2^ -7.5 D=1.25  plain ppp?pp?p???FFFFFFF  S*_BER None
+                       burst ppp?pp?p????FFFFFF  S*_BER None
+                                        ^      
+  mu=2^ -8.0 D=1.25  plain pppppp?p???FFFFFFF  S*_BER None
+                       burst ppp?p??p???FFFFFFF  S*_BER None
+                                ^ ^            
+  mu=2^ -8.5 D=1.25  plain ppp?p????FFFFFFFFF  S*_BER None
+                       burst pp??p????FFFFFFFFF  S*_BER None
+                               ^               
+  mu=2^ -9.0 D=1.25  plain ppp?p???FFFFFFFFFF  S*_BER None
+                       burst pp??p???FFFFFFFFFF  S*_BER None
+                               ^               
+  mu=2^ -9.5 D=1.25  plain pp??p??FFFFFFFFFFF  S*_BER None
+                       burst pp??p??FFFFFFFFFFF  S*_BER None
+                                               
+  mu=2^-10.0 D=1.25  plain pp??p??FFFFFFFFFFF  S*_BER None
+                       burst pp?????FFFFFFFFFFF  S*_BER None
+                                 ^             
+  mu=2^-10.5 D=1.25  plain pp???FFFFFFFFFFFFF  S*_BER None
+                       burst pp????FFFFFFFFFFFF  S*_BER None
+                                  ^            
+  mu=2^-11.0 D=1.25  plain pp???FFFFFFFFFFFFF  S*_BER None
+                       burst pp???FFFFFFFFFFFFF  S*_BER None
+                                               
+  mu=2^-11.5 D=1.25  plain ppp?FFFFFFFFFFFFFF  S*_BER None
+                       burst ppp?FFFFFFFFFFFFFF  S*_BER None
+                                               
+  total status changes: 9 of 252 grid points
+  R2 vs R3 MSE and BER at the static control (S = inf) and at S = 5000 (pooled over 20 seeds):
+     S= None mu=2^ -5.0: MSE R2 0.02737  R3 0.03135  (R2 better);  errors R2 0  R3 0
+     S= None mu=2^ -6.5: MSE R2 0.02303  R3 0.02413  (R2 better);  errors R2 0  R3 0
+     S= None mu=2^ -8.0: MSE R2 0.02189  R3 0.02226  (R2 better);  errors R2 0  R3 0
+     S= None mu=2^ -9.5: MSE R2 0.02155  R3 0.02166  (R2 better);  errors R2 0  R3 0
+     S= None mu=2^-11.0: MSE R2 0.02143  R3 0.02146  (R2 better);  errors R2 0  R3 0
+     S= 5000 mu=2^ -5.0: MSE R2 0.15334  R3 0.06545  (R3 better);  errors R2 38466  R3 17810
+     S= 5000 mu=2^ -6.5: MSE R2 0.14981  R3 0.03763  (R3 better);  errors R2 26755  R3 106
+     S= 5000 mu=2^ -8.0: MSE R2 0.14866  R3 0.03253  (R3 better);  errors R2 23349  R3 16
+     S= 5000 mu=2^ -9.5: MSE R2 0.14798  R3 0.03103  (R3 better);  errors R2 22133  R3 9
+     S= 5000 mu=2^-11.0: MSE R2 0.14763  R3 0.03066  (R3 better);  errors R2 21609  R3 8

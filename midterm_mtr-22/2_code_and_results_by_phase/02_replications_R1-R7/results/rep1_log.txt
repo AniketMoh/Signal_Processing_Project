@@ -1,0 +1,12 @@
+Eb/N0  sigma | BER_theory | BER_sim(numpy Gaussian) [errors] | ratio | BER_theory_LFSR | BER_sim(LFSR) [errors] | ratio
+   0  0.7071 | 7.865e-02 | 7.866e-02 [1573133] | 1.000 | 7.956e-02 | 7.960e-02 [796034] | 1.001   (LFSR theory / Gaussian theory = 1.012)
+   2  0.5617 | 3.751e-02 | 3.752e-02 [750310] | 1.000 | 3.740e-02 | 3.733e-02 [373292] | 0.998   (LFSR theory / Gaussian theory = 0.997)
+   4  0.4462 | 1.250e-02 | 1.252e-02 [250319] | 1.001 | 1.185e-02 | 1.186e-02 [118646] | 1.001   (LFSR theory / Gaussian theory = 0.948)
+   6  0.3544 | 2.388e-03 | 2.388e-03 [47758] | 1.000 | 1.933e-03 | 1.937e-03 [19371] | 1.002   (LFSR theory / Gaussian theory = 0.809)
+   8  0.2815 | 1.909e-04 | 1.913e-04 [3827] | 1.002 | 9.441e-05 | 9.530e-05 [953] | 1.009   (LFSR theory / Gaussian theory = 0.495)
+   9  0.2509 | 3.363e-05 | 3.195e-05 [639] | 0.950 | 9.279e-06 | 9.800e-06 [98] | 1.056   (LFSR theory / Gaussian theory = 0.276)
+  10  0.2236 | 3.872e-06 | 3.550e-06 [71] | 0.917 | 3.378e-07 | 1.000e-07 [1] | 0.296   (LFSR theory / Gaussian theory = 0.087)
+
+real	0m24.315s
+user	0m21.559s
+sys	0m1.720s

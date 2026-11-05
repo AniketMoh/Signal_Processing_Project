@@ -1,0 +1,50 @@
+Part 1: gated switch, static primary channel c = 40 and c = 116, 14 dB, mu = 2^-8, 10 seeds.  thr = running-MSE threshold
+  c= 40 thr=0.05: switch at symbol median    3708 (min 3677, max 3757), forced at N_T in 0/10, lost lock 0/10, payload BER 0.00e+00
+  c= 40 thr=0.10: switch at symbol median    2703 (min 2690, max 2719), forced at N_T in 0/10, lost lock 0/10, payload BER 0.00e+00
+  c= 40 thr=0.20: switch at symbol median    2001 (min 2001, max 2001), forced at N_T in 0/10, lost lock 0/10, payload BER 0.00e+00
+  c= 40 thr=0.40: switch at symbol median    2001 (min 2001, max 2001), forced at N_T in 0/10, lost lock 0/10, payload BER 0.00e+00
+  c= 40 thr=0.80: switch at symbol median    2001 (min 2001, max 2001), forced at N_T in 0/10, lost lock 0/10, payload BER 0.00e+00
+  c=116 thr=0.05: switch at symbol median   20090 (min 9273, max 30000), forced at N_T in 2/10, lost lock 0/10, payload BER 1.70e-05
+  c=116 thr=0.10: switch at symbol median    3864 (min 3717, max 4043), forced at N_T in 0/10, lost lock 0/10, payload BER 1.70e-05
+  c=116 thr=0.20: switch at symbol median    2386 (min 2365, max 2424), forced at N_T in 0/10, lost lock 0/10, payload BER 1.70e-05
+  c=116 thr=0.40: switch at symbol median    2001 (min 2001, max 2001), forced at N_T in 0/10, lost lock 0/10, payload BER 1.70e-05
+  c=116 thr=0.80: switch at symbol median    2001 (min 2001, max 2001), forced at N_T in 0/10, lost lock 0/10, payload BER 1.70e-05
+Part 2: tracking, 14 dB, gate thr = 0.1, 20 seeds (2000-2019).  modes: SUP supervised (reference = true symbol), DD, PIL10/PIL50 pilot every 10/50 symbols (BER on non-pilot symbols)
+  mu=2^- 6 S= 1000: BER SUP 2.17e-05 | DD 2.17e-05 (lost 0/20) | PIL50 2.22e-05 (lost 0/20) | PIL10 2.16e-05 (lost 0/20)   MSE SUP/DD/PIL10 0.0418/0.0418/0.0418
+  mu=2^- 6 S=  320: BER SUP 2.30e-05 | DD 2.23e-05 (lost 0/20) | PIL50 2.27e-05 (lost 0/20) | PIL10 2.21e-05 (lost 0/20)   MSE SUP/DD/PIL10 0.0418/0.0418/0.0418
+  mu=2^- 6 S=  112: BER SUP 2.97e-05 | DD 2.58e-05 (lost 0/20) | PIL50 2.63e-05 (lost 0/20) | PIL10 2.86e-05 (lost 0/20)   MSE SUP/DD/PIL10 0.0421/0.0421/0.0421
+  mu=2^- 6 S=   56: BER SUP 2.84e-05 | DD 2.74e-05 (lost 0/20) | PIL50 2.73e-05 (lost 0/20) | PIL10 2.72e-05 (lost 0/20)   MSE SUP/DD/PIL10 0.0428/0.0428/0.0428
+  mu=2^- 6 S=   28: BER SUP 3.07e-05 | DD 3.03e-05 (lost 0/20) | PIL50 3.06e-05 (lost 0/20) | PIL10 2.97e-05 (lost 0/20)   MSE SUP/DD/PIL10 0.0448/0.0448/0.0448
+  mu=2^- 6 S=   14: BER SUP 4.30e-05 | DD 4.17e-05 (lost 0/20) | PIL50 4.22e-05 (lost 0/20) | PIL10 4.34e-05 (lost 0/20)   MSE SUP/DD/PIL10 0.0493/0.0493/0.0493
+  mu=2^- 6 S=    5: BER SUP 2.02e-04 | DD 1.99e-04 (lost 0/20) | PIL50 1.98e-04 (lost 0/20) | PIL10 1.94e-04 (lost 0/20)   MSE SUP/DD/PIL10 0.0636/0.0636/0.0636
+  mu=2^- 6 S=    2: BER SUP 5.39e-04 | DD 5.51e-04 (lost 0/20) | PIL50 5.52e-04 (lost 0/20) | PIL10 5.47e-04 (lost 0/20)   MSE SUP/DD/PIL10 0.0766/0.0768/0.0767
+  mu=2^- 6 S=    1: BER SUP 7.33e-04 | DD 7.29e-04 (lost 0/20) | PIL50 7.30e-04 (lost 0/20) | PIL10 7.28e-04 (lost 0/20)   MSE SUP/DD/PIL10 0.0825/0.0827/0.0826
+  mu=2^- 8 S= 1000: BER SUP 1.64e-06 | DD 1.64e-06 (lost 0/20) | PIL50 1.01e-06 (lost 0/20) | PIL10 7.31e-07 (lost 0/20)   MSE SUP/DD/PIL10 0.0326/0.0326/0.0326
+  mu=2^- 8 S=  320: BER SUP 1.37e-06 | DD 1.37e-06 (lost 0/20) | PIL50 6.99e-07 (lost 0/20) | PIL10 7.61e-07 (lost 0/20)   MSE SUP/DD/PIL10 0.0331/0.0331/0.0331
+  mu=2^- 8 S=  112: BER SUP 2.94e-06 | DD 3.26e-06 (lost 0/20) | PIL50 3.33e-06 (lost 0/20) | PIL10 3.63e-06 (lost 0/20)   MSE SUP/DD/PIL10 0.0352/0.0352/0.0352
+  mu=2^- 8 S=   56: BER SUP 5.22e-06 | DD 5.22e-06 (lost 0/20) | PIL50 5.33e-06 (lost 0/20) | PIL10 5.44e-06 (lost 0/20)   MSE SUP/DD/PIL10 0.0392/0.0392/0.0392
+  mu=2^- 8 S=   28: BER SUP 1.24e-05 | DD 1.27e-05 (lost 0/20) | PIL50 1.23e-05 (lost 0/20) | PIL10 1.27e-05 (lost 0/20)   MSE SUP/DD/PIL10 0.0465/0.0465/0.0465
+  mu=2^- 8 S=   14: BER SUP 3.67e-05 | DD 3.47e-05 (lost 0/20) | PIL50 3.44e-05 (lost 0/20) | PIL10 3.42e-05 (lost 0/20)   MSE SUP/DD/PIL10 0.0549/0.0549/0.0549
+  mu=2^- 8 S=    5: BER SUP 7.80e-05 | DD 7.60e-05 (lost 0/20) | PIL50 7.59e-05 (lost 0/20) | PIL10 7.79e-05 (lost 0/20)   MSE SUP/DD/PIL10 0.0639/0.0639/0.0639
+  mu=2^- 8 S=    2: BER SUP 9.18e-05 | DD 8.75e-05 (lost 0/20) | PIL50 8.76e-05 (lost 0/20) | PIL10 8.70e-05 (lost 0/20)   MSE SUP/DD/PIL10 0.0676/0.0676/0.0676
+  mu=2^- 8 S=    1: BER SUP 1.01e-04 | DD 9.64e-05 (lost 0/20) | PIL50 9.70e-05 (lost 0/20) | PIL10 9.65e-05 (lost 0/20)   MSE SUP/DD/PIL10 0.0685/0.0685/0.0685
+  mu=2^-10 S= 1000: BER SUP 1.32e-06 | DD 1.32e-06 (lost 0/20) | PIL50 1.34e-06 (lost 0/20) | PIL10 1.46e-06 (lost 0/20)   MSE SUP/DD/PIL10 0.0316/0.0316/0.0316
+  mu=2^-10 S=  320: BER SUP 1.37e-06 | DD 1.37e-06 (lost 0/20) | PIL50 1.40e-06 (lost 0/20) | PIL10 1.52e-06 (lost 0/20)   MSE SUP/DD/PIL10 0.0349/0.0349/0.0349
+  mu=2^-10 S=  112: BER SUP 8.48e-06 | DD 8.48e-06 (lost 0/20) | PIL50 8.66e-06 (lost 0/20) | PIL10 9.06e-06 (lost 0/20)   MSE SUP/DD/PIL10 0.0442/0.0442/0.0442
+  mu=2^-10 S=   56: BER SUP 1.99e-05 | DD 1.99e-05 (lost 0/20) | PIL50 2.00e-05 (lost 0/20) | PIL10 1.96e-05 (lost 0/20)   MSE SUP/DD/PIL10 0.0523/0.0523/0.0523
+  mu=2^-10 S=   28: BER SUP 3.95e-05 | DD 3.79e-05 (lost 0/20) | PIL50 3.73e-05 (lost 0/20) | PIL10 3.70e-05 (lost 0/20)   MSE SUP/DD/PIL10 0.0587/0.0587/0.0587
+  mu=2^-10 S=   14: BER SUP 5.16e-05 | DD 5.06e-05 (lost 0/20) | PIL50 5.07e-05 (lost 0/20) | PIL10 4.96e-05 (lost 0/20)   MSE SUP/DD/PIL10 0.0627/0.0627/0.0627
+  mu=2^-10 S=    5: BER SUP 5.20e-05 | DD 5.13e-05 (lost 0/20) | PIL50 5.07e-05 (lost 0/20) | PIL10 5.12e-05 (lost 0/20)   MSE SUP/DD/PIL10 0.0651/0.0651/0.0651
+  mu=2^-10 S=    2: BER SUP 5.43e-05 | DD 5.46e-05 (lost 0/20) | PIL50 5.44e-05 (lost 0/20) | PIL10 5.52e-05 (lost 0/20)   MSE SUP/DD/PIL10 0.0655/0.0655/0.0655
+  mu=2^-10 S=    1: BER SUP 6.32e-05 | DD 6.15e-05 (lost 0/20) | PIL50 6.08e-05 (lost 0/20) | PIL10 6.03e-05 (lost 0/20)   MSE SUP/DD/PIL10 0.0656/0.0656/0.0656
+Part 3: DD loss of lock vs SNR at fixed rate, mu = 2^-8, S = 28 and S = 1000, 20 seeds
+  S= 1000  6.0 dB: DD lost lock 0/20 (mean BER 1.03e-02); supervised runs with a >10 % 2000-symbol window: 0/20
+  S= 1000  8.0 dB: DD lost lock 0/20 (mean BER 2.48e-03); supervised runs with a >10 % 2000-symbol window: 0/20
+  S= 1000 10.0 dB: DD lost lock 0/20 (mean BER 3.78e-04); supervised runs with a >10 % 2000-symbol window: 0/20
+  S= 1000 12.0 dB: DD lost lock 0/20 (mean BER 3.29e-05); supervised runs with a >10 % 2000-symbol window: 0/20
+  S= 1000 14.0 dB: DD lost lock 0/20 (mean BER 1.64e-06); supervised runs with a >10 % 2000-symbol window: 0/20
+  S=   28  6.0 dB: DD lost lock 0/20 (mean BER 1.16e-02); supervised runs with a >10 % 2000-symbol window: 0/20
+  S=   28  8.0 dB: DD lost lock 0/20 (mean BER 3.23e-03); supervised runs with a >10 % 2000-symbol window: 0/20
+  S=   28 10.0 dB: DD lost lock 0/20 (mean BER 6.81e-04); supervised runs with a >10 % 2000-symbol window: 0/20
+  S=   28 12.0 dB: DD lost lock 0/20 (mean BER 1.15e-04); supervised runs with a >10 % 2000-symbol window: 0/20
+  S=   28 14.0 dB: DD lost lock 0/20 (mean BER 1.27e-05); supervised runs with a >10 % 2000-symbol window: 0/20

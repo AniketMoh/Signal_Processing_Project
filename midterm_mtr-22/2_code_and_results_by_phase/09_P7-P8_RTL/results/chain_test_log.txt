@@ -1,0 +1,15 @@
+A_16_12_nearest_mu2-8_S20        per-symbol identical: True (differing 0/6000) | counters identical: True
+      L2 : n=4500 err R1/R2/R3 = 108/8/1  sse2=11254599178 sse3=3907535477 stalls=6082 updates=95829
+B_12_12_trunc_mu2-8_S20          per-symbol identical: True (differing 0/6000) | counters identical: True
+      L2 : n=4500 err R1/R2/R3 = 129/206/29  sse2=21047346219 sse3=11592132316 stalls=26988 updates=95813
+C_10_10_nearest_mu2-10_S28       per-symbol identical: True (differing 0/6000) | counters identical: True
+      L2 : n=4500 err R1/R2/R3 = 121/2243/992  sse2=75497472000 sse3=67887450436 stalls=95259 updates=95877
+D_static_16_12_mu2-8             per-symbol identical: True (differing 0/6000) | counters identical: True
+      L2 : n=4500 err R1/R2/R3 = 0/0/0  sse2=1726675188 sse3=1691913727 stalls=4057 updates=95845
+E_stress_12_12_mu2-2_S5          per-symbol identical: True (differing 0/6000) | counters identical: True
+      L2 : n=4500 err R1/R2/R3 = 237/2539/2278  sse2=2245452771144 sse3=3772023943526 stalls=31 updates=95877
+F_fast_16_12_mu2-6_S1            per-symbol identical: True (differing 0/6000) | counters identical: True
+      L2 : n=4500 err R1/R2/R3 = 119/6/2  sse2=10724156482 sse3=6049321545 stalls=1557 updates=95845
+G_control_ch_14_12_mu2-8_S50     per-symbol identical: True (differing 0/6000) | counters identical: True
+      L2 : n=4500 err R1/R2/R3 = 0/0/0  sse2=5518953580 sse3=1406237915 stalls=18702 updates=95781
+ALL PASS

@@ -1,0 +1,50 @@
+=== primary_14: 14.0 dB, channel 40-116, plateau 1.122 ===
+S*_MSE (rho_th = 0.5): measured | theory (lag + gradient-noise model) | semi-empirical (lag model + measured static excess)
+  mu=2^-11.50:   320 |   320 |   320     S*.mu (measured) = 0.110
+  mu=2^-11.00:   224 |   224 |   224     S*.mu (measured) = 0.109
+  mu=2^-10.50:   160 |   160 |   160     S*.mu (measured) = 0.110
+  mu=2^-10.00:   112 |   112 |   112     S*.mu (measured) = 0.109
+  mu=2^ -9.50:    80 |    80 |    80     S*.mu (measured) = 0.110
+  mu=2^ -9.00:    56 |    56 |    56     S*.mu (measured) = 0.109
+  mu=2^ -8.50:    40 |    40 |    40     S*.mu (measured) = 0.110
+  mu=2^ -8.00:    28 |    28 |    28     S*.mu (measured) = 0.109
+  mu=2^ -7.50:    20 |    20 |    20     S*.mu (measured) = 0.110
+  mu=2^ -7.00:    20 |    14 |    14     S*.mu (measured) = 0.156
+  mu=2^ -6.50:    14 |    10 |    10     S*.mu (measured) = 0.155
+  mu=2^ -6.00:    14 |    10 |    10     S*.mu (measured) = 0.219
+  mu=2^ -5.50:    14 |    10 |    10     S*.mu (measured) = 0.309
+  mu=2^ -5.00:  None |    10 | undef     S*.mu (measured) = nan
+lag part, predicted / measured (points with measured lag > 0.05, n = 166): median 0.978, 10-90 % 0.862-1.002
+gradient-noise part at the slowest S, theory / measured static excess, per mu: 0.41 0.74 0.90 0.94 0.94 0.94 0.94 0.92 0.90 0.87 0.82 0.74 0.64 0.48
+mu_opt exponent over the measured fit range (15 S values): measured 0.525 | model (theory) 0.570
+   S= 5000: log2 mu_opt measured -10.96  model -10.96  local lag slope q = 1.70 -> q/(q+1) = 0.63
+   S= 2000: log2 mu_opt measured -10.15  model -10.14  local lag slope q = 1.67 -> q/(q+1) = 0.63
+   S= 1000: log2 mu_opt measured  -9.55  model  -9.53  local lag slope q = 1.64 -> q/(q+1) = 0.62
+   S=  500: log2 mu_opt measured  -8.96  model  -8.93  local lag slope q = 1.59 -> q/(q+1) = 0.61
+   S=  320: log2 mu_opt measured  -8.59  model  -8.55  local lag slope q = 1.56 -> q/(q+1) = 0.61
+   S=  224: log2 mu_opt measured  -8.30  model  -8.25  local lag slope q = 1.52 -> q/(q+1) = 0.60
+   S=  160: log2 mu_opt measured  -8.04  model  -7.97  local lag slope q = 1.49 -> q/(q+1) = 0.60
+   S=  112: log2 mu_opt measured  -7.76  model  -7.67  local lag slope q = 1.47 -> q/(q+1) = 0.60
+   S=   80: log2 mu_opt measured  -7.51  model  -7.40  local lag slope q = 1.43 -> q/(q+1) = 0.59
+   S=   56: log2 mu_opt measured  -7.25  model  -7.11  local lag slope q = 1.39 -> q/(q+1) = 0.58
+   S=   40: log2 mu_opt measured  -7.02  model  -6.85  local lag slope q = 1.35 -> q/(q+1) = 0.57
+   S=   28: log2 mu_opt measured  -6.78  model  -6.58  local lag slope q = 1.30 -> q/(q+1) = 0.56
+   S=   20: log2 mu_opt measured  -6.60  model  -6.33  local lag slope q = 1.24 -> q/(q+1) = 0.55
+   S=   14: log2 mu_opt measured  -6.44  model  -6.08  local lag slope q = 1.17 -> q/(q+1) = 0.54
+   S=   10: log2 mu_opt measured  -6.32  model  -5.88  local lag slope q = 1.10 -> q/(q+1) = 0.52
+mu_opt exponent over the measured fit range (15 S values): measured 0.525 | model (semi-empirical) 0.505
+   S= 5000: log2 mu_opt measured -10.96  model -10.61  local lag slope q = 1.71 -> q/(q+1) = 0.63
+   S= 2000: log2 mu_opt measured -10.15  model -10.11  local lag slope q = 1.67 -> q/(q+1) = 0.63
+   S= 1000: log2 mu_opt measured  -9.55  model  -9.55  local lag slope q = 1.64 -> q/(q+1) = 0.62
+   S=  500: log2 mu_opt measured  -8.96  model  -8.97  local lag slope q = 1.58 -> q/(q+1) = 0.61
+   S=  320: log2 mu_opt measured  -8.59  model  -8.60  local lag slope q = 1.54 -> q/(q+1) = 0.61
+   S=  224: log2 mu_opt measured  -8.30  model  -8.32  local lag slope q = 1.51 -> q/(q+1) = 0.60
+   S=  160: log2 mu_opt measured  -8.04  model  -8.04  local lag slope q = 1.49 -> q/(q+1) = 0.60
+   S=  112: log2 mu_opt measured  -7.76  model  -7.77  local lag slope q = 1.45 -> q/(q+1) = 0.59
+   S=   80: log2 mu_opt measured  -7.51  model  -7.52  local lag slope q = 1.41 -> q/(q+1) = 0.59
+   S=   56: log2 mu_opt measured  -7.25  model  -7.26  local lag slope q = 1.37 -> q/(q+1) = 0.58
+   S=   40: log2 mu_opt measured  -7.02  model  -7.03  local lag slope q = 1.33 -> q/(q+1) = 0.57
+   S=   28: log2 mu_opt measured  -6.78  model  -6.81  local lag slope q = 1.27 -> q/(q+1) = 0.56
+   S=   20: log2 mu_opt measured  -6.60  model  -6.60  local lag slope q = 1.18 -> q/(q+1) = 0.54
+   S=   14: log2 mu_opt measured  -6.44  model  -6.45  local lag slope q = 1.05 -> q/(q+1) = 0.51
+   S=   10: log2 mu_opt measured  -6.32  model  -6.33  local lag slope q = 0.92 -> q/(q+1) = 0.48

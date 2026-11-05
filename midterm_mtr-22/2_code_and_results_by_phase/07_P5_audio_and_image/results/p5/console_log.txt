@@ -1,0 +1,5 @@
+owner's voice recording: 158891 samples = 19.86 s, 1271128 payload bits; Eb/N0 14.0 dB, mu 2^-8, primary channel c 40-116
+  static           R1: BER 3.93e-06 SNR  28.8 dB  R2: BER 0.00e+00 SNR   inf dB  R3: BER 7.87e-07 SNR  30.6 dB
+  slow_S1000       R1: BER 2.16e-02 SNR  -8.3 dB  R2: BER 1.00e-03 SNR   5.4 dB  R3: BER 2.36e-06 SNR  29.6 dB
+  boundary_S28     R1: BER 2.24e-02 SNR  -8.6 dB  R2: BER 1.04e-03 SNR   5.3 dB  R3: BER 1.26e-05 SNR  21.7 dB
+  fast_S1          R1: BER 2.23e-02 SNR  -8.6 dB  R2: BER 9.57e-04 SNR   5.9 dB  R3: BER 4.56e-05 SNR  20.0 dB

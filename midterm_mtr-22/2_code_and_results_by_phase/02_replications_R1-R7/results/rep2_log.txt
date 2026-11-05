@@ -1,0 +1,2 @@
+init=zeros  : runs=1000  converged(|e|MA<0.1) 1000/1000  conv index median 108  5-95%: 97-123  frac of runs with conv<200: 1.000 | post-training BER: mean 0.0000, runs with 0 errors 1.000 | derotated-unequalised BER (ISI from tap 0.05 only) 0.0000 | mean |e| last 100 symbols 0.030
+init=reftap : runs=1000  converged(|e|MA<0.1) 1000/1000  conv index median 112  5-95%: 102-128  frac of runs with conv<200: 1.000 | post-training BER: mean 0.0000, runs with 0 errors 1.000 | derotated-unequalised BER (ISI from tap 0.05 only) 0.0000 | mean |e| last 100 symbols 0.030

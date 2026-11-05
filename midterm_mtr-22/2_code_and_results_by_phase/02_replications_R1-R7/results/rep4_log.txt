@@ -1,0 +1,16 @@
+threshold from the paper's example: LSB/(2*mu*0.5) = 0.0244140625
+float LMS: |e| at iterations 50,100,134,200,400,600: [np.float64(0.15473), np.float64(0.05927), np.float64(0.03086), np.float64(0.0087), np.float64(0.00019), np.float64(0.0)]
+quantised LMS: |e| at the same iterations:            [np.float64(0.1552), np.float64(0.06365), np.float64(0.02746), np.float64(0.02746), np.float64(0.02746), np.float64(0.02746)]
+first iteration with all 10 updates rounded to zero (quantised): 134
+  iter 100: |e|=0.0637, taps updated=10, max |mu e u|/LSB=1.14
+  iter 110: |e|=0.0530, taps updated=10, max |mu e u|/LSB=0.95
+  iter 120: |e|=0.0424, taps updated=10, max |mu e u|/LSB=0.76
+  iter 130: |e|=0.0317, taps updated=10, max |mu e u|/LSB=0.57
+  iter 140: |e|=0.0275, taps updated=0, max |mu e u|/LSB=0.49
+  iter 150: |e|=0.0275, taps updated=0, max |mu e u|/LSB=0.49
+  iter 160: |e|=0.0275, taps updated=0, max |mu e u|/LSB=0.49
+  iter 170: |e|=0.0275, taps updated=0, max |mu e u|/LSB=0.49
+  iter 180: |e|=0.0275, taps updated=0, max |mu e u|/LSB=0.49
+  iter 190: |e|=0.0275, taps updated=0, max |mu e u|/LSB=0.49
+final |e| (quantised) = 0.027462890625000125  final |e| (float) = 4.0289314046648705e-06
+floor of the quantised error after the stall: sum(w)= 0.93701171875 (ideal sum 1.0)

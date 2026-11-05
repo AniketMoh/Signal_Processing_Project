@@ -1,0 +1,14 @@
+2.0e+09 draws.  x = sqrt(2 Eb/N0);  z = (count - N Q)/sqrt(N Q (1-Q))
+  Eb/N0  0.00 dB  x=1.414  tail count   157308829  expected   157299207.1  rel dev +6.12e-05  z(lower) +0.80  z(upper) -0.79
+  Eb/N0  0.75 dB  x=1.542  tail count   123139853  expected   123133458.4  rel dev +5.19e-05  z(lower) +0.59  z(upper) -1.24
+  Eb/N0  1.50 dB  x=1.681  tail count    92811712  expected    92802551.9  rel dev +9.87e-05  z(lower) +0.97  z(upper) -1.68
+  Eb/N0  2.25 dB  x=1.832  tail count    66902696  expected    66895168.1  rel dev +1.13e-04  z(lower) +0.94  z(upper) -1.39
+  Eb/N0  3.00 dB  x=1.998  tail count    45765091  expected    45756815.1  rel dev +1.81e-04  z(lower) +1.24  z(upper) -1.47
+  Eb/N0  3.75 dB  x=2.178  tail count    29422759  expected    29422048.8  rel dev +2.41e-05  z(lower) +0.13  z(upper) -1.14
+  Eb/N0  4.50 dB  x=2.374  tail count    17588534  expected    17587621.1  rel dev +5.19e-05  z(lower) +0.22  z(upper) -1.26
+  Eb/N0  5.25 dB  x=2.588  tail count     9643326  expected     9645029.5  rel dev -1.77e-04  z(lower) -0.55  z(upper) -1.63
+  Eb/N0  6.00 dB  x=2.822  tail count     4775257  expected     4776581.6  rel dev -2.77e-04  z(lower) -0.61  z(upper) -1.24
+  Eb/N0  6.75 dB  x=3.076  tail count     2094630  expected     2096550.2  rel dev -9.16e-04  z(lower) -1.33  z(upper) -0.47
+  Eb/N0  7.50 dB  x=3.354  tail count      798273  expected      797592.7  rel dev +8.53e-04  z(lower) +0.76  z(upper) -1.77
+  Eb/N0  8.25 dB  x=3.656  tail count      256308  expected      256107.3  rel dev +7.84e-04  z(lower) +0.40  z(upper) -2.16
+pooled mean z (lower tail) = +0.297 (points are strongly correlated: same draws), min/max z -1.33/+1.24

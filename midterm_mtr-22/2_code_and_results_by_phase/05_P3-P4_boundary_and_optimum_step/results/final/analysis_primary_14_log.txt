@@ -1,0 +1,196 @@
+FINAL L1 analysis primary_14 (seeds 2000-2099)
+
+######## Eb/N0 = 14 dB  channel c 40..116  eps_plateau = 1.122  seeds = 100  paired = True  bursts stored = True
+
+  mu = 2^-5.0:  static-reference interpolation log  (node errors: 343952)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):         0.19  0.18  0.21  0.21  0.16  0.17  0.19  0.17  0.08 -0.01 -0.15 -0.46 -0.92 -1.73 -3.07 -8.29 -20.81 -29.33
+     R3 BER:            1e-03 1e-03 1e-03 1e-03 1e-03 1e-03 1e-03 1e-03 1e-03 1e-03 1e-03 1e-03 1e-03 1e-03 1e-03 2e-03 3e-03 5e-03
+     ratio (paired bs):  1.01  1.00  1.00  1.01  1.02  0.99  1.00  0.99  1.02  1.02  1.04  1.03  1.04  1.09  1.18  1.51  2.92  4.26
+     MSE rho_th=.5 (traj): xxxxxxxxxxxxxxxxxx  S*_MSE None   (.25/.75: None/None; literal: None)
+     BER f=2 PRIMARY:      PPPPPPPPPPPPPPPPFF  S*_BER 5 [resolved] (mono True; bracket if not demonstrated: None);  f=1.5: None  f=5: None
+       sens. linear:       PPPPPPPPPPPPPPPPFF  S* 5
+       sens. plain Wilson: PPPPPPPPPPPPPPPPFF  S* 5
+       sens. burst Wilson: g10: PPPPPPPPPPPPPPPPFF  g20: PPPPPPPPPPPPPPPPFF  g40: PPPPPPPPPPPPPPPPFF
+       sens. literal ref:  FFFFFFFFFFFFFFFFFF  S* None
+     S_cross: advantage demonstrated down to S = 5; first S without it = 2 (confirmed loss of advantage)   [status AAAAAAAAAAAAAAAALL; z-test sens. AAAAAAAAAAAAAAAA--]
+
+  mu = 2^-5.5:  static-reference interpolation lin  (node errors: 46505)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):        -0.01 -0.01 -0.01 -0.01 -0.01 -0.01 -0.00  0.00  0.01  0.03  0.06  0.11  0.20  0.33  0.54  1.21  2.36  2.97
+     R3 BER:            1e-04 1e-04 1e-04 1e-04 1e-04 1e-04 1e-04 1e-04 1e-04 1e-04 1e-04 2e-04 2e-04 2e-04 2e-04 4e-04 1e-03 2e-03
+     ratio (paired bs):  0.94  0.93  0.91  0.95  0.94  0.92  0.90  0.95  0.96  0.95  0.93  0.97  1.01  1.16  1.43  2.67  7.51 11.00
+     MSE rho_th=.5 (traj): PPPPPPPPPPPPPPFFFF  S*_MSE 14   (.25/.75: 20/10; literal: 28)
+     BER f=2 PRIMARY:      PPPPPPPPPPPPPPPFFF  S*_BER 10 [resolved] (mono True; bracket if not demonstrated: None);  f=1.5: 10  f=5: 5
+       sens. linear:       PPPPPPPPPPPPPPPFFF  S* 10
+       sens. plain Wilson: PPPPPPPPPPPPPPPFFF  S* 10
+       sens. burst Wilson: g10: PPPPPPPPPPPPPPPFFF  g20: PPPPPPPPPPPPPPPFFF  g40: PPPPPPPPPPPPPPPFFF
+       sens. literal ref:  FFFFFFFFFFFFFFFFFF  S* None
+     S_cross: no S_cross observed within the grid   [status AAAAAAAAAAAAAAAAAA; z-test sens. AAAAAAAAAAAAAAAAAA]
+
+  mu = 2^-6.0:  static-reference interpolation lin  (node errors: 8973)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):        -0.00 -0.00 -0.00 -0.00 -0.00  0.00  0.00  0.01  0.02  0.04  0.07  0.13  0.21  0.33  0.50  0.98  1.56  1.82
+     R3 BER:            3e-05 3e-05 2e-05 3e-05 3e-05 2e-05 2e-05 3e-05 3e-05 3e-05 3e-05 3e-05 3e-05 5e-05 8e-05 2e-04 6e-04 7e-04
+     ratio (paired bs):  0.95  0.95  0.84  0.89  0.94  0.87  0.84  0.97  0.95  1.05  1.04  1.03  1.22  1.82  2.71  7.08 19.52 25.29
+     MSE rho_th=.5 (traj): PPPPPPPPPPPPPPFFFF  S*_MSE 14   (.25/.75: 20/10; literal: 14)
+     BER f=2 PRIMARY:      PPPPPPPPPPPPPPFFFF  S*_BER 14 [resolved] (mono True; bracket if not demonstrated: None);  f=1.5: 20  f=5: 10
+       sens. linear:       PPPPPPPPPPPPPPFFFF  S* 14
+       sens. plain Wilson: PPPPPPPPPPPPPPFFFF  S* 14
+       sens. burst Wilson: g10: PPPPPPPPPPPPPPFFFF  g20: PPPPPPPPPPPPPPFFFF  g40: PPPPPPPPPPPPPPFFFF
+       sens. literal ref:  FFFFFFFFFFFFFFFFFF  S* None
+     S_cross: no S_cross observed within the grid   [status AAAAAAAAAAAAAAAAAA; z-test sens. AAAAAAAAAAAAAAAAAA]
+
+  mu = 2^-6.5:  static-reference interpolation lin  (node errors: 2633)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):        -0.00 -0.00 -0.00 -0.00  0.00  0.00  0.01  0.02  0.03  0.06  0.10  0.17  0.27  0.41  0.57  0.95  1.32  1.47
+     R3 BER:            8e-06 7e-06 7e-06 6e-06 7e-06 6e-06 7e-06 8e-06 8e-06 9e-06 1e-05 1e-05 2e-05 3e-05 5e-05 1e-04 3e-04 3e-04
+     ratio (paired bs):  1.02  0.94  0.86  0.80  0.87  0.79  0.90  1.01  1.00  1.21  1.27  1.62  2.17  3.92  6.48 17.46 37.30 43.55
+     MSE rho_th=.5 (traj): PPPPPPPPPPPPPPFFFF  S*_MSE 14   (.25/.75: 28/10; literal: 14)
+     BER f=2 PRIMARY:      PPPPPPPPPPPP?FFFFF  S*_BER None [None] (mono False; bracket if not demonstrated: (28, 14));  f=1.5: None  f=5: 14
+       sens. linear:       PPPPPPPPPPPP?FFFFF  S* None
+       sens. plain Wilson: PPPPPPPPPPPP?FFFFF  S* None
+       sens. burst Wilson: g10: PPPPPPPPPPPP?FFFFF  g20: PPPPPPPPPPPP?FFFFF  g40: PPPPPPPPPPPP?FFFFF
+       sens. literal ref:  FFFFFFFFFFFFFFFFFF  S* None
+     S_cross: no S_cross observed within the grid   [status AAAAAAAAAAAAAAAAAA; z-test sens. AAAAAAAAAAAAAAAAAA]
+
+  mu = 2^-7.0:  static-reference interpolation lin  (node errors: 1061)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):        -0.00 -0.00 -0.00  0.00  0.00  0.01  0.02  0.03  0.05  0.09  0.15  0.24  0.35  0.51  0.66  0.96  1.21  1.30
+     R3 BER:            3e-06 3e-06 3e-06 2e-06 2e-06 2e-06 3e-06 4e-06 4e-06 5e-06 7e-06 9e-06 1e-05 3e-05 5e-05 1e-04 2e-04 2e-04
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPPPPPPPFFFFF  S*_MSE 20   (.25/.75: 28/10; literal: 20)
+     BER f=2 PRIMARY:      ppppppppp??FFFFFFF  S*_BER None [None] (mono False; bracket if not demonstrated: (80, 28));  f=1.5: None  f=5: None
+       sens. linear:       ppppppppp??FFFFFFF  S* None
+       sens. plain Wilson: ppppppppp??FFFFFFF  S* None
+       sens. burst Wilson: g10: ppppppppp??FFFFFFF  g20: ppppppppp??FFFFFFF  g40: ppppppppp??FFFFFFF
+       sens. literal ref:  FFFFFFFFFFFFFFFFFF  S* None
+     S_cross: no S_cross observed within the grid   [status AAAAAAAAAAAAAAAAAA; z-test sens. AAAAAAAAAAAAAAAAAA]
+
+  mu = 2^-7.5:  static-reference interpolation lin  (node errors: 575)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):        -0.00 -0.00  0.00  0.00  0.01  0.02  0.03  0.05  0.09  0.14  0.22  0.33  0.46  0.61  0.75  0.98  1.15  1.20
+     R3 BER:            2e-06 2e-06 2e-06 1e-06 1e-06 1e-06 2e-06 3e-06 3e-06 4e-06 6e-06 1e-05 2e-05 3e-05 5e-05 9e-05 1e-04 1e-04
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPPPPPPPFFFFF  S*_MSE 20   (.25/.75: 40/10; literal: 20)
+     BER f=2 PRIMARY:      pppppppp??FFFFFFFF  S*_BER None [None] (mono False; bracket if not demonstrated: (112, 40));  f=1.5: None  f=5: None
+       sens. linear:       pppppppp??FFFFFFFF  S* None
+       sens. plain Wilson: pppppppp??FFFFFFFF  S* None
+       sens. burst Wilson: g10: ppppppp???FFFFFFFF  g20: ppppppp???FFFFFFFF  g40: ppppppp???FFFFFFFF
+       sens. literal ref:  FFFFFFFFFFFFFFFFFF  S* None
+     S_cross: no S_cross observed within the grid   [status AAAAAAAAAAAAAAAAAA; z-test sens. AAAAAAAAAAAAAAAAAA]
+
+  mu = 2^-8.0:  static-reference interpolation lin  (node errors: 387)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):        -0.00  0.00  0.00  0.01  0.02  0.03  0.05  0.08  0.13  0.21  0.31  0.44  0.57  0.71  0.82  0.99  1.11  1.14
+     R3 BER:            1e-06 1e-06 1e-06 7e-07 8e-07 1e-06 2e-06 2e-06 3e-06 5e-06 8e-06 1e-05 2e-05 4e-05 5e-05 7e-05 9e-05 9e-05
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPPPPPPFFFFFF  S*_MSE 28   (.25/.75: 56/14; literal: 28)
+     BER f=2 PRIMARY:      pppppp???FFFFFFFFF  S*_BER None [None] (mono False; bracket if not demonstrated: (224, 56));  f=1.5: None  f=5: None
+       sens. linear:       pppppp???FFFFFFFFF  S* None
+       sens. plain Wilson: pppppp???FFFFFFFFF  S* None
+       sens. burst Wilson: g10: pppppp???FFFFFFFFF  g20: pppppp???FFFFFFFFF  g40: pppppp???FFFFFFFFF
+       sens. literal ref:  FFF?FFFFFFFFFFFFFF  S* None
+     S_cross: no S_cross observed within the grid   [status AAAAAAAAAAAAAAAAAA; z-test sens. AAAAAAAAAAAAAAAAAA]
+
+  mu = 2^-8.5:  static-reference interpolation lin  (node errors: 311)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):         0.00  0.00  0.00  0.01  0.03  0.05  0.08  0.13  0.20  0.30  0.42  0.56  0.68  0.79  0.88  1.01  1.08  1.10
+     R3 BER:            8e-07 1e-06 1e-06 5e-07 8e-07 1e-06 2e-06 3e-06 3e-06 8e-06 1e-05 2e-05 3e-05 4e-05 5e-05 6e-05 8e-05 7e-05
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPPPPPFFFFFFF  S*_MSE 40   (.25/.75: 80/20; literal: 40)
+     BER f=2 PRIMARY:      pppppp??FFFFFFFFFF  S*_BER None [None] (mono False; bracket if not demonstrated: (224, 80));  f=1.5: None  f=5: 80
+       sens. linear:       pppppp??FFFFFFFFFF  S* None
+       sens. plain Wilson: pppppp??FFFFFFFFFF  S* None
+       sens. burst Wilson: g10: pppppp??FFFFFFFFFF  g20: pppppp??FFFFFFFFFF  g40: pppppp??FFFFFFFFFF
+       sens. literal ref:  FFF?FFFFFFFFFFFFFF  S* None
+     S_cross: no S_cross observed within the grid   [status AAAAAAAAAAAAAAAAAA; z-test sens. AAAAAAAAAAAAAAAAAA]
+
+  mu = 2^-9.0:  static-reference interpolation lin  (node errors: 255)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):         0.00  0.00  0.01  0.02  0.05  0.08  0.13  0.20  0.29  0.41  0.54  0.66  0.77  0.86  0.93  1.02  1.06  1.07
+     R3 BER:            7e-07 1e-06 1e-06 5e-07 7e-07 1e-06 2e-06 4e-06 5e-06 1e-05 2e-05 3e-05 4e-05 5e-05 5e-05 6e-05 7e-05 6e-05
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPPPPFFFFFFFF  S*_MSE 56   (.25/.75: 112/28; literal: 56)
+     BER f=2 PRIMARY:      ppppp??FFFFFFFFFFF  S*_BER None [None] (mono False; bracket if not demonstrated: (320, 112));  f=1.5: None  f=5: None
+       sens. linear:       ppppp??FFFFFFFFFFF  S* None
+       sens. plain Wilson: ppppp??FFFFFFFFFFF  S* None
+       sens. burst Wilson: g10: ppppp??FFFFFFFFFFF  g20: ppppp??FFFFFFFFFFF  g40: ppppp??FFFFFFFFFFF
+       sens. literal ref:  FFF??FFFFFFFFFFFFF  S* None
+     S_cross: no S_cross observed within the grid   [status AAAAAAAAAAAAAAAAAA; z-test sens. AAAAAAAAAAAAAAAAAA]
+
+  mu = 2^-9.5:  static-reference interpolation lin  (node errors: 213)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):         0.00  0.00  0.01  0.04  0.08  0.13  0.19  0.29  0.40  0.53  0.65  0.76  0.84  0.92  0.97  1.03  1.05  1.06
+     R3 BER:            6e-07 7e-07 1e-06 5e-07 8e-07 2e-06 3e-06 4e-06 8e-06 2e-05 2e-05 4e-05 4e-05 5e-05 5e-05 6e-05 6e-05 6e-05
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPPPFFFFFFFFF  S*_MSE 80   (.25/.75: 160/40; literal: 80)
+     BER f=2 PRIMARY:      pp?pp?FFFFFFFFFFFF  S*_BER None [None] (mono False; bracket if not demonstrated: None);  f=1.5: None  f=5: None
+       sens. linear:       pp?pp?FFFFFFFFFFFF  S* None
+       sens. plain Wilson: pp?pp?FFFFFFFFFFFF  S* None
+       sens. burst Wilson: g10: pp?pp?FFFFFFFFFFFF  g20: pp?pp?FFFFFFFFFFFF  g40: pp?pp?FFFFFFFFFFFF
+       sens. literal ref:  FFF?FFFFFFFFFFFFFF  S* None
+     S_cross: no S_cross observed within the grid   [status AAAAAAAAAAAAAAAAAA; z-test sens. AAAAAAAAAAAAAAAAAA]
+
+  mu = 2^-10.0:  static-reference interpolation lin  (node errors: 198)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):         0.00  0.01  0.02  0.07  0.12  0.19  0.28  0.40  0.52  0.64  0.75  0.84  0.90  0.96  0.99  1.03  1.04  1.05
+     R3 BER:            5e-07 6e-07 1e-06 7e-07 1e-06 3e-06 5e-06 8e-06 1e-05 2e-05 3e-05 4e-05 5e-05 5e-05 5e-05 5e-05 6e-05 6e-05
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPPFFFFFFFFFF  S*_MSE 112   (.25/.75: 224/40; literal: 112)
+     BER f=2 PRIMARY:      pp?p?FFFFFFFFFFFFF  S*_BER None [None] (mono False; bracket if not demonstrated: None);  f=1.5: None  f=5: None
+       sens. linear:       pp?p?FFFFFFFFFFFFF  S* None
+       sens. plain Wilson: pp?p?FFFFFFFFFFFFF  S* None
+       sens. burst Wilson: g10: pp?p?FFFFFFFFFFFFF  g20: pp?p?FFFFFFFFFFFFF  g40: pp?p?FFFFFFFFFFFFF
+       sens. literal ref:  ??FFFFFFFFFFFFFFFF  S* None
+     S_cross: no S_cross observed within the grid   [status AAAAAAAAAAAAAAAAAA; z-test sens. AAAAAAAAAAAAAAAAAA]
+
+  mu = 2^-10.5:  static-reference interpolation lin  (node errors: 191)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):         0.00  0.01  0.04  0.11  0.19  0.29  0.40  0.52  0.64  0.74  0.83  0.90  0.95  0.99  1.01  1.03  1.04  1.04
+     R3 BER:            5e-07 6e-07 1e-06 1e-06 2e-06 5e-06 8e-06 1e-05 2e-05 3e-05 4e-05 5e-05 5e-05 5e-05 5e-05 6e-05 6e-05 6e-05
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPPFFFFFFFFFFF  S*_MSE 160   (.25/.75: 320/56; literal: 160)
+     BER f=2 PRIMARY:      pp???FFFFFFFFFFFFF  S*_BER None [None] (mono False; bracket if not demonstrated: (2000, 224));  f=1.5: None  f=5: 320
+       sens. linear:       pp???FFFFFFFFFFFFF  S* None
+       sens. plain Wilson: pp???FFFFFFFFFFFFF  S* None
+       sens. burst Wilson: g10: pp???FFFFFFFFFFFFF  g20: pp???FFFFFFFFFFFFF  g40: pp???FFFFFFFFFFFFF
+       sens. literal ref:  ??FFFFFFFFFFFFFFFF  S* None
+     S_cross: no S_cross observed within the grid   [status AAAAAAAAAAAAAAAAAA; z-test sens. AAAAAAAAAAAAAAAAAA]
+
+  mu = 2^-11.0:  static-reference interpolation lin  (node errors: 185)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):         0.00  0.02  0.06  0.17  0.28  0.40  0.52  0.64  0.74  0.83  0.90  0.95  0.99  1.01  1.02  1.04  1.04  1.04
+     R3 BER:            5e-07 7e-07 2e-06 2e-06 4e-06 7e-06 1e-05 2e-05 3e-05 4e-05 5e-05 5e-05 5e-05 6e-05 6e-05 6e-05 6e-05 6e-05
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPPFFFFFFFFFFFF  S*_MSE 224   (.25/.75: 500/80; literal: 224)
+     BER f=2 PRIMARY:      pp??FFFFFFFFFFFFFF  S*_BER None [None] (mono False; bracket if not demonstrated: (2000, 320));  f=1.5: None  f=5: 500
+       sens. linear:       pp??FFFFFFFFFFFFFF  S* None
+       sens. plain Wilson: pp??FFFFFFFFFFFFFF  S* None
+       sens. burst Wilson: g10: pp??FFFFFFFFFFFFFF  g20: pp??FFFFFFFFFFFFFF  g40: pp??FFFFFFFFFFFFFF
+       sens. literal ref:  ?FFFFFFFFFFFFFFFFF  S* None
+     S_cross: no S_cross observed within the grid   [status AAAAAAAAAAAAAAAAAA; z-test sens. AAAAAAAAAAAAAAAAAA]
+
+  mu = 2^-11.5:  static-reference interpolation lin  (node errors: 209)
+     S:                  5000  2000  1000   500   320   224   160   112    80    56    40    28    20    14    10     5     2     1
+     rho (traj):         0.00  0.03  0.10  0.25  0.39  0.52  0.64  0.75  0.83  0.90  0.95  0.99  1.02  1.03  1.04  1.04  1.05  1.05
+     R3 BER:            5e-07 8e-07 2e-06 3e-06 7e-06 1e-05 2e-05 3e-05 4e-05 5e-05 5e-05 6e-05 6e-05 6e-05 6e-05 6e-05 6e-05 6e-05
+     ratio (paired bs):    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl    rl
+     MSE rho_th=.5 (traj): PPPPPFFFFFFFFFFFFF  S*_MSE 320   (.25/.75: 500/112; literal: 320)
+     BER f=2 PRIMARY:      pp?FFFFFFFFFFFFFFF  S*_BER None [None] (mono False; bracket if not demonstrated: (2000, 500));  f=1.5: None  f=5: 500
+       sens. linear:       pp?FFFFFFFFFFFFFFF  S* None
+       sens. plain Wilson: pp?FFFFFFFFFFFFFFF  S* None
+       sens. burst Wilson: g10: pp?FFFFFFFFFFFFFFF  g20: pp?FFFFFFFFFFFFFFF  g40: pp?FFFFFFFFFFFFFFF
+       sens. literal ref:  ?FFFFFFFFFFFFFFFFF  S* None
+     S_cross: no S_cross observed within the grid   [status AAAAAAAAAAAAAAAAAA; z-test sens. AAAAAAAAAAAAAAAAAA]
+
+  mu_opt(S): S=5000: 2^-10.96  S=2000: 2^-10.15  S=1000: 2^-9.55  S=500: 2^-8.96  S=320: 2^-8.59  S=224: 2^-8.30  S=160: 2^-8.04  S=112: 2^-7.76  S=80: 2^-7.51  S=56: 2^-7.25  S=40: 2^-7.02  S=28: 2^-6.78  S=20: 2^-6.60  S=14: 2^-6.44  S=10: 2^-6.32  S=5: 2^-6.67  S=2: 2^-10.65  S=1: 2^-10.71
+  exponent d log2 mu_opt / d log2(1/S):
+     V0 baseline (3-pt parabola, bracketed, rho<=0.75)  slope 0.525  (15 points)
+     V1 no refinement (grid argmin)                     slope 0.514  (15 points)
+     V2 5-point quadratic refinement                    slope 0.508  (15 points)
+     V3 stricter range rho<=0.5                         slope 0.539  (14 points)
+     V4 drop the two slowest S                          slope 0.493  (13 points)
+     V5 drop the two fastest S                          slope 0.55  (13 points)
+     V6 only S <= 1000                                  slope 0.493  (13 points)
+     statistical (seed bootstrap, baseline variant) 95% (0.5250073646967736, 0.5256606642522171);  systematic spread across variants (0.4933435741524654, 0.549870548671134)

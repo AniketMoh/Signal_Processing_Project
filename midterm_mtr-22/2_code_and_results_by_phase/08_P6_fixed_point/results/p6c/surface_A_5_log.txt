@@ -1,0 +1,12 @@
+P6 surface family A, 16 dB, mu = 2^-5, seeds 2000-2019, rho_th = 0.5, eps_plateau 1.829.  status per S: P pass, F fail, ? inconclusive, u = rho undefined (static excess >= plateau)
+  B_acc=10 B_mul=10 nearest : static excess c=40/116     50.1/   228.7 %  status PPPPPPPPPPPFF  S*_MSE 14   [40 s]
+  B_acc=12 B_mul=12 nearest : static excess c=40/116     47.0/   228.4 %  status PPPPPPPPPPPFF  S*_MSE 14   [40 s]
+  B_acc=14 B_mul=12 nearest : static excess c=40/116     46.8/   228.3 %  status PPPPPPPPPPPFF  S*_MSE 14   [40 s]
+  B_acc=16 B_mul=12 nearest : static excess c=40/116     46.8/   228.3 %  status PPPPPPPPPPPFF  S*_MSE 14   [79 s]
+  B_acc=26 B_mul=12 nearest : static excess c=40/116     46.8/   228.3 %  status PPPPPPPPPPPFF  S*_MSE 14   [48 s]
+  B_acc=10 B_mul=10 truncate: static excess c=40/116    435.8/   344.5 %  status uuuuuuuuuuuuu  S*_MSE None   [55 s]
+  B_acc=12 B_mul=12 truncate: static excess c=40/116     71.1/   235.8 %  status PPPPPPPPPPPFF  S*_MSE 14   [66 s]
+  B_acc=14 B_mul=12 truncate: static excess c=40/116     48.3/   228.9 %  status PPPPPPPPPPPFF  S*_MSE 14   [42 s]
+  B_acc=16 B_mul=12 truncate: static excess c=40/116     46.9/   228.4 %  status PPPPPPPPPPPFF  S*_MSE 14   [47 s]
+  B_acc=26 B_mul=12 truncate: static excess c=40/116     46.8/   228.3 %  status PPPPPPPPPPPFF  S*_MSE 14   [63 s]
+  S grid: 5000 1000 320 160 112 80 56 40 28 20 14 10 5

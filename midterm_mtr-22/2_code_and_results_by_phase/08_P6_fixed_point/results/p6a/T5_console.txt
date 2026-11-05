@@ -1,0 +1,13 @@
+T5 FPGA-style noise generator (12 LFSRs, distinct trinomials, 16 bits each, sum of 12 uniforms; PPR-22 Sec. 4.3)
+   primitivity (algebraic order test): x^17+x^14+1 yes, x^18+x^11+1 yes, x^20+x^17+1 yes, x^21+x^19+1 yes, x^22+x^21+1 yes, x^23+x^18+1 yes, x^25+x^22+1 yes, x^28+x^25+1 yes, x^29+x^27+1 yes, x^31+x^28+1 yes, x^33+x^20+1 yes, x^35+x^33+1 yes
+   empirical period of the n = 17 register: 131071 (2^n - 1 = 131071)
+   empirical period of the n = 18 register: 262143 (2^n - 1 = 262143)
+   empirical period of the n = 20 register: 1048575 (2^n - 1 = 1048575)
+   4e6 samples: mean +4.63e-04  variance 1.00111 (target 1)  max |autocorr| lag 1-50 1.3e-03 (4/sqrt(N) = 2.0e-03)
+   cross-correlation between two seeds -6.7e-04;  max |v| 4.606 sigma (support limit 6);  excess kurtosis -0.103 (Irwin-Hall n=12: -0.100; Gaussian 0)
+   P(v > 3 sigma) 1.00e-03  (Irwin-Hall 1.01e-03, Gaussian 1.35e-03);  repeatable: True
+   BER of the direct detector on a FLAT channel with this noise (2e8 bits per point): measured vs exact Irwin-Hall prediction vs Gaussian Q
+    6.0 dB: measured 1.933e-03 [1.927e-03, 1.939e-03] (386641 errors)   Irwin-Hall exact 1.933e-03   Gaussian 2.388e-03   (measured/Gaussian 0.81)
+    8.0 dB: measured 9.470e-05 [9.336e-05, 9.606e-05] (18940 errors)   Irwin-Hall exact 9.441e-05   Gaussian 1.909e-04   (measured/Gaussian 0.50)
+    9.0 dB: measured 9.240e-06 [8.823e-06, 9.671e-06] (1848 errors)   Irwin-Hall exact 9.279e-06   Gaussian 3.363e-05   (measured/Gaussian 0.27)
+[T5 done in 153 s]

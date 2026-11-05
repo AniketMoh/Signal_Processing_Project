@@ -1,0 +1,15 @@
+MATLAB R2025b output of mathworks_crosscheck.m, run by the team on 27 Oct 2026 (transcribed from the Command Window).
+
+PART 1  MathWorks example, 1000 runs
+  MATLAB: median convergence 115 symbols (5-95%: 103-133); converged under 200: 1000/1000; runs with 0 post-training errors: 1000/1000
+  Python: median 108 symbols (5-95%: 97-123); converged under 200: 1000/1000; runs with 0 post-training errors: 1000/1000
+
+PART 2  comm.LinearEqualizer (LMS, 16 taps, step 2^-8) on xcheck_c40.csv / xcheck_c116.csv
+  c =  40, ReferenceTap 1..6: 0.022499 0.022482 0.022467 0.022469 0.022454 0.022449
+  c =  40: best MATLAB MSE 0.022449 (ReferenceTap 6) | Python MSE 0.022469 | ratio 0.9991
+  c = 116, ReferenceTap 1..6: 0.059138 0.056906 0.055692 0.055185 0.055030 0.055131
+  c = 116: best MATLAB MSE 0.055030 (ReferenceTap 5) | Python MSE 0.055690 | ratio 0.9882
+
+PART 3  plain-MATLAB LMS (same equations as the Python model)
+  c =  40: MATLAB MSE 0.022469 | Python MSE 0.022469 | ratio 1.00000; final weights 0.00313 0.02066 0.97648 -0.30794 0.00031 (identical)
+  c = 116: MATLAB MSE 0.055690 | Python MSE 0.055690 | ratio 1.00000; final weights -0.04735 0.07760 0.88539 -0.77405 0.58270 (identical)

@@ -1,0 +1,9 @@
+T1 equivalence: B_mul = 24, B_acc = 48, round to nearest, Gaussian noise, 14 dB, 5 seeds (5600-5604).  Criterion: |J_L2 - J_L1| < 1e-6.
+   static c=40    mu=2^- 6: max |J_L2 - J_L1| = 1.44e-07   decision differences 0 of 500000   max |w_L2 - w_L1| 4.63e-05
+   static c=40    mu=2^- 8: max |J_L2 - J_L1| = 2.21e-07   decision differences 0 of 500000   max |w_L2 - w_L1| 1.86e-05
+   static c=40    mu=2^-10: max |J_L2 - J_L1| = 1.27e-07   decision differences 0 of 500000   max |w_L2 - w_L1| 9.56e-06
+   triangle S=20  mu=2^- 6: max |J_L2 - J_L1| = 2.25e-07   decision differences 0 of 760000   max |w_L2 - w_L1| 4.34e-05
+   triangle S=20  mu=2^- 8: max |J_L2 - J_L1| = 1.68e-07   decision differences 0 of 760000   max |w_L2 - w_L1| 2.01e-05
+   triangle S=20  mu=2^-10: max |J_L2 - J_L1| = 1.62e-07   decision differences 0 of 760000   max |w_L2 - w_L1| 9.48e-06
+   T1 PASS
+[T1 done in 2 s]

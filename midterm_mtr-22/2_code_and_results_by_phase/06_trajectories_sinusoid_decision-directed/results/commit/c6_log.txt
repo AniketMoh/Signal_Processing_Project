@@ -1,0 +1,9 @@
+S= 1000, mu=2^-8: relative RMS coefficient error 0.022; most moving taps [4, 3, 5]; lag (symbols) [1064, 952, 1304]; swing oracle [0.628, 0.51, 0.5] vs LMS [0.614, 0.505, 0.482]
+S=   56, mu=2^-8: relative RMS coefficient error 0.159; most moving taps [4, 3, 5]; lag (symbols) [592, 520, 728]; swing oracle [0.628, 0.51, 0.5] vs LMS [0.449, 0.374, 0.321]
+S=   14, mu=2^-8: relative RMS coefficient error 0.258; most moving taps [4, 3, 5]; lag (symbols) [304, 240, 360]; swing oracle [0.628, 0.51, 0.5] vs LMS [0.232, 0.199, 0.139]
+lag vs step size at S = 1000 (slow ramp): lag should scale as 1/mu
+  mu=2^-6: tap 4, lag 168 symbols, lag*mu = 2.62
+  mu=2^-7: tap 4, lag 400 symbols, lag*mu = 3.12
+  mu=2^-8: tap 4, lag 1072 symbols, lag*mu = 4.19
+  mu=2^-9: tap 4, lag 1952 symbols, lag*mu = 3.81
+  mu=2^-10: tap 4, lag 3440 symbols, lag*mu = 3.36

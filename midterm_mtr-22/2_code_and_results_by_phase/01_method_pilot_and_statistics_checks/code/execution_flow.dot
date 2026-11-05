@@ -1,0 +1,51 @@
+digraph flow {
+  graph [rankdir=TB, fontname="Helvetica", fontsize=11, nodesep=0.25, ranksep=0.32, label="Execution flow of one L1 experiment (P2 / P3 / final sweep share this path; P1 uses lms_lib.make_experiment + run_receivers, same LMS loop)\nSolid = data path executed per seed and per mu;  dashed = analysis-only quantities (never seen by any receiver)", labelloc=t];
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=9.5, fillcolor="#ffffff", color="#555555"];
+  edge [color="#555555", arrowsize=0.6, fontname="Helvetica", fontsize=8];
+
+  cfg [label="config.py  +  freeze_grids.py\nL=16, M=3, DA=2^-7, N_T=30000, channel c 40..116,\nEb/N0, mu grid, S grid, seeds", fillcolor="#eeeeee"];
+  loop [label="sweep.run_sweep  /  p2_abrupt.main  /  p3_run.main\nfor each Eb/N0, each S (and static), each seed, each mu", fillcolor="#eeeeee"];
+
+  subgraph cluster_tx { label="1. Transmitter + channel   exp_lib.make_exp_from_counter (lines 19-27)"; style="rounded"; color="#4a7ab5"; fontsize=10;
+    trn [label="Training bits: prbs(N_T)\nLFSR x^15+x^14+1, seed 1 (lms_lib.lfsr_bits 22-32)\nsame for every seed", fillcolor="#e3edf8"];
+    pay [label="Payload bits: make_bits(n, seed)\nnumpy default_rng(seed) (lms_lib 16-19)", fillcolor="#e3edf8"];
+    map [label="BPSK  x = 2b - 1   (lms_lib.bpsk 35-37)", fillcolor="#e3edf8"];
+    ctr [label="Counter c[n]: static until N_T, then triangle\n+1 every S symbols (lms_lib.triangle_counter 41-53)\nor step_counter (P2, exp_lib 30-34)", fillcolor="#e3edf8"];
+    taps [label="Taps [1, c[n]*2^-7, 0.1]\n(lms_lib.taps_from_counter 56-62)", fillcolor="#e3edf8"];
+    chan [label="r[n] = sum_k h[k,n] x[n-k]\n(lms_lib.apply_channel 65-71)", fillcolor="#e3edf8"];
+    noise [label="+ v[n] = sigma * N(0,1),  sigma^2 = 1/(2 Eb/N0)\nGaussian, default_rng(seed+500000)\n(lms_lib.make_noise 74-76; config.sigma_from_ebn0 31-33)", fillcolor="#e3edf8"];
+  }
+
+  subgraph cluster_rx { label="2. Three receivers on the SAME r[n]"; style="rounded"; color="#3f8f5a"; fontsize=10;
+    r1 [label="R1 direct detector\nb_hat = (r[n] >= 0), compared with bits[n]\n(exp_lib.ber_indicators 45)", fillcolor="#e4f3e8"];
+    lms [label="lms_lib.lms_receivers (lines 80-127), Delta = 2, d[n] = x[n-2]\ny = w.u ;  e = d[n] - y  (supervised: true symbol)\nw <- w + mu * e * u   (line 122-123)", fillcolor="#e4f3e8"];
+    r3 [label="R3 adaptive: keeps updating for all n", fillcolor="#e4f3e8"];
+    r2 [label="R2 frozen: w_F = w[N_T] copied at n = N_T (101-103),\nnever updated afterwards", fillcolor="#e4f3e8"];
+  }
+
+  subgraph cluster_meas { label="3. Measurement over the evaluation window n >= N_T   sweep.run_point (17-27)"; style="rounded"; color="#b5803a"; fontsize=10;
+    ber [label="Error indicators e1, e2, e3 (ber_indicators 42-49)\nR2/R3 compared with bits[n-2]; training excluded ([n_t:])\n-> error counts E1, E2, E3 per seed", fillcolor="#f8eedf"];
+    mse [label="MSE per seed: J2 = mean(eF^2), J3 = mean(eA^2)\n(errors against the TRUE symbol)", fillcolor="#f8eedf"];
+    stat [label="Static baselines: same seeds, 11 fixed c values\n(sweep.run_sweep 45-49) -> J_static(c, mu), static BER", fillcolor="#f8eedf"];
+  }
+
+  subgraph cluster_an { label="4. Analysis   sweep_analyse.analyse (51-143)"; style="rounded"; color="#8a5aa8"; fontsize=10;
+    orc [label="Oracle J_or[n]: best 16-tap Wiener filter KNOWING the\ntrue taps in the window (exp_lib.oracle_J_series 63-78)\nanalytic, not a receiver", fillcolor="#f1e8f7", style="rounded,filled,dashed"];
+    plat [label="eps_plateau: best single fixed filter for the\naveraged channel (exp_lib.plateau_stats 97-111)", fillcolor="#f1e8f7", style="rounded,filled,dashed"];
+    eps [label="eps = (J3 - J_or)/J_or ;  rho = (eps - eps_static)/(eps_plateau - eps_static)\neps_static: trajectory-weighted (primary) and c_lo (literal)  (lines 66-73)", fillcolor="#f1e8f7"];
+    berst [label="BER status per grid point: Wilson interval vs f x BER_ref\nresolved / reference-limited (lines 75-101)", fillcolor="#f1e8f7"];
+    out [label="Results: S*_MSE (rho_th 0.5), S*_BER (f = 2), S_cross,\nmu_opt(S) + exponent preview, N_rec (P2: p2_abrupt.n_rec_from 30-43)", fillcolor="#f1e8f7"];
+  }
+
+  cfg -> loop;
+  loop -> trn; loop -> pay; loop -> ctr;
+  trn -> map; pay -> map; map -> chan; ctr -> taps -> chan; chan -> noise;
+  noise -> r1 [label=" r[n]"]; noise -> lms [label=" r[n]"];
+  lms -> r3; lms -> r2;
+  r1 -> ber; r2 -> ber; r3 -> ber; r2 -> mse; r3 -> mse;
+  loop -> stat;
+  taps -> orc [style=dashed, label=" true taps"]; taps -> plat [style=dashed];
+  mse -> eps; orc -> eps; plat -> eps; stat -> eps;
+  ber -> berst; stat -> berst;
+  eps -> out; berst -> out;
+}

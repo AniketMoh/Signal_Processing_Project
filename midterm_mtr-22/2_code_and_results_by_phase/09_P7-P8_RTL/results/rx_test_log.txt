@@ -1,0 +1,6 @@
+typical_16_12_nearest_mu2-8        outputs identical: True  (symbols differing: 0 of 4000) | stall counter RTL 3733 vs L2 3733, updates RTL 63861 vs L2 63861: True | max|ya|=6976 max|eA|=6297
+stalls_12_12_trunc_mu2-8           outputs identical: True  (symbols differing: 0 of 4000) | stall counter RTL 18025 vs L2 18025, updates RTL 63845 vs L2 63845: True | max|ya|=8608 max|eA|=6048
+narrow_10_10_nearest_mu2-10        outputs identical: True  (symbols differing: 0 of 4000) | stall counter RTL 63412 vs L2 63412, updates RTL 63877 vs L2 63877: True | max|ya|=844 max|eA|=4373
+wide_26_12_nearest_mu2-8           outputs identical: True  (symbols differing: 0 of 4000) | stall counter RTL 1 vs L2 1, updates RTL 63829 vs L2 63829: True | max|ya|=7281 max|eA|=6407
+saturation_stress_12_12_mu2-2      outputs identical: True  (symbols differing: 0 of 4000) | stall counter RTL 19 vs L2 19, updates RTL 63877 vs L2 63877: True | max|ya|=32768 max|eA|=32768
+ALL PASS

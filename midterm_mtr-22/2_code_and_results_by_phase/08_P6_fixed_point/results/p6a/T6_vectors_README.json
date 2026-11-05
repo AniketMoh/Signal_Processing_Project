@@ -1,0 +1,14 @@
+{
+ "formats": "r,u,d,y,e: s16.12; multiplier coeff s12.10; accumulator s26.24; round to nearest; saturation everywhere",
+ "mu": "2^-8 (shift 8)",
+ "L": 16,
+ "Delta": 2,
+ "N_T": 30000,
+ "S": 20,
+ "EbN0": 14.0,
+ "seed": 2000,
+ "noise": "12-LFSR sum of uniforms (fxp_lib.lfsr_noise)",
+ "rows": 34000,
+ "stalls": 2,
+ "updates": 543525
+}

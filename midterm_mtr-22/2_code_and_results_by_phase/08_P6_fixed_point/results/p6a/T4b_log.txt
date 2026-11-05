@@ -1,0 +1,8 @@
+T4b tracking vs multiplier width (B_acc = 26, mu = 2^-8, 16 dB, seeds 2000-2019, round to nearest)
+   B_mul= 8: eps(%)    16    16    19    25    31    40    53    71    93   116   138   156   185
+             rho    -0.00  0.00  0.02  0.05  0.09  0.14  0.23  0.33  0.46  0.60  0.73  0.84  1.01   status PPPPPPPPPFFFF  S*_MSE 28
+   B_mul=12: eps(%)     8     8    11    18    24    33    47    65    87   110   132   150   179
+             rho    -0.00  0.00  0.02  0.06  0.09  0.14  0.22  0.32  0.45  0.58  0.71  0.81  0.98   status PPPPPPPPPFFFF  S*_MSE 28
+   B_mul=16: eps(%)     8     8    11    18    24    33    47    65    87   109   132   150   179
+             rho    -0.00  0.00  0.02  0.06  0.09  0.14  0.22  0.32  0.45  0.58  0.71  0.81  0.98   status PPPPPPPPPFFFF  S*_MSE 28
+[T4b done in 86 s]

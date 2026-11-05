@@ -1,0 +1,5 @@
+Variance of the 64-symbol moving average of e^2 in steady state, relative to the iid-Gaussian value 2 J^2/64 (static channel, 4 seeds x 400k)
+  c= 40 mu=2^-8: var(MA64) / (2J^2/64) = 1.18
+  c= 40 mu=2^-10: var(MA64) / (2J^2/64) = 1.17
+  c=116 mu=2^-8: var(MA64) / (2J^2/64) = 3.61
+  c=116 mu=2^-10: var(MA64) / (2J^2/64) = 3.60

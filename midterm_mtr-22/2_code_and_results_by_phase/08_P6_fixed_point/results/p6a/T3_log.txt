@@ -1,0 +1,25 @@
+T3 update underflow (B_mul = 12; static c = 116, 14 dB, 4 seeds 5620-5623).  Stall = nonzero exact update rounded to 0.
+   prediction (round to nearest): P(|mu*e*u| < LSB/2);  (truncation): P(0 <= mu*e*u < LSB)  -- from L1 e and u on the same data
+   B_acc=16 mu=2^- 5: nearest  stall pred  0.022 meas  0.022  MSE vs L1   -0.00%   |  truncation  stall pred  0.020 meas  0.019  MSE vs L1   +0.02%
+   B_acc=16 mu=2^- 6: nearest  stall pred  0.050 meas  0.049  MSE vs L1   +0.00%   |  truncation  stall pred  0.042 meas  0.042  MSE vs L1   +0.05%
+   B_acc=16 mu=2^- 7: nearest  stall pred  0.093 meas  0.092  MSE vs L1   +0.00%   |  truncation  stall pred  0.076 meas  0.075  MSE vs L1   +0.15%
+   B_acc=16 mu=2^- 8: nearest  stall pred  0.158 meas  0.156  MSE vs L1   +0.00%   |  truncation  stall pred  0.123 meas  0.122  MSE vs L1   +0.54%
+   B_acc=16 mu=2^- 9: nearest  stall pred  0.251 meas  0.245  MSE vs L1   +0.00%   |  truncation  stall pred  0.183 meas  0.180  MSE vs L1   +2.09%
+   B_acc=16 mu=2^-10: nearest  stall pred  0.368 meas  0.355  MSE vs L1   +0.01%   |  truncation  stall pred  0.246 meas  0.239  MSE vs L1   +8.16%
+   B_acc=16 mu=2^-11: nearest  stall pred  0.489 meas  0.466  MSE vs L1   +0.33%   |  truncation  stall pred  0.301 meas  0.290  MSE vs L1  +31.10%
+   B_acc=26 mu=2^- 5: nearest  stall pred  0.000 meas  0.000  MSE vs L1   +0.00%   |  truncation  stall pred  0.000 meas  0.000  MSE vs L1   +0.01%
+   B_acc=26 mu=2^- 6: nearest  stall pred  0.000 meas  0.000  MSE vs L1   +0.01%   |  truncation  stall pred  0.000 meas  0.000  MSE vs L1   +0.00%
+   B_acc=26 mu=2^- 7: nearest  stall pred  0.000 meas  0.000  MSE vs L1   +0.00%   |  truncation  stall pred  0.000 meas  0.000  MSE vs L1   +0.00%
+   B_acc=26 mu=2^- 8: nearest  stall pred  0.001 meas  0.000  MSE vs L1   +0.01%   |  truncation  stall pred  0.000 meas  0.000  MSE vs L1   +0.00%
+   B_acc=26 mu=2^- 9: nearest  stall pred  0.001 meas  0.001  MSE vs L1   +0.01%   |  truncation  stall pred  0.001 meas  0.001  MSE vs L1   +0.01%
+   B_acc=26 mu=2^-10: nearest  stall pred  0.002 meas  0.001  MSE vs L1   +0.01%   |  truncation  stall pred  0.002 meas  0.001  MSE vs L1   +0.01%
+   B_acc=26 mu=2^-11: nearest  stall pred  0.003 meas  0.002  MSE vs L1   +0.01%   |  truncation  stall pred  0.003 meas  0.002  MSE vs L1   +0.01%
+   B_acc=32 mu=2^- 5: nearest  stall pred  0.000 meas  0.000  MSE vs L1   +0.00%   |  truncation  stall pred  0.000 meas  0.000  MSE vs L1   +0.00%
+   B_acc=32 mu=2^- 6: nearest  stall pred  0.000 meas  0.000  MSE vs L1   +0.01%   |  truncation  stall pred  0.000 meas  0.000  MSE vs L1   +0.00%
+   B_acc=32 mu=2^- 7: nearest  stall pred  0.000 meas  0.000  MSE vs L1   +0.00%   |  truncation  stall pred  0.000 meas  0.000  MSE vs L1   -0.00%
+   B_acc=32 mu=2^- 8: nearest  stall pred  0.000 meas  0.000  MSE vs L1   +0.01%   |  truncation  stall pred  0.000 meas  0.000  MSE vs L1   +0.01%
+   B_acc=32 mu=2^- 9: nearest  stall pred  0.000 meas  0.000  MSE vs L1   +0.01%   |  truncation  stall pred  0.000 meas  0.000  MSE vs L1   +0.01%
+   B_acc=32 mu=2^-10: nearest  stall pred  0.000 meas  0.000  MSE vs L1   +0.01%   |  truncation  stall pred  0.000 meas  0.000  MSE vs L1   +0.01%
+   B_acc=32 mu=2^-11: nearest  stall pred  0.000 meas  0.000  MSE vs L1   +0.01%   |  truncation  stall pred  0.000 meas  0.000  MSE vs L1   +0.01%
+   note: predictions use whole-run L1 statistics (training excluded); the stall count includes the training period of L2.
+[T3 done in 3 s]

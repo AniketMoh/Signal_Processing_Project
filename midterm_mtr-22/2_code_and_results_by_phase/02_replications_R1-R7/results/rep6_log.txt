@@ -1,0 +1,16 @@
+=== random walk ===
+ xi=0.0002: mu_opt sim 0.00032  theory 0.00035  (sim/theory 0.911) | sim/theory EMSE at grid minimum 0.994 | slope at small mu +0.47 (theory -1), at large mu +1.75 (theory +1)
+ xi=0.0005: mu_opt sim 0.00088  theory 0.00088  (sim/theory 0.992) | sim/theory EMSE at grid minimum 0.997 | slope at small mu -0.34 (theory -1), at large mu +1.75 (theory +1)
+ xi=0.0010: mu_opt sim 0.00174  theory 0.00177  (sim/theory 0.986) | sim/theory EMSE at grid minimum 1.005 | slope at small mu -0.77 (theory -1), at large mu +1.75 (theory +1)
+ xi=0.0020: mu_opt sim 0.00344  theory 0.00354  (sim/theory 0.974) | sim/theory EMSE at grid minimum 1.010 | slope at small mu -0.93 (theory -1), at large mu +1.74 (theory +1)
+ xi=0.0040: mu_opt sim 0.00677  theory 0.00707  (sim/theory 0.958) | sim/theory EMSE at grid minimum 1.033 | slope at small mu -0.98 (theory -1), at large mu +1.73 (theory +1)
+ xi=0.0080: mu_opt sim 0.01310  theory 0.01414  (sim/theory 0.926) | sim/theory EMSE at grid minimum 1.085 | slope at small mu -0.99 (theory -1), at large mu +1.68 (theory +1)
+ exponent d log mu_opt / d log xi:  simulated 1.000   theory 1.000
+=== ramp ===
+ xi=0.0002: mu_opt sim 0.00785  theory 0.00794  (sim/theory 0.988) | sim/theory EMSE at grid minimum 1.012 | slope at small mu -2.01 (theory -2), at large mu +1.73 (theory +1)
+ xi=0.0005: mu_opt sim 0.01432  theory 0.01462  (sim/theory 0.979) | sim/theory EMSE at grid minimum 1.067 | slope at small mu -2.01 (theory -2), at large mu +1.72 (theory +1)
+ xi=0.0010: mu_opt sim 0.02218  theory 0.02321  (sim/theory 0.956) | sim/theory EMSE at grid minimum 1.118 | slope at small mu -2.01 (theory -2), at large mu +1.69 (theory +1)
+ xi=0.0020: mu_opt sim 0.03377  theory 0.03684  (sim/theory 0.917) | sim/theory EMSE at grid minimum 1.199 | slope at small mu -2.01 (theory -2), at large mu +1.57 (theory +1)
+ xi=0.0040: mu_opt sim 0.05001  theory 0.05848  (sim/theory 0.855) | sim/theory EMSE at grid minimum 1.340 | slope at small mu -2.01 (theory -2), at large mu +1.19 (theory +1)
+ xi=0.0080: mu_opt sim 0.07079  theory 0.09283  (sim/theory 0.763) | sim/theory EMSE at grid minimum 1.626 | slope at small mu -2.01 (theory -2), at large mu +0.40 (theory +1)
+ exponent d log mu_opt / d log xi:  simulated 0.599   theory 0.667

@@ -1,0 +1,3 @@
+20 done 30
+1000 done 55
+static done 292

@@ -1,0 +1,10 @@
+(1) flat channel BER, Gaussian generator (lms_lib.make_noise = numpy default_rng.standard_normal)
+    9.0 dB: errors  13336 of 4.0e+08  BER 3.334e-05  95% CI [3.278e-05, 3.391e-05]  theory 3.363e-05  inside: True
+   10.0 dB: errors   1501 of 4.0e+08  BER 3.753e-06  95% CI [3.565e-06, 3.947e-06]  theory 3.872e-06  inside: True
+   11.0 dB: errors    108 of 4.0e+08  BER 2.700e-07  95% CI [2.215e-07, 3.260e-07]  theory 2.613e-07  inside: True
+
+(2) analytic J_min(L), Delta = 2 (no simulation)
+   16 dB c= 40: L=4: 0.01450  L=8: 0.01358  L=12: 0.01358  L=16: 0.01358  L=20: 0.01358  L=24: 0.01358  L=32: 0.01358
+   16 dB c=116: L=4: 0.19060  L=8: 0.04901  L=12: 0.03591  L=16: 0.03464  L=20: 0.03451  L=24: 0.03450  L=32: 0.03450
+   14 dB c= 40: L=4: 0.02222  L=8: 0.02133  L=12: 0.02133  L=16: 0.02133  L=20: 0.02133  L=24: 0.02133  L=32: 0.02133
+   14 dB c=116: L=4: 0.19454  L=8: 0.06255  L=12: 0.05207  L=16: 0.05121  L=20: 0.05114  L=24: 0.05113  L=32: 0.05113

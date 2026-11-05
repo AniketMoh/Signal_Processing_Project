@@ -1,0 +1,78 @@
+
+[1] Formula used by V4b:  excess = q/(1-q),  q = mu*tr(R)/2,  tr(R) = L*(sum h^2 + sigma^2)   (normalised by J_min)
+    Assumptions: (A1) small mu; (A2) u(n) independent of the weight error w(n)-w_o; (A3) the optimal-filter error e_o(n)
+    is white (uncorrelated in time) and independent of u(n) (Haykin 'independence theory'); A3 gives gradient-noise
+    covariance J_min*R.  q/(1-q) is the sum over eigenvalues mu*lam/(2-mu*lam) with lam replaced by its mean.
+    This channel: J_min = 0.02736, tr(R) = 22.269, eigenvalues of R: min 0.278, max 2.880, cond 10.4
+    mu=2^-7: trace form 9.527%  eigenvalue form 8.767%  (they differ by -7.98%)
+    mu=2^-8: trace form 4.547%  eigenvalue form 4.366%  (they differ by -3.98%)
+    mu=2^-9: trace form 2.223%  eigenvalue form 2.179%  (they differ by -1.98%)
+    mu=2^-10: trace form 1.099%  eigenvalue form 1.088%  (they differ by -0.99%)
+
+[3] Implementation audit
+    (a) plain-python LMS vs project loop, 4000 symbols: max |difference| = 8.88e-16
+    (b) row-based LMS vs project loop, 200000 symbols: max |difference| = 0.00e+00
+    (c) d[n]=x[n-2] exactly: True; Wiener error via rows vs via convolution: max diff 8.9e-16
+    (d) measured MSE of the fixed Wiener filter: 0.02734 +- 0.00004 (95%) vs theory J_min 0.02736  -> ratio 0.9994
+    (e) Wiener-filter MSE for Delta=0,2,8,17: [0.0277 0.0275 0.0274 0.9907]  (Delta=2 is in the flat minimum, J_min=0.0274)
+    (f) block MSEs (mu=2^-8, 1 seed): [0.02949 0.02909 0.0291  0.02911 0.02922 0.02931 0.02942 0.02911 0.02947]; first/last third = 0.02922/0.02934 (no trend beyond noise)
+        convergence time at mu=2^-10 was ~4000 symbols (P1 learning curves); window starts at 100000 = 25x that.
+
+[2,4,6,7] Per-mu table, control channel (a = 0.6016, 14 dB, Delta = 2), binary BPSK data
+
+   --- binary data, ISI channel: h = [1.     0.6016 0.1   ], J_min = 0.02736, tr(R) = 22.269, 16 seeds x 1000000 symbols (window 900000) ---
+   mu      J_min    MSE_meas(+-95%)      excess_meas(abs)  excess_textbook(abs)  excess_exact1st(abs)  | meas/textbook (unpaired | paired +-95%)  meas/exact1st (paired +-95%)
+   2^-7   0.02736  0.03125+-0.00003   3.902e-03       2.607e-03         3.493e-03      |  1.494 | 1.497 +-0.003      1.117 +-0.002
+   2^-8   0.02736  0.02919+-0.00003   1.842e-03       1.244e-03         1.746e-03      |  1.474 | 1.480 +-0.003      1.055 +-0.002
+   2^-9   0.02736  0.02825+-0.00003   8.956e-04       6.082e-04         8.732e-04      |  1.460 | 1.473 +-0.003      1.026 +-0.002
+   2^-10   0.02736  0.02779+-0.00003   4.416e-04       3.007e-04         4.366e-04      |  1.443 | 1.468 +-0.004      1.011 +-0.003
+   C(0): exact 0.6058, data 0.6058, J*trR 0.6092;  C(1): exact -0.1535, data -0.1535;  sum_(j>=1) C: exact -0.1442, data(<=20) -0.1441
+   residual-error autocorrelation lag 1..4 (data): [-0.5343  0.2158 -0.0745  0.0225]   (white would be 0 +- 0.0005)
+   numerical controls (8 records), paired excess / textbook:
+     mu=2^-7: linearised model 1.401 +-0.004;  time-shuffled data 0.999 +-0.005
+     mu=2^-8: linearised model 1.435 +-0.004;  time-shuffled data 0.996 +-0.006
+     mu=2^-9: linearised model 1.450 +-0.004;  time-shuffled data 0.994 +-0.007
+     mu=2^-10: linearised model 1.457 +-0.004;  time-shuffled data 0.991 +-0.007
+
+   Eigenvalues of R (control channel): [0.278 0.308 0.361 0.442 0.553 0.699 0.881 1.096 1.341 1.607 1.881 2.151
+ 2.4   2.613 2.777 2.88 ]
+   R first row (autocorrelation of the received signal at lags 0..5): [1.3918 0.6617 0.1    0.     0.     0.    ]  (white input would be [sigma^2+sum h^2, 0, 0, ...])
+
+   Controls on the same table:
+
+   --- GAUSSIAN data, ISI channel: h = [1.     0.6016 0.1   ], J_min = 0.02736, tr(R) = 22.269, 8 seeds x 1000000 symbols (window 900000) ---
+   mu      J_min    MSE_meas(+-95%)      excess_meas(abs)  excess_textbook(abs)  excess_exact1st(abs)  | meas/textbook (unpaired | paired +-95%)  meas/exact1st (paired +-95%)
+   2^-8   0.02736  0.02923+-0.00005   1.869e-03       1.244e-03         1.758e-03      |  1.508 | 1.503 +-0.005      1.064 +-0.004
+   2^-9   0.02736  0.02827+-0.00005   9.058e-04       6.082e-04         8.788e-04      |  1.501 | 1.489 +-0.006      1.031 +-0.004
+   2^-10   0.02736  0.02781+-0.00004   4.458e-04       3.007e-04         4.394e-04      |  1.505 | 1.482 +-0.008      1.015 +-0.005
+   C(0): exact 0.6092, data 0.6095, J*trR 0.6092;  C(1): exact -0.1548, data -0.1549;  sum_(j>=1) C: exact -0.1453, data(<=20) -0.1457
+   residual-error autocorrelation lag 1..4 (data): [-0.5344  0.2157 -0.074   0.0217]   (white would be 0 +- 0.0007)
+
+   --- FLAT channel, binary data: h = [1. 0. 0.], J_min = 0.01952, tr(R) = 16.318, 8 seeds x 1000000 symbols (window 900000) ---
+   mu      J_min    MSE_meas(+-95%)      excess_meas(abs)  excess_textbook(abs)  excess_exact1st(abs)  | meas/textbook (unpaired | paired +-95%)  meas/exact1st (paired +-95%)
+   2^-8   0.01952  0.02015+-0.00002   6.400e-04       6.425e-04         6.206e-04      |  0.988 | 0.996 +-0.004      1.031 +-0.005
+   2^-9   0.01952  0.01983+-0.00002   3.147e-04       3.161e-04         3.103e-04      |  0.980 | 0.996 +-0.005      1.014 +-0.005
+   2^-10   0.01952  0.01967+-0.00002   1.560e-04       1.568e-04         1.551e-04      |  0.964 | 0.995 +-0.005      1.006 +-0.005
+   C(0): exact 0.3177, data 0.3177, J*trR 0.3185;  C(1): exact 0.0000, data -0.0000;  sum_(j>=1) C: exact 0.0000, data(<=20) -0.0001
+   residual-error autocorrelation lag 1..4 (data): [ 0.     -0.0003  0.0004 -0.0004]   (white would be 0 +- 0.0007)
+
+[5] ISI-strength sweep: h = s*[0, 0.6016, 0.1] added to a unit main tap (s = 0 is a flat channel), mu = 2^-9, 6 seeds x 1e6
+    s     a      h2     cond(R)  lag-1 acf of e_o   meas/textbook (paired +-95%)   exact-model/textbook   meas/exact-model
+    0.00  0.0000 0.0000    1.00   -0.0001          0.996 +-0.007              0.982                 1.015 +-0.007
+    0.10  0.0602 0.0100    1.26   -0.0585          1.003 +-0.007              0.989                 1.015 +-0.007
+    0.20  0.1203 0.0200    1.58   -0.1158          1.023 +-0.006              1.008                 1.015 +-0.006
+    0.30  0.1805 0.0300    1.98   -0.1719          1.056 +-0.006              1.040                 1.015 +-0.006
+    0.40  0.2406 0.0400    2.49   -0.2270          1.099 +-0.006              1.082                 1.016 +-0.006
+    0.50  0.3008 0.0500    3.12   -0.2810          1.151 +-0.006              1.133                 1.017 +-0.006
+    0.60  0.3609 0.0600    3.93   -0.3339          1.210 +-0.006              1.189                 1.018 +-0.005
+    0.70  0.4211 0.0700    4.96   -0.3856          1.274 +-0.006              1.249                 1.020 +-0.005
+    0.80  0.4813 0.0800    6.30   -0.4363          1.340 +-0.006              1.312                 1.022 +-0.005
+    0.90  0.5414 0.0900    8.05   -0.4859          1.407 +-0.006              1.374                 1.024 +-0.004
+    1.00  0.6016 0.1000   10.36   -0.5343          1.473 +-0.006              1.436                 1.026 +-0.004
+    1.25  0.7520 0.1250   20.36   -0.6499          1.627 +-0.005              1.575                 1.033 +-0.003
+    1.50  0.9023 0.1500   42.93   -0.7553          1.750 +-0.005              1.682                 1.041 +-0.003
+
+=== RESULTS ===
+audit passes: True
+V4b (original, textbook, 20% criterion)  [kept]: ratios meas/textbook = [1.48, 1.473, 1.468] -> FAIL stays
+V4d (reference: exact first-order correlated-error model, same 20% criterion): ratios = [1.055, 1.026, 1.011] -> PASS

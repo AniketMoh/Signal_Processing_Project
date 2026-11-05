@@ -1,0 +1,25 @@
+Validation of the paired seed-level bootstrap (12 dB, primary channel, 40 replicates x 50 seeds, seeds 300000-301999; L1 validation data)
+
+ mu=2^-5  S=20  (log interpolation in 40/40 replicates, linear otherwise):  true ratio 1.039 (linear-interp. truth 1.000)  (R3 BER 4.02e-03, ref 3.87e-03; ~30565 R3 errors per replicate, mean burst size 1.86)
+   ratio (PRIMARY, paired bootstrap): coverage 36/40;  mean bootstrap SD / actual SD of replicate ratios (both relative to truth) = 0.96
+   R3 BER alone: coverage  plain Wilson 33/40  burst Wilson 37/40  seed bootstrap 37/40
+                 SD ratio (method / actual): plain Wilson 0.61  burst Wilson 0.84  seed bootstrap 0.88
+   per-seed correlation trajectory R3 errors vs static reference (pairing benefit): +0.515
+
+ mu=2^-5  S=1000  (log interpolation in 40/40 replicates, linear otherwise):  true ratio 1.005 (linear-interp. truth 0.968)  (R3 BER 3.89e-03, ref 3.87e-03; ~29581 R3 errors per replicate, mean burst size 1.87)
+   ratio (PRIMARY, paired bootstrap): coverage 40/40;  mean bootstrap SD / actual SD of replicate ratios (both relative to truth) = 0.97
+   R3 BER alone: coverage  plain Wilson 36/40  burst Wilson 38/40  seed bootstrap 38/40
+                 SD ratio (method / actual): plain Wilson 0.75  burst Wilson 1.02  seed bootstrap 1.09
+   per-seed correlation trajectory R3 errors vs static reference (pairing benefit): +0.515
+
+ mu=2^-8  S=20  (log interpolation in 13/40 replicates, linear otherwise):  true ratio 4.749 (linear-interp. truth 4.449)  (R3 BER 1.60e-04, ref 3.37e-05; ~1215 R3 errors per replicate, mean burst size 1.16)
+   ratio (PRIMARY, paired bootstrap): coverage 36/40;  mean bootstrap SD / actual SD of replicate ratios (both relative to truth) = 1.09
+   R3 BER alone: coverage  plain Wilson 38/40  burst Wilson 38/40  seed bootstrap 38/40
+                 SD ratio (method / actual): plain Wilson 0.90  burst Wilson 0.97  seed bootstrap 0.99
+   per-seed correlation trajectory R3 errors vs static reference (pairing benefit): +0.184
+
+ mu=2^-8  S=1000  (log interpolation in 13/40 replicates, linear otherwise):  true ratio 1.017 (linear-interp. truth 0.952)  (R3 BER 3.42e-05, ref 3.37e-05; ~260 R3 errors per replicate, mean burst size 1.14)
+   ratio (PRIMARY, paired bootstrap): coverage 36/40;  mean bootstrap SD / actual SD of replicate ratios (both relative to truth) = 0.88
+   R3 BER alone: coverage  plain Wilson 38/40  burst Wilson 38/40  seed bootstrap 37/40
+                 SD ratio (method / actual): plain Wilson 0.85  burst Wilson 0.91  seed bootstrap 0.92
+   per-seed correlation trajectory R3 errors vs static reference (pairing benefit): +0.458

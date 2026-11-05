@@ -1,0 +1,34 @@
+
+[ORIGINAL DATA re-evaluated (same seeds as the original V2)]  seeds 7000+i / 8000+i
+   Eb/N0  0.00 dB  errors  156898  BER 7.845e-02  theory 7.865e-02  z -1.05  in95 True   in99 True   in familywise True 
+   Eb/N0  0.75 dB  errors  123057  BER 6.153e-02  theory 6.157e-02  z -0.22  in95 True   in99 True   in familywise True 
+   Eb/N0  1.50 dB  errors   92586  BER 4.629e-02  theory 4.640e-02  z -0.73  in95 True   in99 True   in familywise True 
+   Eb/N0  2.25 dB  errors   66890  BER 3.345e-02  theory 3.345e-02  z -0.02  in95 True   in99 True   in familywise True 
+   Eb/N0  3.00 dB  errors   45213  BER 2.261e-02  theory 2.288e-02  z -2.57  in95 False  in99 True   in familywise True 
+   Eb/N0  3.75 dB  errors   29296  BER 1.465e-02  theory 1.471e-02  z -0.74  in95 True   in99 True   in familywise True 
+   Eb/N0  4.50 dB  errors   17717  BER 8.859e-03  theory 8.794e-03  z +0.98  in95 True   in99 True   in familywise True 
+   Eb/N0  5.25 dB  errors    9662  BER 4.831e-03  theory 4.823e-03  z +0.17  in95 True   in99 True   in familywise True 
+   Eb/N0  6.00 dB  errors    4874  BER 2.437e-03  theory 2.388e-03  z +1.41  in95 True   in99 True   in familywise True 
+   Eb/N0  6.75 dB  errors    2178  BER 1.089e-03  theory 1.048e-03  z +1.78  in95 True   in99 True   in familywise True 
+   Eb/N0  7.50 dB  errors     798  BER 3.990e-04  theory 3.988e-04  z +0.01  in95 True   in99 True   in familywise True 
+   Eb/N0  8.25 dB  errors     247  BER 1.235e-04  theory 1.281e-04  z -0.57  in95 True   in99 True   in familywise True 
+   inside 95 %: 11/12   inside 99 %: 12/12   inside familywise (99.583 %): 12/12
+   (b) pooled chi2 = 15.33 (12 dof), p = 0.224   (c) points above theory: 5/12, sign-test p = 0.774   (d) min errors 247
+   REVISED V2 verdict: PASS
+
+[INDEPENDENT REPLICATE (new seeds)]  seeds 17000+i / 18000+i
+   Eb/N0  0.00 dB  errors  157455  BER 7.873e-02  theory 7.865e-02  z +0.41  in95 True   in99 True   in familywise True 
+   Eb/N0  0.75 dB  errors  123620  BER 6.181e-02  theory 6.157e-02  z +1.43  in95 True   in99 True   in familywise True 
+   Eb/N0  1.50 dB  errors   93117  BER 4.656e-02  theory 4.640e-02  z +1.06  in95 True   in99 True   in familywise True 
+   Eb/N0  2.25 dB  errors   66715  BER 3.336e-02  theory 3.345e-02  z -0.71  in95 True   in99 True   in familywise True 
+   Eb/N0  3.00 dB  errors   45892  BER 2.295e-02  theory 2.288e-02  z +0.64  in95 True   in99 True   in familywise True 
+   Eb/N0  3.75 dB  errors   29451  BER 1.473e-02  theory 1.471e-02  z +0.17  in95 True   in99 True   in familywise True 
+   Eb/N0  4.50 dB  errors   17835  BER 8.918e-03  theory 8.794e-03  z +1.87  in95 True   in99 True   in familywise True 
+   Eb/N0  5.25 dB  errors    9707  BER 4.854e-03  theory 4.823e-03  z +0.63  in95 True   in99 True   in familywise True 
+   Eb/N0  6.00 dB  errors    4878  BER 2.439e-03  theory 2.388e-03  z +1.47  in95 True   in99 True   in familywise True 
+   Eb/N0  6.75 dB  errors    2160  BER 1.080e-03  theory 1.048e-03  z +1.39  in95 True   in99 True   in familywise True 
+   Eb/N0  7.50 dB  errors     809  BER 4.045e-04  theory 3.988e-04  z +0.40  in95 True   in99 True   in familywise True 
+   Eb/N0  8.25 dB  errors     272  BER 1.360e-04  theory 1.281e-04  z +0.99  in95 True   in99 True   in familywise True 
+   inside 95 %: 12/12   inside 99 %: 12/12   inside familywise (99.583 %): 12/12
+   (b) pooled chi2 = 13.41 (12 dof), p = 0.340   (c) points above theory: 11/12, sign-test p = 0.006   (d) min errors 272
+   REVISED V2 verdict: FAIL

@@ -1,0 +1,145 @@
+
+######## Eb/N0 = 16 dB   primary channel c 40..116   eps_plateau = 1.829   seeds = 20
+
+  mu = 2^-5.0:  eps_static literal  46.7%   static S0 R3 errors 0 of 3.0e+06
+     S:               5000   2000   1000    500    320    224    160    112     80     56     40     28     20     14     10      5      2      1
+     eps3 (%):         119    119    119    119    119    119    119    119    120    121    123    126    131    140    154    205    323    400
+     rho (traj):     -0.02  -0.02  -0.02  -0.02  -0.02  -0.01  -0.01  -0.01  -0.00   0.01   0.05   0.10   0.18   0.32   0.53   1.35   3.22   4.45
+     R3 BER:         3e-04  3e-04  3e-04  3e-04  3e-04  3e-04  3e-04  3e-04  3e-04  3e-04  3e-04  3e-04  3e-04  3e-04  4e-04  6e-04  2e-03  3e-03
+     ref (obs|UB):  obs 3.2e-04 / UB 3.2e-04 at S=slowest; resolved at slowest S: True (expected ref errors 4912)
+     MSE rho_th=.5 traj: PPPPPPPPPPPPPPFFFF  S*_MSE 14   (rho_th .25 / .75: 20 / 10; literal baseline at .5: None)
+     BER f=2 (traj, P-10): PPPPPPPPPPPPPPPPFF  S*_BER 5  mono_demonstrated True   (f=1.5: 10, f=5: 5);  literal-S0 reference: FFFFFFFFFFFFFFFFFF S*_BER None
+     S_cross: smallest S with significant advantage = 5
+
+  mu = 2^-5.5:  eps_static literal  29.5%   static S0 R3 errors 0 of 3.0e+06
+     S:               5000   2000   1000    500    320    224    160    112     80     56     40     28     20     14     10      5      2      1
+     eps3 (%):          64     64     64     64     64     64     64     65     66     67     70     75     83     95    112    168    259    306
+     rho (traj):     -0.00  -0.00  -0.00  -0.00  -0.00  -0.00   0.00   0.01   0.01   0.03   0.05   0.10   0.16   0.26   0.40   0.88   1.64   2.04
+     R3 BER:         1e-05  1e-05  2e-05  1e-05  1e-05  1e-05  1e-05  1e-05  1e-05  1e-05  1e-05  1e-05  2e-05  2e-05  4e-05  1e-04  5e-04  8e-04
+     ref (obs|UB):  obs 1.5e-05 / UB 1.6e-05 at S=slowest; resolved at slowest S: True (expected ref errors 230)
+     MSE rho_th=.5 traj: PPPPPPPPPPPPPPPFFF  S*_MSE 10   (rho_th .25 / .75: 20 / 10; literal baseline at .5: 14)
+     BER f=2 (traj, P-10): Pppppppppppppp?FFF  S*_BER None  mono_demonstrated False   (f=1.5: None, f=5: 10);  literal-S0 reference: FFFFFFFFFFFFFFFFFF S*_BER None
+     S_cross: smallest S with significant advantage = 2
+
+  mu = 2^-6.0:  eps_static literal  19.4%   static S0 R3 errors 0 of 3.0e+06
+     S:               5000   2000   1000    500    320    224    160    112     80     56     40     28     20     14     10      5      2      1
+     eps3 (%):          39     39     39     39     39     39     40     41     42     45     49     57     67     84    105    162    231    261
+     rho (traj):     -0.00  -0.00  -0.00  -0.00   0.00   0.00   0.01   0.01   0.02   0.04   0.07   0.12   0.20   0.31   0.46   0.86   1.33   1.54
+     R3 BER:         1e-06  1e-06  1e-06  1e-06  7e-07  4e-07  1e-06  1e-06  1e-06  7e-07  1e-06  1e-06  1e-06  3e-06  1e-05  4e-05  2e-04  3e-04
+     ref (obs|UB):  obs 9.6e-07 / UB 1.8e-06 at S=slowest; resolved at slowest S: False (expected ref errors 15)
+     MSE rho_th=.5 traj: PPPPPPPPPPPPPPPFFF  S*_MSE 10   (rho_th .25 / .75: 20 / 10; literal baseline at .5: 14)
+     BER f=2 (traj, P-10): ppppppppppppp?FFFF  S*_BER None  mono_demonstrated False   (f=1.5: None, f=5: None);  literal-S0 reference: p?????????????FFFF S*_BER None
+     S_cross: no S_cross observed within the grid
+
+  mu = 2^-6.5:  eps_static literal  13.1%   static S0 R3 errors 0 of 3.0e+06
+     S:               5000   2000   1000    500    320    224    160    112     80     56     40     28     20     14     10      5      2      1
+     eps3 (%):          25     25     25     25     26     26     27     28     31     35     42     53     67     88    112    165    216    236
+     rho (traj):     -0.00  -0.00  -0.00   0.00   0.00   0.01   0.01   0.02   0.04   0.07   0.11   0.17   0.27   0.40   0.55   0.89   1.21   1.34
+     R3 BER:         2e-07  2e-07  0e+00  3e-07  0e+00  0e+00  3e-07  0e+00  0e+00  3e-07  7e-07  3e-07  3e-07  2e-06  8e-06  3e-05  8e-05  9e-05
+     ref (obs|UB):  obs 1.6e-07 / UB 1.0e-06 at S=slowest; resolved at slowest S: False (expected ref errors 2)
+     MSE rho_th=.5 traj: PPPPPPPPPPPPPPFFFF  S*_MSE 14   (rho_th .25 / .75: 28 / 10; literal baseline at .5: 14)
+     BER f=2 (traj, P-10): pppppppppp?pp?FFFF  S*_BER None  mono_demonstrated False   (f=1.5: None, f=5: 14);  literal-S0 reference: pppppppppp?pp?FFFF S*_BER None
+     S_cross: no S_cross observed within the grid
+
+  mu = 2^-7.0:  eps_static literal   9.0%   static S0 R3 errors 0 of 3.0e+06
+     S:               5000   2000   1000    500    320    224    160    112     80     56     40     28     20     14     10      5      2      1
+     eps3 (%):          17     17     17     17     18     19     20     23     27     33     43     58     76    100    125    170    207    220
+     rho (traj):     -0.00  -0.00   0.00   0.00   0.01   0.01   0.02   0.04   0.06   0.10   0.16   0.25   0.36   0.50   0.65   0.92   1.15   1.22
+     R3 BER:         1e-07  2e-07  0e+00  3e-07  0e+00  0e+00  0e+00  0e+00  0e+00  3e-07  7e-07  3e-07  7e-07  1e-06  8e-06  1e-05  4e-05  4e-05
+     ref (obs|UB):  obs 1.7e-08 / UB 9.8e-07 at S=slowest; resolved at slowest S: False (expected ref errors 0)
+     MSE rho_th=.5 traj: PPPPPPPPPPPPP?FFFF  S*_MSE 20   (rho_th .25 / .75: 28 / 10; literal baseline at .5: 20)
+     BER f=2 (traj, P-10): pppppppppp?p??FFFF  S*_BER None  mono_demonstrated False   (f=1.5: None, f=5: 14);  literal-S0 reference: pppppppppp?p??FFFF S*_BER None
+     S_cross: no S_cross observed within the grid
+
+  mu = 2^-7.5:  eps_static literal   6.2%   static S0 R3 errors 0 of 3.0e+06
+     S:               5000   2000   1000    500    320    224    160    112     80     56     40     28     20     14     10      5      2      1
+     eps3 (%):          11     11     12     12     13     15     17     21     27     37     51     70     92    116    138    174    202    209
+     rho (traj):     -0.00   0.00   0.00   0.01   0.01   0.02   0.03   0.06   0.09   0.15   0.23   0.34   0.47   0.61   0.74   0.95   1.11   1.15
+     R3 BER:         7e-08  0e+00  0e+00  0e+00  0e+00  0e+00  0e+00  0e+00  0e+00  3e-07  7e-07  3e-07  1e-06  2e-06  8e-06  9e-06  2e-05  2e-05
+     ref (obs|UB):  obs 0.0e+00 / UB 9.9e-07 at S=slowest; resolved at slowest S: False (expected ref errors 0)
+     MSE rho_th=.5 traj: PPPPPPPPPPPPPFFFFF  S*_MSE 20   (rho_th .25 / .75: 40 / 10; literal baseline at .5: 20)
+     BER f=2 (traj, P-10): pppppppppp?p??FFFF  S*_BER None  mono_demonstrated False   (f=1.5: None, f=5: 14);  literal-S0 reference: pppppppppp?p??FFFF S*_BER None
+     S_cross: no S_cross observed within the grid
+
+  mu = 2^-8.0:  eps_static literal   4.4%   static S0 R3 errors 0 of 3.0e+06
+     S:               5000   2000   1000    500    320    224    160    112     80     56     40     28     20     14     10      5      2      1
+     eps3 (%):           8      8      8      9     11     14     18     24     33     47     64     87    109    132    150    179    198    202
+     rho (traj):     -0.00   0.00   0.00   0.01   0.02   0.03   0.06   0.09   0.14   0.22   0.32   0.45   0.58   0.71   0.81   0.98   1.08   1.11
+     R3 BER:         7e-08  0e+00  0e+00  0e+00  0e+00  0e+00  0e+00  0e+00  0e+00  3e-07  7e-07  7e-07  1e-06  3e-06  9e-06  5e-06  2e-05  1e-05
+     ref (obs|UB):  obs 0.0e+00 / UB 9.9e-07 at S=slowest; resolved at slowest S: False (expected ref errors 0)
+     MSE rho_th=.5 traj: PPPPPPPPPPPPFFFFFF  S*_MSE 28   (rho_th .25 / .75: 56 / 14; literal baseline at .5: 28)
+     BER f=2 (traj, P-10): pppppppppp????FFFF  S*_BER None  mono_demonstrated False   (f=1.5: None, f=5: None);  literal-S0 reference: pppppppppp????FFFF S*_BER None
+     S_cross: no S_cross observed within the grid
+
+  mu = 2^-8.5:  eps_static literal   3.1%   static S0 R3 errors 0 of 3.0e+06
+     S:               5000   2000   1000    500    320    224    160    112     80     56     40     28     20     14     10      5      2      1
+     eps3 (%):           5      6      6      8     11     15     21     31     44     62     83    106    127    146    161    182    195    197
+     rho (traj):      0.00   0.00   0.01   0.02   0.03   0.06   0.09   0.14   0.22   0.32   0.43   0.57   0.68   0.79   0.88   1.00   1.07   1.08
+     R3 BER:         0e+00  0e+00  0e+00  0e+00  0e+00  0e+00  0e+00  0e+00  3e-07  3e-07  7e-07  1e-06  2e-06  5e-06  7e-06  5e-06  8e-06  9e-06
+     ref (obs|UB):  obs 0.0e+00 / UB 9.9e-07 at S=slowest; resolved at slowest S: False (expected ref errors 0)
+     MSE rho_th=.5 traj: PPPPPPPPPPPFFFFFFF  S*_MSE 40   (rho_th .25 / .75: 80 / 20; literal baseline at .5: 40)
+     BER f=2 (traj, P-10): pppppppppp???FFFFF  S*_BER None  mono_demonstrated False   (f=1.5: None, f=5: None);  literal-S0 reference: pppppppppp???FFFFF S*_BER None
+     S_cross: no S_cross observed within the grid
+
+  mu = 2^-9.0:  eps_static literal   2.2%   static S0 R3 errors 0 of 3.0e+06
+     S:               5000   2000   1000    500    320    224    160    112     80     56     40     28     20     14     10      5      2      1
+     eps3 (%):           4      4      5      9     14     20     29     42     59     81    103    124    142    158    169    185    192    194
+     rho (traj):      0.00   0.00   0.01   0.03   0.05   0.09   0.14   0.21   0.31   0.43   0.55   0.67   0.77   0.86   0.92   1.01   1.05   1.06
+     R3 BER:         0e+00  0e+00  0e+00  0e+00  0e+00  0e+00  0e+00  3e-07  3e-07  3e-07  1e-06  2e-06  4e-06  4e-06  7e-06  4e-06  8e-06  7e-06
+     ref (obs|UB):  obs 0.0e+00 / UB 9.9e-07 at S=slowest; resolved at slowest S: False (expected ref errors 0)
+     MSE rho_th=.5 traj: PPPPPPPPPPFFFFFFFF  S*_MSE 56   (rho_th .25 / .75: 112 / 28; literal baseline at .5: 56)
+     BER f=2 (traj, P-10): pppppppppp??FFFFFF  S*_BER None  mono_demonstrated False   (f=1.5: None, f=5: None);  literal-S0 reference: pppppppppp??FFFFFF S*_BER None
+     S_cross: no S_cross observed within the grid
+
+  mu = 2^-9.5:  eps_static literal   1.6%   static S0 R3 errors 0 of 3.0e+06
+     S:               5000   2000   1000    500    320    224    160    112     80     56     40     28     20     14     10      5      2      1
+     eps3 (%):           3      4      6     11     18     28     40     58     79    102    122    141    155    167    176    187    191    191
+     rho (traj):      0.00   0.01   0.02   0.05   0.09   0.14   0.21   0.31   0.42   0.55   0.66   0.76   0.84   0.91   0.96   1.02   1.04   1.05
+     R3 BER:         0e+00  0e+00  0e+00  0e+00  0e+00  4e-07  0e+00  3e-07  3e-07  7e-07  2e-06  2e-06  5e-06  4e-06  7e-06  5e-06  7e-06  5e-06
+     ref (obs|UB):  obs 0.0e+00 / UB 9.9e-07 at S=slowest; resolved at slowest S: False (expected ref errors 0)
+     MSE rho_th=.5 traj: PPPPPPPPPFFFFFFFFF  S*_MSE 80   (rho_th .25 / .75: 160 / 40; literal baseline at .5: 80)
+     BER f=2 (traj, P-10): ppppp?ppp???FFFFFF  S*_BER None  mono_demonstrated False   (f=1.5: None, f=5: None);  literal-S0 reference: ppppp?ppp???FFFFFF S*_BER None
+     S_cross: no S_cross observed within the grid
+
+  mu = 2^-10.0:  eps_static literal   1.1%   static S0 R3 errors 0 of 3.0e+06
+     S:               5000   2000   1000    500    320    224    160    112     80     56     40     28     20     14     10      5      2      1
+     eps3 (%):           2      4      7     16     27     40     57     78    100    121    139    154    165    175    181    187    190    190
+     rho (traj):      0.00   0.01   0.03   0.08   0.14   0.21   0.30   0.42   0.54   0.66   0.75   0.84   0.90   0.95   0.99   1.02   1.04   1.04
+     R3 BER:         0e+00  0e+00  0e+00  0e+00  0e+00  4e-07  0e+00  3e-07  7e-07  2e-06  3e-06  3e-06  6e-06  5e-06  7e-06  5e-06  8e-06  6e-06
+     ref (obs|UB):  obs 0.0e+00 / UB 9.9e-07 at S=slowest; resolved at slowest S: False (expected ref errors 0)
+     MSE rho_th=.5 traj: PPPPPPPPFFFFFFFFFF  S*_MSE 112   (rho_th .25 / .75: 224 / 56; literal baseline at .5: 112)
+     BER f=2 (traj, P-10): ppppp?pp????FFFFFF  S*_BER None  mono_demonstrated False   (f=1.5: None, f=5: None);  literal-S0 reference: ppppp?pp????FFFFFF S*_BER None
+     S_cross: no S_cross observed within the grid
+
+  mu = 2^-10.5:  eps_static literal   0.8%   static S0 R3 errors 0 of 3.0e+06
+     S:               5000   2000   1000    500    320    224    160    112     80     56     40     28     20     14     10      5      2      1
+     eps3 (%):           2      4     10     23     39     57     77    100    120    139    153    165    174    180    184    188    190    190
+     rho (traj):      0.00   0.02   0.04   0.12   0.21   0.30   0.42   0.54   0.65   0.76   0.83   0.90   0.95   0.99   1.01   1.03   1.04   1.04
+     R3 BER:         0e+00  0e+00  0e+00  0e+00  0e+00  4e-07  7e-07  1e-06  2e-06  2e-06  4e-06  4e-06  7e-06  5e-06  7e-06  6e-06  8e-06  5e-06
+     ref (obs|UB):  obs 0.0e+00 / UB 9.9e-07 at S=slowest; resolved at slowest S: False (expected ref errors 0)
+     MSE rho_th=.5 traj: PPPPPPPFFFFFFFFFFF  S*_MSE 160   (rho_th .25 / .75: 320 / 80; literal baseline at .5: 160)
+     BER f=2 (traj, P-10): ppppp?????FFFFFFFF  S*_BER None  mono_demonstrated False   (f=1.5: None, f=5: None);  literal-S0 reference: ppppp?????FFFFFFFF S*_BER None
+     S_cross: no S_cross observed within the grid
+
+  mu = 2^-11.0:  eps_static literal   0.6%   static S0 R3 errors 0 of 3.0e+06
+     S:               5000   2000   1000    500    320    224    160    112     80     56     40     28     20     14     10      5      2      1
+     eps3 (%):           2      6     14     34     56     77     99    120    138    154    165    174    180    185    187    189    190    190
+     rho (traj):      0.00   0.02   0.07   0.18   0.30   0.42   0.54   0.66   0.75   0.84   0.90   0.95   0.99   1.01   1.02   1.03   1.04   1.04
+     R3 BER:         0e+00  0e+00  0e+00  0e+00  0e+00  4e-07  1e-06  1e-06  3e-06  3e-06  4e-06  5e-06  7e-06  6e-06  7e-06  7e-06  1e-05  6e-06
+     ref (obs|UB):  obs 0.0e+00 / UB 9.9e-07 at S=slowest; resolved at slowest S: False (expected ref errors 0)
+     MSE rho_th=.5 traj: PPPPPPFFFFFFFFFFFF  S*_MSE 224   (rho_th .25 / .75: 500 / 112; literal baseline at .5: 224)
+     BER f=2 (traj, P-10): ppppp?????FFFFFFFF  S*_BER None  mono_demonstrated False   (f=1.5: None, f=5: None);  literal-S0 reference: ppppp?????FFFFFFFF S*_BER None
+     S_cross: no S_cross observed within the grid
+
+  mu = 2^-11.5:  eps_static literal   0.5%   static S0 R3 errors 0 of 3.0e+06
+     S:               5000   2000   1000    500    320    224    160    112     80     56     40     28     20     14     10      5      2      1
+     eps3 (%):           3      9     22     50     77    100    120    139    154    166    175    182    186    188    189    191    191    191
+     rho (traj):      0.00   0.04   0.11   0.27   0.41   0.54   0.65   0.76   0.84   0.91   0.96   0.99   1.01   1.03   1.04   1.04   1.04   1.05
+     R3 BER:         0e+00  0e+00  0e+00  0e+00  0e+00  1e-06  1e-06  3e-06  4e-06  5e-06  7e-06  7e-06  8e-06  7e-06  8e-06  9e-06  1e-05  8e-06
+     ref (obs|UB):  obs 0.0e+00 / UB 9.9e-07 at S=slowest; resolved at slowest S: False (expected ref errors 0)
+     MSE rho_th=.5 traj: PPPPPFFFFFFFFFFFFF  S*_MSE 320   (rho_th .25 / .75: 1000 / 160; literal baseline at .5: 320)
+     BER f=2 (traj, P-10): ppppp???FFFFFFFFFF  S*_BER None  mono_demonstrated False   (f=1.5: None, f=5: None);  literal-S0 reference: ppppp???FFFFFFFFFF S*_BER None
+     S_cross: no S_cross observed within the grid
+
+  mu_opt(S): S=5000: 2^-10.59  S=2000: 2^-9.79  S=1000: 2^-9.19  S=500: 2^-8.60  S=320: 2^-8.24  S=224: 2^-7.96  S=160: 2^-7.69  S=112: 2^-7.42  S=80: 2^-7.18  S=56: 2^-6.92  S=40: 2^-6.70  S=28: 2^-6.48  S=20: 2^-6.27  S=14: 2^-6.12  S=10: 2^-6.00  S=5: 2^-6.10  S=2: 2^-10.48  S=1: 2^-10.56   (* = optimum at the grid boundary)
+  exponent preview: d log2 mu_opt / d log2 (1/S) = 0.52  bootstrap 95% [0.52, 0.52]  using S = [5000, 2000, 1000, 500, 320, 224, 160, 112, 80, 56, 40, 28, 20, 14, 10] (bracketed, rho at optimum <= 0.75)

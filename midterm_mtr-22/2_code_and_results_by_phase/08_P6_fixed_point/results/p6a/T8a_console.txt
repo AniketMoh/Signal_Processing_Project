@@ -1,0 +1,46 @@
+T8a static accuracy and stalls (14 dB, 6 seeds 5610-5615, 100000 evaluation symbols). entries: MSE of L2 relative to L1 in %, and fraction of updates stalled (nonzero exact update rounded to 0).
+  c=40 mu=2^-8: L1 MSE 0.02219 (excess over J_min 4.0 %)
+     B_acc=10 B_mul=10 nearest : MSE vs L1   +54.22 %   stalled updates  0.979
+     B_acc=12 B_mul=12 nearest : MSE vs L1    +0.91 %   stalled updates  0.629
+     B_acc=14 B_mul=12 nearest : MSE vs L1    +0.06 %   stalled updates  0.191
+     B_acc=16 B_mul=12 nearest : MSE vs L1    +0.01 %   stalled updates  0.048
+     B_acc=26 B_mul=12 nearest : MSE vs L1    +0.01 %   stalled updates  0.000
+     B_acc=10 B_mul=10 truncate: MSE vs L1 +10157.31 %   stalled updates  0.273
+     B_acc=12 B_mul=12 truncate: MSE vs L1  +633.63 %   stalled updates  0.259
+     B_acc=14 B_mul=12 truncate: MSE vs L1   +39.52 %   stalled updates  0.159
+     B_acc=16 B_mul=12 truncate: MSE vs L1    +2.47 %   stalled updates  0.048
+     B_acc=26 B_mul=12 truncate: MSE vs L1    +0.01 %   stalled updates  0.000
+  c=40 mu=2^-10: L1 MSE 0.02150 (excess over J_min 0.8 %)
+     B_acc=10 B_mul=10 nearest : MSE vs L1 +4541.50 %   stalled updates  1.000
+     B_acc=12 B_mul=12 nearest : MSE vs L1   +57.66 %   stalled updates  0.974
+     B_acc=14 B_mul=12 nearest : MSE vs L1    +0.52 %   stalled updates  0.629
+     B_acc=16 B_mul=12 nearest : MSE vs L1    +0.02 %   stalled updates  0.191
+     B_acc=26 B_mul=12 nearest : MSE vs L1    +0.01 %   stalled updates  0.000
+     B_acc=10 B_mul=10 truncate: MSE vs L1 +164919.09 %   stalled updates  0.195
+     B_acc=12 B_mul=12 truncate: MSE vs L1 +9890.81 %   stalled updates  0.279
+     B_acc=14 B_mul=12 truncate: MSE vs L1  +616.44 %   stalled updates  0.262
+     B_acc=16 B_mul=12 truncate: MSE vs L1   +38.49 %   stalled updates  0.160
+     B_acc=26 B_mul=12 truncate: MSE vs L1    +0.01 %   stalled updates  0.000
+  c=116 mu=2^-8: L1 MSE 0.05676 (excess over J_min 10.9 %)
+     B_acc=10 B_mul=10 nearest : MSE vs L1    +1.93 %   stalled updates  0.862
+     B_acc=12 B_mul=12 nearest : MSE vs L1    +0.11 %   stalled updates  0.593
+     B_acc=14 B_mul=12 nearest : MSE vs L1    +0.02 %   stalled updates  0.359
+     B_acc=16 B_mul=12 nearest : MSE vs L1    +0.00 %   stalled updates  0.157
+     B_acc=26 B_mul=12 nearest : MSE vs L1    +0.00 %   stalled updates  0.000
+     B_acc=10 B_mul=10 truncate: MSE vs L1 +2085.99 %   stalled updates  0.369
+     B_acc=12 B_mul=12 truncate: MSE vs L1  +132.82 %   stalled updates  0.335
+     B_acc=14 B_mul=12 truncate: MSE vs L1    +8.49 %   stalled updates  0.241
+     B_acc=16 B_mul=12 truncate: MSE vs L1    +0.54 %   stalled updates  0.122
+     B_acc=26 B_mul=12 truncate: MSE vs L1    +0.00 %   stalled updates  0.000
+  c=116 mu=2^-10: L1 MSE 0.05250 (excess over J_min 2.5 %)
+     B_acc=10 B_mul=10 nearest : MSE vs L1 +1102.78 %   stalled updates  0.995
+     B_acc=12 B_mul=12 nearest : MSE vs L1    +1.16 %   stalled updates  0.863
+     B_acc=14 B_mul=12 nearest : MSE vs L1    +0.21 %   stalled updates  0.593
+     B_acc=16 B_mul=12 nearest : MSE vs L1    +0.01 %   stalled updates  0.359
+     B_acc=26 B_mul=12 nearest : MSE vs L1    +0.01 %   stalled updates  0.001
+     B_acc=10 B_mul=10 truncate: MSE vs L1 +32624.30 %   stalled updates  0.371
+     B_acc=12 B_mul=12 truncate: MSE vs L1 +2015.16 %   stalled updates  0.372
+     B_acc=14 B_mul=12 truncate: MSE vs L1  +128.30 %   stalled updates  0.337
+     B_acc=16 B_mul=12 truncate: MSE vs L1    +8.20 %   stalled updates  0.241
+     B_acc=26 B_mul=12 truncate: MSE vs L1    +0.01 %   stalled updates  0.001
+done in 2 s

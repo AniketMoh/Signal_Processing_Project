@@ -1,0 +1,127 @@
+\section{Experimental Setup and Methodology}
+\label{sec:method}
+This section summarises the PPR's methodology as it was carried out, with the parameters actually used. Where the PPR left a quantity open or stated it incorrectly, the corrected version is given here and the change is listed in \cref{app:register}.
+
+\subsection{Link and time-varying channel}
+\label{sec:channel}
+Bits $b[n]$ are mapped to BPSK symbols $x[n]=2b[n]-1$ and sent through a channel whose taps change with time,
+\begin{equation}
+r[n]=\sum_{k=0}^{M-1} h[k,n]\,x[n-k]+v[n],
+\label{eq:tv}
+\end{equation}
+with $h[n]=[1,\,a[n],\,0.1]$ ($M=3$). The coefficient is $a[n]=c[n]\cdot2^{-7}$, where the integer counter $c$ of the variation controller moves one step every $S$ symbols along a triangle; smaller $S$ means a faster channel. Training uses the static channel at the lower end $c_{\rm lo}$, and the triangle starts upward at the end of training $N_T$. Two channels are used. The PPR range $a\in[0.20,0.60]$ ($c=26\ldots77$) is kept as the \emph{control} channel, and a harsher \emph{primary} channel $c=40\ldots116$ ($a=0.3125\ldots0.906$) is added, \nb{because the control channel never closes the eye: its eye margin $1-(a+0.1)$ never falls below 0.29, whereas on the primary channel it falls from 0.59 to about 0 and the direct detector's error rate at the harsh end reaches 14--15\,\%}. Both channels are minimum phase. For abrupt transitions the channel holds $h_A$ until $N_C$ and then switches to $h_B$; three steps are used: $c=40\to116$ (harsh step up), $40\to77$ and $116\to40$.
+
+\nb{The SNR, not defined in the PPR, is $E_b/N_0$ relative to the transmitted symbol energy: $E_b=1$ and the noise variance per real sample is $\sigma^2=1/(2E_b/N_0)$, so that the flat-channel BER is $Q(\sqrt{2E_b/N_0})$.}
+
+The hardware noise is the sum of 12 uniform variates drawn from separate LFSRs with distinct primitive polynomials, because bit-slices of a single LFSR are correlated; the PPR noted that the bounded support of such a sum limits hardware BER measurements to about $10^{-4}$. \nb{The generator uses twelve Fibonacci LFSRs with primitive trinomials of degrees 17--35, 16 bits each, $v=\sigma(\sum_{i=1}^{12}U_i-6)$. A primitive polynomial guarantees each generator its maximal period and balanced output; it does not guarantee that the twelve output streams are statistically independent. Independence is therefore an \emph{assumption} of the noise model, checked empirically: mean $4.6\times10^{-4}$, variance 1.0011, autocorrelation $\le1.3\times10^{-3}$, excess kurtosis $-0.103$ (Irwin--Hall, which assumes independent uniforms: $-0.100$), and a flat-channel BER equal to the exact Irwin--Hall prediction within 0.998--1.056 (\cref{sec:replication}).}
+
+\nb{\emph{Meaning of the $10^{-4}$ line.} The sum of 12 uniforms has support $\pm6\sigma$ and tails lighter than Gaussian, so its BER falls below the Gaussian value as the SNR rises: on a flat channel it is 0.81, 0.50 and 0.28 times the Gaussian value at 6, 8 and 9\,dB, and above 12.55\,dB a direct BPSK detector cannot make a noise error at all. The dashed line at $10^{-4}$ on the BER figures marks roughly where, on a flat channel, this generator's BER first differs from the Gaussian value by a factor of two (8\,dB); below it, hardware BER would reflect the tail approximation rather than Gaussian noise. On ISI channels the departure depends on the eye margin, so the line is a guide, not a sharp threshold. It is not a general limit of FPGA BER counting, and it is separate from the statistical resolution set by the number of bits counted (a zero-error point is reported at its 95\,\% upper bound, about $3/N_{\rm bits}$). The \lvl{L1} results use ideal Gaussian noise and are reported below the line.} Every comparison between receivers, step sizes or word lengths uses identical bits, channel trajectory and noise, enforced by seeding.
+
+\begin{figure*}[t]
+\centering
+\resizebox{0.92\linewidth}{!}{%
+\begin{tikzpicture}[>=Stealth, node distance=0.35cm and 0.45cm,
+  blk/.style={draw, rounded corners=2pt, align=center, font=\footnotesize, minimum height=0.8cm, inner sep=3pt}]
+\node[blk] (host) {Host PC\\payload};
+\node[blk, right=of host] (uart) {UART\\+ framing};
+\node[blk, right=of uart] (map) {BPSK\\mapper};
+\node[blk, right=of map] (ch) {Time-varying\\FIR channel};
+\node[blk, above=of ch] (var) {Variation\\controller};
+\node[blk, below=of ch] (noise) {Noise\\(12 LFSRs)};
+\node[draw, circle, inner sep=1pt, right=of ch] (sum) {$+$};
+\node[blk, right=1.0cm of sum, yshift=1.0cm] (r1) {R1: direct\\detector};
+\node[blk, right=1.0cm of sum] (r2) {R2: LMS\\frozen};
+\node[blk, right=1.0cm of sum, yshift=-1.0cm] (r3) {R3: LMS\\adaptive};
+\node[blk, right=of r2] (cnt) {BER, MSE\\counters};
+\node[blk, right=of cnt] (dash) {Host\\dashboard};
+\draw[->] (host) -- (uart); \draw[->] (uart) -- (map); \draw[->] (map) -- (ch); \draw[->] (var) -- (ch);
+\draw[->] (ch) -- (sum); \draw[->] (noise) -| (sum);
+\draw[->] (sum) -- ++(0.5,0) |- (r1); \draw[->] (sum) -- (r2); \draw[->] (sum) -- ++(0.5,0) |- (r3);
+\draw[->] (r1) -| (cnt); \draw[->] (r2) -- (cnt); \draw[->] (r3) -| (cnt); \draw[->] (cnt) -- (dash);
+\draw[dashed, rounded corners] ($(uart.north west)+(-0.15,1.25)$) rectangle ($(cnt.south east)+(0.15,-1.35)$);
+\node[font=\footnotesize, anchor=south east] at ($(cnt.south east)+(0.15,-1.35)$) {Spartan-7 XC7S50};
+\end{tikzpicture}}
+\caption{The experiment of the PPR. A variation controller drives the channel along a specified trajectory; one channel and one noise realisation feed three concurrent receivers, so differences between them are due to the adaptation rule alone. At mid-term the blocks from the BPSK mapper to the counters exist as Verilog (simulation only, \cref{sec:rtl}); UART, framing and host software do not.}
+\label{fig:system}
+\end{figure*}
+
+\subsection{Receivers and adaptation source}
+\label{sec:receivers}
+\textbf{R1} detects $r[n]$ directly (the error floor). \textbf{R2} adapts during training and is frozen at $N_T$ (an equalizer matched to the channel as it was). \textbf{R3} keeps adapting. R1 and R2 are controls: R1 isolates the value of equalization, R2 the value of continued equalization. After training R3 needs an error reference. Three modes are distinguished and every result states which was used: \emph{decision-directed} ($\mathrm{sign}(y[n])$ replaces the reference \cite{sato1975,godard1980}, entered through a gate on a measured error level), \emph{pilot-assisted} (known symbols inserted periodically), and \emph{supervised} (the true symbol, available because the transmitter is internal to the experiment; used to isolate tracking from decision errors and never presented as a realisable receiver). \nb{The gate switches to decision-directed operation at the first $n\ge2000$ at which the running MSE (exponential average, time constant 1000 symbols) is below 0.1; otherwise the switch is forced at $N_T$ and flagged.}
+
+\subsection{LMS, the tracking trade-off, delay and training}
+\label{sec:lms}
+With $\mathbf u[n]=[r[n],\ldots,r[n-L+1]]^T$, output $y[n]=\mathbf w^T[n]\mathbf u[n]$ and error $e[n]=x[n-\Delta]-y[n]$,
+\begin{equation}
+\mathbf w[n+1]=\mathbf w[n]+\mu\,e[n]\,\mathbf u[n],\qquad 0<\mu<\frac{2}{\mathrm{tr}(\mathbf R)},
+\label{eq:lms}
+\end{equation}
+with $\mathbf R=E[\mathbf u\mathbf u^T]$ and $\mu$ a power of two in hardware. For a stationary channel the misadjustment $\mathcal M=\xi_{\rm ex}/J_{\min}$ grows roughly as $\mu\,\mathrm{tr}(\mathbf R)/2$ \cite{haykin2014}. For an optimum that moves as a random walk with increment covariance $\mathbf Q$, a lag term appears \cite{widrow1976,haykin2014,macchi1995}:
+\begin{equation}
+\mathcal M\approx\underbrace{\frac{\mu\,\mathrm{tr}(\mathbf R)}{2}}_{\text{gradient noise}}+\underbrace{\frac{\mathrm{tr}(\mathbf Q)}{2\mu J_{\min}}}_{\text{lag}},\qquad
+\mu_{\rm opt}\approx\sqrt{\frac{\mathrm{tr}(\mathbf Q)}{J_{\min}\,\mathrm{tr}(\mathbf R)}}.
+\label{eq:mis}
+\end{equation}
+The PPR's falsifiable prediction is an interior optimum step size that grows with the variation rate, as the square root of that rate.
+\nb{Because $\mathrm{tr}(\mathbf Q)$ is the \emph{variance} of the increments, \eqref{eq:mis} makes $\mu_{\rm opt}$ proportional to the \emph{rms} increment (exponent 1 in the rms rate; the square root holds only for the variance). For a deterministic ramp of slope $v$ the lag term becomes $v^T\mathbf R^{-1}v/\mu^2$ and the first-order exponent is 2/3 \cite{bershad1989,vlaski2020}. (Eq.~\eqref{eq:mis} is Widrow \etal's Eqs.~81 and 86 \cite{widrow1976} rewritten for our step convention: their update uses $2\mu$, and their $n\sigma^2$ is our $\mathrm{tr}(\mathbf Q)$.) Our channel follows deterministic ramps, so both 1/2 (the PPR reference) and 2/3 are kept as reference slopes and the exponent is measured (\cref{sec:muopt}) and explained (\cref{sec:theory}). The gradient-noise term is corrected in \cref{sec:misadj}.}
+
+The decision delay $\Delta$ is needed because the cascade $h*w$ can only approximate a delayed impulse; for a non-minimum-phase channel $\Delta=0$ asks a causal filter for an anti-causal inverse. $\Delta$ is chosen by sweeping $0\le\Delta\le L+M-2$, including the non-minimum-phase preset $h=[0.5,1.0]$ and its mirror $[1.0,0.5]$, and each receiver's bit offset is checked by cross-correlation. Training uses a maximal-length PRBS, $x^{15}+x^{14}+1$ (period 32767), to satisfy persistent excitation; $N_T=30000$ symbols for the continuous sweeps and 120000 for the abrupt transitions. \nb{A white symbol sequence gives white \emph{symbols}, but the equalizer sees them through the channel, so $\mathbf R\approx\mathbf H\mathbf H^T+\sigma^2\mathbf I$ rather than $\sigma^2\mathbf I$; the eigenvalue spread is set by the channel (up to 56 on the primary channel, \cref{sec:theory}). A PRBS-trained equalizer reaches MSE 0.0281 on random payload (oracle 0.0274); trained on $0,1,0,1,\ldots$ it reaches 0.9645 (\lvl{L1}).}
+
+\subsection{Fixed-point model}
+\label{sec:fixed}
+Every width, rounding and saturation rule is explicit (\cref{tab:formats}); saturation is used rather than wraparound. Coefficients are held in an extended-precision accumulator whose top bits feed the multiplier, so the coefficient word length is two parameters: the accumulator width $B_{\rm acc}$, which decides whether small updates survive, and the multiplier width $B_{\rm mul}$, which sets the DSP cost \cite{constantinides2003,gitlin1982}. An update that falls below the accumulator's resolution is lost silently; on a moving channel the equalizer then stops while the channel does not. \nb{With rounding an update is lost when $|\mu e u|<\mathrm{LSB}/2$ \cite{shahdoosti2018}; this is a deadband, not an all-or-nothing stall, its effect depends on the rounding rule and on the statistics of $e$, and noise dithers updates across it. Because the trajectories are bounded, the resulting mismatch is bounded by the plateau of \cref{sec:metrics} rather than growing without limit.} The update loop is computed without pipelining ($D=0$), so the delayed-LMS bound \cite{long1989} is not needed. \nb{So that the RTL can match the software bit for bit, the channel and noise are formed in integers (tap $0.1\to6554/65536$, noise scaled by $\mathrm{round}(65536\sigma)$); on identical data this changes 3.4\,\% of received samples by one LSB and R3's MSE in the fifth digit.}
+
+\begin{table}[t]
+\centering\small
+\caption{Bit-true fixed-point model (\lvl{L2}) and RTL formats. s$N$.$F$: signed, $N$ bits, $F$ fractional. Baseline $B_{\rm mul}=12$, $B_{\rm acc}=26$.}
+\label{tab:formats}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.33\linewidth}p{0.27\linewidth}p{0.32\linewidth}@{}}
+\toprule
+Signal & Format & Rule\\
+\midrule
+$r$, delay line $u$ & s16.12 ($\pm8$) & round, saturate\\
+coefficient accumulator & s$B_{\rm acc}$.($B_{\rm acc}-2$) & add update, saturate\\
+multiplier coefficient & s$B_{\rm mul}$.($B_{\rm mul}-2$) & top bits, round, saturate\\
+products, adder tree & $B_{\rm mul}+16$, $+20$ bits & exact\\
+$y$, $e=d-y$ & s16.12 & round, saturate\\
+update $\mu e u$, $\mu=2^{-p}$ & shift by $p$ & round or truncate\\
+\bottomrule
+\end{tabular}
+\par\smallskip\footnotesize
+\nb{Dynamic range checked: $|w|\le1.10$ in every LMS run (Wiener $|w|\le0.987$), $|r|\le2.73$, $|y|,|e|\le3.73$.}
+\end{table}
+
+\subsection{Metrics and statistics}
+\label{sec:metrics}
+Each path's BER is counted separately. The reacquisition time $N_{\rm rec}$ is the smallest $k$ such that the seed-averaged moving-average MSE (window 64) stays within a factor $1+\kappa$, $\kappa=0.25$, of the \emph{post}-transition steady level for all $n\ge N_C+k$ (the PPR's pre-transition reference is replaced because $h_A$ and $h_B$ have different attainable MSE). The PPR's tracking boundary $S^\star_{\rm BER}$ is the fastest rate at which R3 keeps its BER within a factor $f=2$ of its static-channel value, and $S_{\rm cross}$ the fastest rate at which R3 still outperforms both controls.
+
+\nb{\emph{Statistics.} The static value is the measured static BER averaged over the channel states that the trajectory visits (the literal $c_{\rm lo}$ value is a sensitivity). A point passes or fails only if its 95\,\% paired seed-bootstrap interval lies entirely on one side of the threshold; otherwise it is inconclusive, and where the boundary point itself is inconclusive only a bracket is reported. The bootstrap was validated on 40 independent replicate experiments (coverage 92.5\,\% for nominal 95\,\%); errors come in bursts, so plain binomial intervals are kept only as sensitivities \cite{efron1993,wilson1927}. $S_{\rm cross}$ uses the same paired bootstrap on $\mathrm{BER}_{R3}-\min(\mathrm{BER}_{R1},\mathrm{BER}_{R2})$.}
+
+\nb{\emph{MSE boundary.} A boundary in BER alone can be invisible while the eye is open, so an MSE boundary is added and never merged with it. The oracle $J_{\rm or}[n]$ is the minimum MSE of any $L$-tap equalizer that knows the channel taps active inside its window (checked against a 300\,000-trial brute-force computation to 0.3\,\%). With $\varepsilon=(J_{R3}-J_{\rm or})/J_{\rm or}$, $\varepsilon_{\rm static}(\mu)$ its static value and $\varepsilon_{\rm plateau}$ that of the best single fixed filter for the time-averaged channel, the tracking loss is
+\begin{equation}
+\rho=\frac{\varepsilon-\varepsilon_{\rm static}}{\varepsilon_{\rm plateau}-\varepsilon_{\rm static}},
+\label{eq:rho}
+\end{equation}
+0 for no loss and about 1 for no better than a fixed filter. $S^\star_{\rm MSE}$ is the fastest $S$ that passes, i.e.\ whose 95\,\% seed-bootstrap upper bound of $\rho$ is below $\rho_{\rm th}=0.5$; it is a grid point, not the first failing rate and not an interpolated crossing (0.25 and 0.75 reported as bands); $\rho$ is undefined when $\varepsilon_{\rm static}\ge\varepsilon_{\rm plateau}$.}
+
+\Cref{tab:params} lists the parameters. Rates and step sizes were fixed after simulation so that the grid brackets the boundary for every step size, as the PPR anticipated; the grid replaces the five provisional presets $S0$--$S4$. \nb{Pilot seeds 1000--1099 were used to choose these values, which were then frozen with a written checklist; all final results use the untouched seeds 2000--2099. A plain-numpy LMS reproduces the main loop to $10^{-15}$.}
+
+\begin{table}[t]
+\centering\small
+\caption{Parameters of the final runs.}
+\label{tab:params}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.3\linewidth}p{0.64\linewidth}@{}}
+\toprule
+Equalizer & $L=16$, $\Delta=2$\\
+Step sizes & 14: $\mu=2^{-5},2^{-5.5},\ldots,2^{-11.5}$; the 7 powers of two are the FPGA set\\
+Rates $S$ & 18: 5000, 2000, 1000, 500, 320, 224, 160, 112, 80, 56, 40, 28, 20, 14, 10, 5, 2, 1, and static\\
+SNR & 16\,dB (MSE, primary), 14\,dB, 12\,dB (BER)\\
+Seeds & 100 (2000--2099); 1500 for the 14\,dB BER study at $\mu\le2^{-7}$\\
+Training & PRBS, $N_T=30000$ (continuous), 120000 (abrupt)\\
+Evaluation & whole triangle periods, about 152000 symbols\\
+Levels & \lvl{L1} float, \lvl{L2} bit-true, \lvl{L3} RTL simulation\\
+\bottomrule
+\end{tabular}
+\end{table}

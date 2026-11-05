@@ -1,0 +1,44 @@
+=== 16 dB ===
+  S= 1000 mu=2^-6: eps_R3 triangle 0.3881+-0.0025 | sine 0.4159+-0.0028 (ratio 1.07) | sine peak-matched 0.4174 (ratio 1.08) | eps_R2 tri/sine 6.254/6.636
+  S= 1000 mu=2^-8: eps_R3 triangle 0.0843+-0.0019 | sine 0.0886+-0.0020 (ratio 1.05) | sine peak-matched 0.0861 (ratio 1.02) | eps_R2 tri/sine 6.235/6.619
+  S= 1000 mu=2^-10: eps_R3 triangle 0.0701+-0.0018 | sine 0.0886+-0.0020 (ratio 1.26) | sine peak-matched 0.0534 (ratio 0.76) | eps_R2 tri/sine 6.221/6.604
+  S=  320 mu=2^-6: eps_R3 triangle 0.3916+-0.0022 | sine 0.4194+-0.0026 (ratio 1.07) | sine peak-matched 0.4196 (ratio 1.07) | eps_R2 tri/sine 6.255/6.638
+  S=  320 mu=2^-8: eps_R3 triangle 0.1133+-0.0017 | sine 0.1283+-0.0019 (ratio 1.13) | sine peak-matched 0.1048 (ratio 0.92) | eps_R2 tri/sine 6.237/6.622
+  S=  320 mu=2^-10: eps_R3 triangle 0.2656+-0.0018 | sine 0.3666+-0.0022 (ratio 1.38) | sine peak-matched 0.2136 (ratio 0.80) | eps_R2 tri/sine 6.222/6.606
+  S=  112 mu=2^-6: eps_R3 triangle 0.4104+-0.0022 | sine 0.4434+-0.0026 (ratio 1.08) | sine peak-matched 0.4264 (ratio 1.04) | eps_R2 tri/sine 6.255/6.636
+  S=  112 mu=2^-8: eps_R3 triangle 0.2421+-0.0018 | sine 0.3136+-0.0019 (ratio 1.30) | sine peak-matched 0.2024 (ratio 0.84) | eps_R2 tri/sine 6.236/6.619
+  S=  112 mu=2^-10: eps_R3 triangle 0.7836+-0.0026 | sine 1.0477+-0.0028 (ratio 1.34) | sine peak-matched 0.6998 (ratio 0.89) | eps_R2 tri/sine 6.221/6.604
+  S=   56 mu=2^-6: eps_R3 triangle 0.4536+-0.0025 | sine 0.5038+-0.0027 (ratio 1.11) | sine peak-matched 0.4580 (ratio 1.01) | eps_R2 tri/sine 6.256/6.638
+  S=   56 mu=2^-8: eps_R3 triangle 0.4710+-0.0024 | sine 0.6263+-0.0027 (ratio 1.33) | sine peak-matched 0.3995 (ratio 0.85) | eps_R2 tri/sine 6.237/6.621
+  S=   56 mu=2^-10: eps_R3 triangle 1.2132+-0.0032 | sine 1.6247+-0.0034 (ratio 1.34) | sine peak-matched 1.2508 (ratio 1.03) | eps_R2 tri/sine 6.222/6.606
+  S=   28 mu=2^-6: eps_R3 triangle 0.5710+-0.0027 | sine 0.6743+-0.0031 (ratio 1.18) | sine peak-matched 0.5449 (ratio 0.95) | eps_R2 tri/sine 6.253/6.635
+  S=   28 mu=2^-8: eps_R3 triangle 0.8709+-0.0023 | sine 1.1540+-0.0026 (ratio 1.33) | sine peak-matched 0.7851 (ratio 0.90) | eps_R2 tri/sine 6.234/6.618
+  S=   28 mu=2^-10: eps_R3 triangle 1.5416+-0.0027 | sine 2.0827+-0.0031 (ratio 1.35) | sine peak-matched 1.7993 (ratio 1.17) | eps_R2 tri/sine 6.220/6.603
+  S=   14 mu=2^-6: eps_R3 triangle 0.8372+-0.0031 | sine 1.0442+-0.0036 (ratio 1.25) | sine peak-matched 0.7724 (ratio 0.92) | eps_R2 tri/sine 6.256/6.639
+  S=   14 mu=2^-8: eps_R3 triangle 1.3202+-0.0023 | sine 1.7604+-0.0025 (ratio 1.33) | sine peak-matched 1.3688 (ratio 1.04) | eps_R2 tri/sine 6.238/6.622
+  S=   14 mu=2^-10: eps_R3 triangle 1.7501+-0.0023 | sine 2.3771+-0.0025 (ratio 1.36) | sine peak-matched 2.2037 (ratio 1.26) | eps_R2 tri/sine 6.223/6.607
+  S=    5 mu=2^-6: eps_R3 triangle 1.6223+-0.0029 | sine 2.0963+-0.0031 (ratio 1.29) | sine peak-matched 1.5750 (ratio 0.97) | eps_R2 tri/sine 6.258/6.641
+  S=    5 mu=2^-8: eps_R3 triangle 1.7872+-0.0027 | sine 2.4169+-0.0029 (ratio 1.35) | sine peak-matched 2.1748 (ratio 1.22) | eps_R2 tri/sine 6.239/6.624
+  S=    5 mu=2^-10: eps_R3 triangle 1.8743+-0.0026 | sine 2.5546+-0.0028 (ratio 1.36) | sine peak-matched 2.5043 (ratio 1.34) | eps_R2 tri/sine 6.225/6.609
+=== 14 dB ===
+  S= 1000 mu=2^-6: BER R3 triangle 2.17e-05 (66 err) | sine 5.26e-05 (160) | sine peak-matched 5.59e-05 (267) | R2 tri/sine 1.98e-03/3.82e-03 | R1 tri/sine 2.74e-02/3.93e-02
+  S= 1000 mu=2^-8: BER R3 triangle 1.64e-06 (5 err) | sine 1.97e-06 (6) | sine peak-matched 2.09e-06 (10) | R2 tri/sine 1.54e-03/3.09e-03 | R1 tri/sine 2.74e-02/3.93e-02
+  S= 1000 mu=2^-10: BER R3 triangle 1.32e-06 (4 err) | sine 1.32e-06 (4) | sine peak-matched 1.26e-06 (6) | R2 tri/sine 1.45e-03/2.90e-03 | R1 tri/sine 2.74e-02/3.93e-02
+  S=  320 mu=2^-6: BER R3 triangle 2.30e-05 (67 err) | sine 5.35e-05 (156) | sine peak-matched 5.56e-05 (170) | R2 tri/sine 1.96e-03/3.80e-03 | R1 tri/sine 2.72e-02/3.91e-02
+  S=  320 mu=2^-8: BER R3 triangle 1.37e-06 (4 err) | sine 2.74e-06 (8) | sine peak-matched 3.60e-06 (11) | R2 tri/sine 1.52e-03/3.07e-03 | R1 tri/sine 2.72e-02/3.91e-02
+  S=  320 mu=2^-10: BER R3 triangle 1.37e-06 (4 err) | sine 4.11e-06 (12) | sine peak-matched 1.96e-06 (6) | R2 tri/sine 1.42e-03/2.89e-03 | R1 tri/sine 2.72e-02/3.91e-02
+  S=  112 mu=2^-6: BER R3 triangle 2.97e-05 (91 err) | sine 6.27e-05 (192) | sine peak-matched 5.61e-05 (180) | R2 tri/sine 2.01e-03/3.85e-03 | R1 tri/sine 2.73e-02/3.92e-02
+  S=  112 mu=2^-8: BER R3 triangle 2.94e-06 (9 err) | sine 5.87e-06 (18) | sine peak-matched 2.18e-06 (7) | R2 tri/sine 1.53e-03/3.09e-03 | R1 tri/sine 2.73e-02/3.92e-02
+  S=  112 mu=2^-10: BER R3 triangle 8.48e-06 (26 err) | sine 1.89e-05 (58) | sine peak-matched 8.10e-06 (26) | R2 tri/sine 1.45e-03/2.91e-03 | R1 tri/sine 2.73e-02/3.92e-02
+  S=   56 mu=2^-6: BER R3 triangle 2.84e-05 (87 err) | sine 5.68e-05 (174) | sine peak-matched 6.05e-05 (178) | R2 tri/sine 1.99e-03/3.83e-03 | R1 tri/sine 2.74e-02/3.93e-02
+  S=   56 mu=2^-8: BER R3 triangle 5.22e-06 (16 err) | sine 1.17e-05 (36) | sine peak-matched 5.10e-06 (15) | R2 tri/sine 1.58e-03/3.14e-03 | R1 tri/sine 2.74e-02/3.93e-02
+  S=   56 mu=2^-10: BER R3 triangle 1.99e-05 (61 err) | sine 6.72e-05 (206) | sine peak-matched 3.13e-05 (92) | R2 tri/sine 1.49e-03/2.95e-03 | R1 tri/sine 2.74e-02/3.93e-02
+  S=   28 mu=2^-6: BER R3 triangle 3.07e-05 (94 err) | sine 6.95e-05 (213) | sine peak-matched 5.89e-05 (181) | R2 tri/sine 1.98e-03/3.86e-03 | R1 tri/sine 2.75e-02/3.93e-02
+  S=   28 mu=2^-8: BER R3 triangle 1.24e-05 (38 err) | sine 3.75e-05 (115) | sine peak-matched 1.72e-05 (53) | R2 tri/sine 1.55e-03/3.11e-03 | R1 tri/sine 2.75e-02/3.93e-02
+  S=   28 mu=2^-10: BER R3 triangle 3.95e-05 (121 err) | sine 1.10e-04 (337) | sine peak-matched 8.52e-05 (262) | R2 tri/sine 1.45e-03/2.91e-03 | R1 tri/sine 2.75e-02/3.93e-02
+  S=   14 mu=2^-6: BER R3 triangle 4.30e-05 (130 err) | sine 1.03e-04 (311) | sine peak-matched 7.35e-05 (221) | R2 tri/sine 1.96e-03/3.81e-03 | R1 tri/sine 2.73e-02/3.92e-02
+  S=   14 mu=2^-8: BER R3 triangle 3.67e-05 (111 err) | sine 9.37e-05 (283) | sine peak-matched 5.25e-05 (158) | R2 tri/sine 1.50e-03/3.07e-03 | R1 tri/sine 2.73e-02/3.92e-02
+  S=   14 mu=2^-10: BER R3 triangle 5.16e-05 (156 err) | sine 1.25e-04 (378) | sine peak-matched 1.24e-04 (373) | R2 tri/sine 1.42e-03/2.89e-03 | R1 tri/sine 2.73e-02/3.92e-02
+  S=    5 mu=2^-6: BER R3 triangle 2.02e-04 (614 err) | sine 4.89e-04 (1487) | sine peak-matched 2.27e-04 (689) | R2 tri/sine 2.04e-03/3.90e-03 | R1 tri/sine 2.74e-02/3.92e-02
+  S=    5 mu=2^-8: BER R3 triangle 7.80e-05 (237 err) | sine 2.16e-04 (658) | sine peak-matched 1.69e-04 (511) | R2 tri/sine 1.57e-03/3.17e-03 | R1 tri/sine 2.74e-02/3.92e-02
+  S=    5 mu=2^-10: BER R3 triangle 5.20e-05 (158 err) | sine 1.43e-04 (436) | sine peak-matched 1.39e-04 (420) | R2 tri/sine 1.47e-03/2.98e-03 | R1 tri/sine 2.74e-02/3.92e-02

@@ -1,0 +1,57 @@
+(a) low SNR, gate thr 0.1 (forced at N_T if never reached), 20 seeds; entries: DD lost lock / runs, DD BER, supervised BER
+  mu=2^-6 S= 1000   0 dB: DD lost 20/20 (gate forced at N_T in 20/20), BER DD 4.994e-01, supervised 1.459e-01
+  mu=2^-6 S= 1000   2 dB: DD lost 20/20 (gate forced at N_T in 20/20), BER DD 4.935e-01, supervised 9.200e-02
+  mu=2^-6 S= 1000   4 dB: DD lost 20/20 (gate forced at N_T in 20/20), BER DD 3.900e-01, supervised 4.981e-02
+  mu=2^-6 S= 1000   6 dB: DD lost 20/20 (gate forced at N_T in 20/20), BER DD 2.969e-01, supervised 2.180e-02
+  mu=2^-6 S=   28   0 dB: DD lost 20/20 (gate forced at N_T in 20/20), BER DD 4.973e-01, supervised 1.459e-01
+  mu=2^-6 S=   28   2 dB: DD lost 20/20 (gate forced at N_T in 20/20), BER DD 4.974e-01, supervised 9.224e-02
+  mu=2^-6 S=   28   4 dB: DD lost 20/20 (gate forced at N_T in 20/20), BER DD 4.881e-01, supervised 5.006e-02
+  mu=2^-6 S=   28   6 dB: DD lost 20/20 (gate forced at N_T in 20/20), BER DD 4.203e-01, supervised 2.214e-02
+  mu=2^-6 S=    5   0 dB: DD lost 20/20 (gate forced at N_T in 20/20), BER DD 4.980e-01, supervised 1.472e-01
+  mu=2^-6 S=    5   2 dB: DD lost 20/20 (gate forced at N_T in 20/20), BER DD 4.951e-01, supervised 9.410e-02
+  mu=2^-6 S=    5   4 dB: DD lost 20/20 (gate forced at N_T in 20/20), BER DD 4.890e-01, supervised 5.236e-02
+  mu=2^-6 S=    5   6 dB: DD lost 20/20 (gate forced at N_T in 20/20), BER DD 4.674e-01, supervised 2.451e-02
+  mu=2^-8 S= 1000   0 dB: DD lost 20/20 (gate forced at N_T in 20/20), BER DD 1.357e-01, supervised 1.009e-01
+  mu=2^-8 S= 1000   2 dB: DD lost 7/20 (gate forced at N_T in 20/20), BER DD 6.283e-02, supervised 5.906e-02
+  mu=2^-8 S= 1000   4 dB: DD lost 0/20 (gate forced at N_T in 20/20), BER DD 2.902e-02, supervised 2.827e-02
+  mu=2^-8 S= 1000   6 dB: DD lost 0/20 (gate forced at N_T in 20/20), BER DD 1.031e-02, supervised 1.032e-02
+  mu=2^-8 S=   28   0 dB: DD lost 20/20 (gate forced at N_T in 20/20), BER DD 1.650e-01, supervised 1.016e-01
+  mu=2^-8 S=   28   2 dB: DD lost 9/20 (gate forced at N_T in 20/20), BER DD 6.589e-02, supervised 6.020e-02
+  mu=2^-8 S=   28   4 dB: DD lost 0/20 (gate forced at N_T in 20/20), BER DD 3.125e-02, supervised 2.965e-02
+  mu=2^-8 S=   28   6 dB: DD lost 0/20 (gate forced at N_T in 20/20), BER DD 1.159e-02, supervised 1.132e-02
+  mu=2^-8 S=    5   0 dB: DD lost 20/20 (gate forced at N_T in 20/20), BER DD 1.229e-01, supervised 1.054e-01
+  mu=2^-8 S=    5   2 dB: DD lost 4/20 (gate forced at N_T in 20/20), BER DD 6.993e-02, supervised 6.437e-02
+  mu=2^-8 S=    5   4 dB: DD lost 0/20 (gate forced at N_T in 20/20), BER DD 3.519e-02, supervised 3.350e-02
+  mu=2^-8 S=    5   6 dB: DD lost 0/20 (gate forced at N_T in 20/20), BER DD 1.482e-02, supervised 1.447e-02
+(b) too little training: DD switch forced after n_sw symbols (no gate), mu = 2^-8, 20 seeds, 14 dB
+  static c=116   switch after    25 training symbols: DD lost lock 20/20
+  static c=116   switch after    50 training symbols: DD lost lock 20/20
+  static c=116   switch after   100 training symbols: DD lost lock 9/20
+  static c=116   switch after   200 training symbols: DD lost lock 0/20
+  static c=116   switch after   400 training symbols: DD lost lock 0/20
+  static c=116   switch after   800 training symbols: DD lost lock 0/20
+  static c=116   switch after  1600 training symbols: DD lost lock 0/20
+  static c=40    switch after    25 training symbols: DD lost lock 20/20
+  static c=40    switch after    50 training symbols: DD lost lock 20/20
+  static c=40    switch after   100 training symbols: DD lost lock 19/20
+  static c=40    switch after   200 training symbols: DD lost lock 0/20
+  static c=40    switch after   400 training symbols: DD lost lock 0/20
+  static c=40    switch after   800 training symbols: DD lost lock 0/20
+  static c=40    switch after  1600 training symbols: DD lost lock 0/20
+  triangle S=28  switch after    25 training symbols: DD lost lock 20/20
+  triangle S=28  switch after    50 training symbols: DD lost lock 20/20
+  triangle S=28  switch after   100 training symbols: DD lost lock 19/20
+  triangle S=28  switch after   200 training symbols: DD lost lock 0/20
+  triangle S=28  switch after   400 training symbols: DD lost lock 0/20
+  triangle S=28  switch after   800 training symbols: DD lost lock 0/20
+  triangle S=28  switch after  1600 training symbols: DD lost lock 0/20
+(c) abrupt jump (P2-type), channel static at cA during training, jump to cB 20000 symbols after the switch point, DD with gate thr 0.1, mu = 2^-8, 20 seeds
+    14 dB jump 40->116: DD lost lock 0/20, supervised flagged 0/20
+    14 dB jump 116->40: DD lost lock 0/20, supervised flagged 0/20
+    14 dB jump 40->77: DD lost lock 0/20, supervised flagged 0/20
+    10 dB jump 40->116: DD lost lock 0/20, supervised flagged 0/20
+    10 dB jump 116->40: DD lost lock 0/20, supervised flagged 0/20
+    10 dB jump 40->77: DD lost lock 0/20, supervised flagged 0/20
+     6 dB jump 40->116: DD lost lock 0/20, supervised flagged 0/20
+     6 dB jump 116->40: DD lost lock 0/20, supervised flagged 0/20
+     6 dB jump 40->77: DD lost lock 0/20, supervised flagged 0/20

@@ -1,0 +1,46 @@
+P2 abrupt transition. N_T=120000, N_pre=20000, N_post=100000, N_C=140000; 100 FINAL seeds; Eb/N0=16.0 dB; L=16, Delta=2; kappa=0.25, W=64
+
+Static reference levels (20 seeds x 200000 symbols):  c  mu  J_min  J_ss(+-SE)  eps_static(%)  first-order exact eps(%)
+   c= 40 mu=2^-7: J_min 0.01358  J_ss 0.01479+-0.00001  eps_static   8.88  first-order   8.21
+   c= 40 mu=2^-8: J_min 0.01358  J_ss 0.01416+-0.00001  eps_static   4.28  first-order   4.10
+   c= 40 mu=2^-9: J_min 0.01358  J_ss 0.01387+-0.00001  eps_static   2.12  first-order   2.05
+   c= 40 mu=2^-10: J_min 0.01358  J_ss 0.01373+-0.00001  eps_static   1.06  first-order   1.03
+   c= 77 mu=2^-7: J_min 0.01756  J_ss 0.02008+-0.00002  eps_static  14.35  first-order  12.78
+   c= 77 mu=2^-8: J_min 0.01756  J_ss 0.01875+-0.00002  eps_static   6.80  first-order   6.39
+   c= 77 mu=2^-9: J_min 0.01756  J_ss 0.01815+-0.00002  eps_static   3.33  first-order   3.20
+   c= 77 mu=2^-10: J_min 0.01756  J_ss 0.01785+-0.00002  eps_static   1.67  first-order   1.60
+   c=116 mu=2^-7: J_min 0.03464  J_ss 0.04310+-0.00007  eps_static  24.44  first-order  20.38
+   c=116 mu=2^-8: J_min 0.03464  J_ss 0.03850+-0.00006  eps_static  11.17  first-order  10.19
+   c=116 mu=2^-9: J_min 0.03464  J_ss 0.03650+-0.00006  eps_static   5.38  first-order   5.09
+   c=116 mu=2^-10: J_min 0.03464  J_ss 0.03556+-0.00006  eps_static   2.66  first-order   2.55
+
+=== step large_up (c 40->116, a 0.31->0.91) ===  J_min(A) 0.01358  J_min(B) 0.03464  analytic frozen-filter MSE on B 0.3932 (excess 1035 % over oracle); lambda_min(R_B) 0.071
+   mu     J_pre   J_ss(B)ref  eps_stat(B)%   R2 post MSE (meas | analytic)   R3 first-64 MSE   N_rec meas [95% boot]     N_rec predicted   tau_slow  train-conv  area(meas/model)
+   2^- 7  0.01480  0.04310     24.44      0.3951 | 0.3932            0.2562           1688 [  1680, 41282]           1378                  898     1106    1.021
+   2^- 8  0.01418  0.03850     11.17      0.3938 | 0.3932            0.2902           3386 [  3435, 33114]           3067                 1796     1697    1.007
+   2^- 9  0.01389  0.03650      5.38      0.3932 | 0.3932            0.3247           7927 [  7631, 14394]           6372                 3593     2783    1.004
+   2^-10  0.01374  0.03556      2.66      0.3931 | 0.3932            0.3510          14845 [ 16245, 23976]          12942                 7186     5088    1.002
+   BER (mu=2^-8, 100 seeds): {'pre': {'R1': '0.00e+00', 'R2': '0.00e+00', 'R3': '0.00e+00'}, 'first2000_after': {'R1': '1.41e-01', 'R2': '8.29e-03', 'R3': '8.45e-04'}, 'last20000': {'R1': '1.41e-01', 'R2': '8.53e-03', 'R3': '0.00e+00'}}
+
+=== step mid_up (c 40->77, a 0.31->0.60) ===  J_min(A) 0.01358  J_min(B) 0.01756  analytic frozen-filter MSE on B 0.1046 (excess 496 % over oracle); lambda_min(R_B) 0.271
+   mu     J_pre   J_ss(B)ref  eps_stat(B)%   R2 post MSE (meas | analytic)   R3 first-64 MSE   N_rec meas [95% boot]     N_rec predicted   tau_slow  train-conv  area(meas/model)
+   2^- 7  0.01480  0.02008     14.35      0.1059 | 0.1046            0.0716            429 [   410,   442]            398                  236     1106    0.977
+   2^- 8  0.01418  0.01875      6.80      0.1052 | 0.1046            0.0819            872 [   858,   973]            821                  473     1697    0.981
+   2^- 9  0.01389  0.01815      3.33      0.1048 | 0.1046            0.0903           1708 [  1686,  2012]           1661                  946     2783    0.988
+   2^-10  0.01374  0.01785      1.67      0.1047 | 0.1046            0.0959           3469 [  3432,  4649]           3335                 1892     5088    0.993
+   BER (mu=2^-8, 100 seeds): {'pre': {'R1': '0.00e+00', 'R2': '0.00e+00', 'R3': '0.00e+00'}, 'first2000_after': {'R1': '9.50e-04', 'R2': '0.00e+00', 'R3': '0.00e+00'}, 'last20000': {'R1': '9.72e-04', 'R2': '0.00e+00', 'R3': '0.00e+00'}}
+
+=== step down (c 116->40, a 0.91->0.31) ===  J_min(A) 0.03464  J_min(B) 0.01358  analytic frozen-filter MSE on B 0.8049 (excess 5826 % over oracle); lambda_min(R_B) 0.628
+   mu     J_pre   J_ss(B)ref  eps_stat(B)%   R2 post MSE (meas | analytic)   R3 first-64 MSE   N_rec meas [95% boot]     N_rec predicted   tau_slow  train-conv  area(meas/model)
+   2^- 7  0.04332  0.01479      8.88      0.8022 | 0.8049            0.5119            574 [   550,   599]            543                  102     3010    0.944
+   2^- 8  0.03870  0.01416      4.28      0.8040 | 0.8049            0.6218           1132 [  1115,  1218]           1085                  204     5806    0.971
+   2^- 9  0.03668  0.01387      2.12      0.8051 | 0.8049            0.6903           2209 [  2138,  2282]           2165                  408    15018    0.984
+   2^-10  0.03574  0.01373      1.06      0.8053 | 0.8049            0.7292           4456 [  4444,  4962]           4326                  816    26857    0.992
+   BER (mu=2^-8, 100 seeds): {'pre': {'R1': '1.41e-01', 'R2': '0.00e+00', 'R3': '0.00e+00'}, 'first2000_after': {'R1': '0.00e+00', 'R2': '1.57e-01', 'R3': '8.98e-03'}, 'last20000': {'R1': '0.00e+00', 'R2': '1.57e-01', 'R3': '0.00e+00'}}
+
+Slope of log N_rec vs log mu (least squares over the 4 mu; expectation from the mean-weight model: close to -1):
+   large_up (c 40->116, a 0.31->0.91): measured -1.06, model -1.07
+   mid_up (c 40->77, a 0.31->0.60): measured -1.00, model -1.02
+   down (c 116->40, a 0.91->0.31): measured -0.98, model -1.00
+
+Done in 133 s

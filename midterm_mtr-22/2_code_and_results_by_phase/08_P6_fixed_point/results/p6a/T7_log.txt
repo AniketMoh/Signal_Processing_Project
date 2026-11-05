@@ -1,0 +1,12 @@
+T7 reacquisition time N_rec (kappa 0.25, W 64, post-transition static reference of the SAME arithmetic), large_up, mu = 2^-8, 16 dB, 100 seeds 2000-2099 (20 seeds gave a noise-dominated last-crossing time; see log of the first attempt)
+   L1 float          : post-transition static MSE 0.03852   N_rec   3403 symbols
+   B_mul= 8 B_acc=16 : post-transition static MSE 0.04234   N_rec   2886 symbols
+   B_mul= 8 B_acc=26 : post-transition static MSE 0.04234   N_rec   2886 symbols
+   B_mul= 8 B_acc=32 : post-transition static MSE 0.04234   N_rec   2886 symbols
+   B_mul=12 B_acc=16 : post-transition static MSE 0.03853   N_rec   3403 symbols
+   B_mul=12 B_acc=26 : post-transition static MSE 0.03853   N_rec   3403 symbols
+   B_mul=12 B_acc=32 : post-transition static MSE 0.03853   N_rec   3403 symbols
+   B_mul=16 B_acc=16 : post-transition static MSE 0.03852   N_rec   3403 symbols
+   B_mul=16 B_acc=26 : post-transition static MSE 0.03852   N_rec   3403 symbols
+   B_mul=16 B_acc=32 : post-transition static MSE 0.03852   N_rec   3403 symbols
+[T7 done in 80 s]

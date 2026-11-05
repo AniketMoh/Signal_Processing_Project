@@ -1,0 +1,22 @@
+(a) Delta sweep, static channels, 14 dB.  oracle = Wiener MSE at that Delta; LMS = measured MSE (mu = 2^-8, 60000 symbols, last 30000 averaged, 3 seeds)
+    Fig. 3 statement: share of x[n]'s received energy inside the window at time n for h=[0.5,1.0]: 0.20
+  nmp [0.5, 1.0]: oracle MSE at Delta=0: 0.7564, best Delta 11 (0.0254); LMS at Delta=0: 0.7971, LMS best Delta 12 (0.0271)
+     oracle 0.756 0.199 0.067 0.035 0.028 0.026 0.026 0.025 0.025 0.025 0.025 0.025 0.025 0.025 0.025 0.025 0.026
+     LMS    0.797 0.210 0.070 0.037 0.029 0.028 0.027 0.027 0.027 0.027 0.027 0.027 0.027 0.027 0.027 0.027 0.027
+  mp [1.0, 0.5]: oracle MSE at Delta=0: 0.0256, best Delta 5 (0.0254); LMS at Delta=0: 0.0273, LMS best Delta 3 (0.0271)
+     oracle 0.026 0.025 0.025 0.025 0.025 0.025 0.025 0.025 0.025 0.025 0.026 0.026 0.028 0.035 0.067 0.199 0.756
+     LMS    0.027 0.027 0.027 0.027 0.027 0.027 0.027 0.027 0.027 0.027 0.027 0.028 0.030 0.037 0.070 0.210 0.797
+(b) best Delta along the trajectories (oracle, static channel at each counter value)
+  primary 14 dB: best Delta over c = 40..116: min 4, max 7; MSE at Delta=2 / best MSE: max 1.0134
+  control 14 dB: best Delta over c = 26..77: min 5, max 7; MSE at Delta=2 / best MSE: max 1.0002
+  primary 16 dB: best Delta over c = 40..116: min 3, max 7; MSE at Delta=2 / best MSE: max 1.0048
+  control 16 dB: best Delta over c = 26..77: min 5, max 7; MSE at Delta=2 / best MSE: max 1.0001
+    measured LMS MSE vs Delta on the MOVING primary channel (16 dB, mu = 2^-8, 5 seeds, N_T = 30000, evaluation over whole periods)
+  S=56: MSE for Delta=0..10: 0.0297 0.0290 0.0287 0.0287 0.0286 0.0286 0.0286 0.0286 0.0286 0.0287 0.0288  -> best Delta 8, MSE(2)/min 1.0027
+  S=14: MSE for Delta=0..10: 0.0466 0.0456 0.0454 0.0454 0.0454 0.0454 0.0454 0.0454 0.0454 0.0454 0.0454  -> best Delta 6, MSE(2)/min 1.0007
+(c) cross-correlation of recovered and transmitted bits (+-1), lag = recovered index - transmitted index; peak lag vs predicted offset
+  primary channel S=1000, 14 dB, R1 direct: peak lag 0 (correlation 0.947), predicted 0
+  primary channel S=1000, 14 dB, R2 frozen: peak lag 2 (correlation 0.997), predicted 2
+  primary channel S=1000, 14 dB, R3 adaptive: peak lag 2 (correlation 1.000), predicted 2
+  non-minimum-phase h=[0.5,1.0], 14 dB, R1 direct: peak lag 1 (correlation 1.000), predicted 1
+  non-minimum-phase h=[0.5,1.0], 14 dB, R3 adaptive: peak lag 11 (correlation 1.000), predicted 11

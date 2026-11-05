@@ -1,0 +1,39 @@
+=== 12 dB (mean over 5 seeds) ===
+  static                             BER R1 7.60e-05  R2 0.00e+00  R3 0.00e+00 | wrong pixels R1/R2/R3 6/0/0 | MAE 0.02/0.00/0.00
+  S=1000 (one ramp over the image)   BER R1 2.62e-02  R2 2.37e-03  R3 3.26e-05 | wrong pixels R1/R2/R3 1539/157/2 | MAE 6.63/0.63/0.01
+      BER per band of 8 rows (top -> bottom = early -> late):
+        R1: 2.0e-04 8.8e-04 1.7e-03 4.8e-03 1.2e-02 2.0e-02 3.3e-02 6.5e-02 9.8e-02
+        R2: 0.0e+00 0.0e+00 0.0e+00 0.0e+00 9.8e-05 4.2e-04 1.5e-03 5.1e-03 1.4e-02
+        R3: 0.0e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00 2.4e-05 4.9e-05 2.2e-04
+  S=112                              BER R1 3.20e-02  R2 3.14e-03  R3 4.61e-05 | wrong pixels R1/R2/R3 1814/212/3 | MAE 7.61/0.75/0.01
+  S=28 (S*_MSE)                      BER R1 3.36e-02  R2 3.50e-03  R3 1.38e-04 | wrong pixels R1/R2/R3 1876/234/9 | MAE 8.06/0.82/0.02
+  S=5                                BER R1 3.37e-02  R2 3.49e-03  R3 4.20e-04 | wrong pixels R1/R2/R3 1887/232/28 | MAE 8.12/0.86/0.10
+  S=1                                BER R1 3.41e-02  R2 3.34e-03  R3 4.48e-04 | wrong pixels R1/R2/R3 1930/222/30 | MAE 8.26/0.81/0.11
+  S=1, mu=2^-5                       BER R1 3.41e-02  R2 5.08e-03  R3 1.22e-02 | wrong pixels R1/R2/R3 1930/337/588 | MAE 8.26/1.21/2.84
+  static, mu=2^-5                    BER R1 7.60e-05  R2 0.00e+00  R3 2.17e-05 | wrong pixels R1/R2/R3 6/0/2 | MAE 0.02/0.00/0.01
+=== 10 dB (mean over 5 seeds) ===
+  static                             BER R1 1.01e-03  R2 1.09e-05  R3 1.36e-05 | wrong pixels R1/R2/R3 74/1/1 | MAE 0.25/0.00/0.00
+  S=1000 (one ramp over the image)   BER R1 3.69e-02  R2 5.26e-03  R3 2.66e-04 | wrong pixels R1/R2/R3 2104/337/17 | MAE 9.17/1.31/0.05
+      BER per band of 8 rows (top -> bottom = early -> late):
+        R1: 1.9e-03 4.3e-03 7.1e-03 1.3e-02 2.5e-02 3.5e-02 4.9e-02 8.2e-02 1.1e-01
+        R2: 2.4e-05 4.9e-05 2.4e-04 4.2e-04 1.3e-03 2.3e-03 5.2e-03 1.3e-02 2.5e-02
+        R3: 2.4e-05 2.4e-05 2.4e-05 2.4e-05 4.9e-05 1.2e-04 2.7e-04 4.6e-04 1.4e-03
+  S=112                              BER R1 4.35e-02  R2 6.56e-03  R3 3.74e-04 | wrong pixels R1/R2/R3 2391/424/25 | MAE 10.22/1.51/0.08
+  S=28 (S*_MSE)                      BER R1 4.53e-02  R2 7.14e-03  R3 6.56e-04 | wrong pixels R1/R2/R3 2455/457/42 | MAE 10.73/1.69/0.12
+  S=5                                BER R1 4.54e-02  R2 6.91e-03  R3 1.50e-03 | wrong pixels R1/R2/R3 2471/444/96 | MAE 10.77/1.67/0.33
+  S=1                                BER R1 4.56e-02  R2 6.94e-03  R3 1.53e-03 | wrong pixels R1/R2/R3 2504/448/100 | MAE 10.91/1.62/0.32
+  S=1, mu=2^-5                       BER R1 4.56e-02  R2 1.01e-02  R3 2.14e-02 | wrong pixels R1/R2/R3 2504/649/1027 | MAE 10.91/2.42/4.65
+  static, mu=2^-5                    BER R1 1.01e-03  R2 1.60e-04  R3 5.56e-04 | wrong pixels R1/R2/R3 74/12/35 | MAE 0.25/0.05/0.12
+=== 8 dB (mean over 5 seeds) ===
+  static                             BER R1 5.03e-03  R2 3.88e-04  R3 3.66e-04 | wrong pixels R1/R2/R3 365/28/27 | MAE 1.32/0.08/0.07
+  S=1000 (one ramp over the image)   BER R1 5.16e-02  R2 1.06e-02  R3 1.97e-03 | wrong pixels R1/R2/R3 2848/669/128 | MAE 12.67/2.62/0.37
+      BER per band of 8 rows (top -> bottom = early -> late):
+        R1: 7.4e-03 1.2e-02 1.9e-02 2.9e-02 4.5e-02 5.5e-02 6.7e-02 1.0e-01 1.3e-01
+        R2: 5.9e-04 6.3e-04 1.8e-03 3.0e-03 5.7e-03 8.1e-03 1.3e-02 2.5e-02 3.8e-02
+        R3: 5.4e-04 5.4e-04 8.3e-04 1.0e-03 1.3e-03 1.7e-03 2.1e-03 3.8e-03 5.8e-03
+  S=112                              BER R1 5.83e-02  R2 1.28e-02  R3 2.26e-03 | wrong pixels R1/R2/R3 3107/796/148 | MAE 13.55/2.86/0.41
+  S=28 (S*_MSE)                      BER R1 6.02e-02  R2 1.34e-02  R3 2.95e-03 | wrong pixels R1/R2/R3 3174/826/190 | MAE 14.00/3.16/0.57
+  S=5                                BER R1 6.06e-02  R2 1.34e-02  R3 4.54e-03 | wrong pixels R1/R2/R3 3200/824/289 | MAE 14.19/3.09/0.97
+  S=1                                BER R1 6.07e-02  R2 1.34e-02  R3 5.11e-03 | wrong pixels R1/R2/R3 3226/836/329 | MAE 14.23/3.00/1.07
+  S=1, mu=2^-5                       BER R1 6.07e-02  R2 1.89e-02  R3 3.80e-02 | wrong pixels R1/R2/R3 3226/1172/1804 | MAE 14.23/4.49/7.68
+  static, mu=2^-5                    BER R1 5.03e-03  R2 2.18e-03  R3 3.84e-03 | wrong pixels R1/R2/R3 365/159/246 | MAE 1.32/0.59/0.86

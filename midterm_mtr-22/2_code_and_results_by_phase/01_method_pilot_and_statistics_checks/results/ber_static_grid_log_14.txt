@@ -1,0 +1,11 @@
+14.0 40 done
+14.0 48 done
+14.0 56 done
+14.0 64 done
+14.0 72 done
+14.0 80 done
+14.0 88 done
+14.0 96 done
+14.0 104 done
+14.0 112 done
+14.0 116 done
