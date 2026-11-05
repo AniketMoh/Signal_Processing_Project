@@ -1,0 +1,2 @@
+2026-11-06 00:56  top_boolean B_MUL=12 B_ACC=16 RND=1  DSP48E1=51/120  LUT=4825/32600  FF=4670/65200  BRAM=0  WNS=0.298 ns  WHS=0.049 ns  Fmax(est)=103.1 MHz  (routed, full design)
+2026-11-06 01:25  top_boolean B_MUL=12 B_ACC=26 RND=1  DSP48E1=51/120  LUT=4851/32600  FF=4988/65200  BRAM=0  WNS=0.718 ns  WHS=0.022 ns  Fmax(est)=107.7 MHz  (routed, full design)

@@ -1,0 +1,5 @@
+# lms_rx_syn.v in Vivado xsim vs the iverilog run (which equals L2), level L3
+typical_16_12_nearest_mu2-8      xsim output identical to iverilog/L2: True | budget error: False | 4000 symbols
+acc32_mul12_mu2-5_leftshift      xsim output identical to iverilog/L2: True | budget error: False | 4000 symbols
+long_NT30000_16_12_mu2-8         xsim output identical to iverilog/L2: True | budget error: False | 34000 symbols
+ALL PASS

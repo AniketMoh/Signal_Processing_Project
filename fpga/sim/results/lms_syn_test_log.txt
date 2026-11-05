@@ -1,0 +1,17 @@
+# lms_rx_syn.v vs fxp_lib.fxp_receivers (L2), iverilog, level L3
+typical_16_12_nearest_mu2-8      outputs identical: True (differing 0 of 4000) | stalls RTL 3733 vs L2 3733, updates RTL 63861 vs L2 63861: True | budget error: False | spacing 16
+stalls_12_12_trunc_mu2-8         outputs identical: True (differing 0 of 4000) | stalls RTL 18025 vs L2 18025, updates RTL 63845 vs L2 63845: True | budget error: False | spacing 16
+narrow_10_10_nearest_mu2-10      outputs identical: True (differing 0 of 4000) | stalls RTL 63412 vs L2 63412, updates RTL 63877 vs L2 63877: True | budget error: False | spacing 16
+wide_26_12_nearest_mu2-8         outputs identical: True (differing 0 of 4000) | stalls RTL 1 vs L2 1, updates RTL 63829 vs L2 63829: True | budget error: False | spacing 16
+saturation_stress_12_12_mu2-2    outputs identical: True (differing 0 of 4000) | stalls RTL 19 vs L2 19, updates RTL 63877 vs L2 63877: True | budget error: False | spacing 16
+acc26_mul8_mu2-8                 outputs identical: True (differing 0 of 4000) | stalls RTL 3 vs L2 3, updates RTL 63845 vs L2 63845: True | budget error: False | spacing 16
+acc26_mul16_mu2-8                outputs identical: True (differing 0 of 4000) | stalls RTL 3 vs L2 3, updates RTL 63861 vs L2 63861: True | budget error: False | spacing 16
+acc32_mul12_mu2-5_leftshift      outputs identical: True (differing 0 of 4000) | stalls RTL 0 vs L2 0, updates RTL 63877 vs L2 63877: True | budget error: False | spacing 16
+acc16_mul12_mu2-5                outputs identical: True (differing 0 of 4000) | stalls RTL 559 vs L2 559, updates RTL 63865 vs L2 63865: True | budget error: False | spacing 16
+acc16_mul12_mu2-11               outputs identical: True (differing 0 of 4000) | stalls RTL 5118 vs L2 5118, updates RTL 63877 vs L2 63877: True | budget error: False | spacing 16
+acc16_mul12_trunc_mu2-8          outputs identical: True (differing 0 of 4000) | stalls RTL 3205 vs L2 3205, updates RTL 63861 vs L2 63861: True | budget error: False | spacing 16
+acc16_mul8_mu2-7_16dB            outputs identical: True (differing 0 of 4000) | stalls RTL 2773 vs L2 2773, updates RTL 63845 vs L2 63845: True | budget error: False | spacing 16
+long_NT30000_16_12_mu2-8         outputs identical: True (differing 0 of 34000) | stalls RTL 25923 vs L2 25923, updates RTL 543685 vs L2 543685: True | budget error: False | spacing 16
+budget_min_spacing10             outputs identical: True (differing 0 of 4000) | stalls RTL 3584 vs L2 3584, updates RTL 63861 vs L2 63861: True | budget error: False | spacing 10
+budget_negative_spacing9         negative control: cycle-budget error reported: True (outputs identical: False, differing 3979 of 4000) -> PASS
+ALL PASS

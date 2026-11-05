@@ -1,0 +1,13 @@
+# generated vectors, simulator work directories and Vivado runs (re-created by the scripts)
+sim/build/
+vivado/build/
+vivado/.Xil/
+*.jou
+*.log
+*.vvp
+*.wdb
+xsim.dir/
+.Xil/
+__pycache__/
+clockInfo.txt
+dfx_runtime.txt
