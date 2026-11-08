@@ -93,6 +93,10 @@ set_property -dict {PACKAGE_PIN C1 IOSTANDARD LVCMOS33} [get_ports {D1_SEG[7]}]
 set_property -dict {PACKAGE_PIN V12 IOSTANDARD LVCMOS33} [get_ports UART_rxd]
 set_property -dict {PACKAGE_PIN U11 IOSTANDARD LVCMOS33} [get_ports UART_txd]
 
-# asynchronous board I/O: inputs are synchronised in the design, outputs are slow (LEDs, displays, 115200-baud UART)
+# PWM audio output (both channels driven with the same signal)
+set_property -dict {PACKAGE_PIN N13 IOSTANDARD LVCMOS33} [get_ports left_audio_out]
+set_property -dict {PACKAGE_PIN N14 IOSTANDARD LVCMOS33} [get_ports right_audio_out]
+
+# asynchronous board I/O: inputs are synchronised in the design, outputs are slow (LEDs, displays, 1-Mbaud UART, PWM audio)
 set_false_path -from [get_ports {sw[*] btn[*] UART_rxd}]
-set_false_path -to   [get_ports {led[*] RGB0[*] RGB1[*] D0_AN[*] D0_SEG[*] D1_AN[*] D1_SEG[*] UART_txd}]
+set_false_path -to   [get_ports {led[*] RGB0[*] RGB1[*] D0_AN[*] D0_SEG[*] D1_AN[*] D1_SEG[*] UART_txd left_audio_out right_audio_out}]

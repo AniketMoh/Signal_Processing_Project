@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-| Date         : Fri Nov  6 00:56:46 2026
+| Date         : Fri Nov  6 02:50:34 2026
 | Host         : Laptop-PK running 64-bit major release  (build 9200)
 | Command      : report_utilization -hierarchical -hierarchical_depth 3 -file C:/Users/Pradeep/Signal_Processing_Project/fpga/vivado/build/top_m12_a16_r1/util_hier.rpt
 | Design       : top_boolean
@@ -22,16 +22,18 @@ Table of Contents
 +-----------------+----------------+------------+------------+---------+------+------+--------+--------+------------+
 |     Instance    |     Module     | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP Blocks |
 +-----------------+----------------+------------+------------+---------+------+------+--------+--------+------------+
-| top_boolean     |          (top) |       4825 |       4824 |       0 |    1 | 4670 |      0 |      0 |         51 |
-|   (top_boolean) |          (top) |          9 |          9 |       0 |    0 |  183 |      0 |      0 |          0 |
-|   u_exp         |       exp_core |       3615 |       3615 |       0 |    0 | 2635 |      0 |      0 |         51 |
-|     u_chain     |   rx_chain_syn |       3611 |       3611 |       0 |    0 | 2597 |      0 |      0 |         51 |
-|       (u_chain) |   rx_chain_syn |        279 |        279 |       0 |    0 |  294 |      0 |      0 |          2 |
+| top_boolean     |          (top) |       5031 |       5030 |       0 |    1 | 4980 |      4 |      0 |         51 |
+|   (top_boolean) |          (top) |          9 |          9 |       0 |    0 |  189 |      0 |      0 |          0 |
+|   u_exp         |       exp_core |       3625 |       3625 |       0 |    0 | 2666 |      0 |      0 |         51 |
+|     u_chain     |   rx_chain_syn |       3615 |       3615 |       0 |    0 | 2597 |      0 |      0 |         51 |
+|       (u_chain) |   rx_chain_syn |        278 |        278 |       0 |    0 |  294 |      0 |      0 |          2 |
 |       u_front   | chan_front_syn |         64 |         64 |       0 |    0 |   48 |      0 |      0 |          1 |
 |       u_noise   |     lfsr_noise |        188 |        188 |       0 |    0 |  617 |      0 |      0 |          0 |
-|       u_rx      |     lms_rx_syn |       3055 |       3055 |       0 |    0 | 1599 |      0 |      0 |         48 |
-|   u_host        |        host_if |       1043 |       1042 |       0 |    1 | 1709 |      0 |      0 |          0 |
-|     (u_host)    |        host_if |        970 |        969 |       0 |    1 | 1650 |      0 |      0 |          0 |
+|       u_rx      |     lms_rx_syn |       3059 |       3059 |       0 |    0 | 1599 |      0 |      0 |         48 |
+|   u_host        |        host_if |       1090 |       1089 |       0 |    1 | 1756 |      0 |      0 |          0 |
+|     (u_host)    |        host_if |       1019 |       1018 |       0 |    1 | 1703 |      0 |      0 |          0 |
+|   u_pay         |     payload_io |        148 |        148 |       0 |    0 |  226 |      4 |      0 |          0 |
+|     (u_pay)     |     payload_io |         42 |         42 |       0 |    0 |  125 |      0 |      0 |          0 |
 |   u_seg         |      sevenseg2 |        138 |        138 |       0 |    0 |   72 |      0 |      0 |          0 |
 +-----------------+----------------+------------+------------+---------+------+------+--------+--------+------------+
 * Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining

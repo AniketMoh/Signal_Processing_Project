@@ -1,4 +1,4 @@
-# run_board.py -- L5 measurements on the Boolean Board through the host_if.v protocol (USB-UART, 115200 baud).
+# run_board.py -- L5 measurements on the Boolean Board through the host_if.v protocol (USB-UART, 1 Mbaud).
 # Responsible member: Gautam Garg (review, verification, viva)
 # Written with AI assistance (Claude, Anthropic), project decision D-06.
 #
@@ -17,6 +17,7 @@ import protocol as P
 
 RESULTS = os.path.join(HERE, "results")
 SYM_RATE = 100e6 / 16                      # symbols per second on the board (one symbol per 16 clocks at 100 MHz)
+BAUD = 1_000_000                           # host_if.v CLKS_PER_BIT = 100 at 100 MHz
 
 
 def find_port():
@@ -32,7 +33,11 @@ class Board:
         self.open()
 
     def open(self):
-        self.s = serial.Serial(self.port, 115200, timeout=0.5)
+        self.s = serial.Serial(self.port, BAUD, timeout=0.5)
+        try:
+            self.s.set_buffer_size(rx_size=1 << 20, tx_size=1 << 16)   # Windows: default 4 KB overflows at 1 Mbaud
+        except (AttributeError, serial.SerialException):
+            pass
         time.sleep(0.1)
         self.s.reset_input_buffer()
 

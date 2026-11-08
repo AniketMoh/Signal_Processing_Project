@@ -4,7 +4,7 @@
   "B_MUL": 12,
   "B_ACC": 16,
   "RND": 1,
-  "version": 1
+  "version": 2
  },
  "rows": [
   {
@@ -38,8 +38,8 @@
     6396853
    ],
    "identical": true,
-   "board_seconds": 0.08,
-   "model_seconds": 16.1
+   "board_seconds": 0.07,
+   "model_seconds": 16.7
   },
   {
    "p": 8,
@@ -72,8 +72,8 @@
     6397189
    ],
    "identical": true,
-   "board_seconds": 0.09,
-   "model_seconds": 16.7
+   "board_seconds": 0.07,
+   "model_seconds": 16.8
   },
   {
    "p": 8,
@@ -106,8 +106,8 @@
     6397269
    ],
    "identical": true,
-   "board_seconds": 0.09,
-   "model_seconds": 16.9
+   "board_seconds": 0.07,
+   "model_seconds": 16.3
   },
   {
    "p": 5,
@@ -140,8 +140,8 @@
     4798325
    ],
    "identical": true,
-   "board_seconds": 0.07,
-   "model_seconds": 11.6
+   "board_seconds": 0.06,
+   "model_seconds": 13.1
   },
   {
    "p": 11,
@@ -175,7 +175,7 @@
    ],
    "identical": true,
    "board_seconds": 0.06,
-   "model_seconds": 12.3
+   "model_seconds": 14.2
   },
   {
    "p": 8,
@@ -208,8 +208,8 @@
     4797317
    ],
    "identical": true,
-   "board_seconds": 0.07,
-   "model_seconds": 12.8
+   "board_seconds": 0.06,
+   "model_seconds": 13.1
   },
   {
    "p": 8,
@@ -243,7 +243,7 @@
    ],
    "identical": true,
    "board_seconds": 0.06,
-   "model_seconds": 12.9
+   "model_seconds": 11.9
   },
   {
    "p": 6,
@@ -277,9 +277,9 @@
    ],
    "identical": true,
    "board_seconds": 0.17,
-   "model_seconds": 39.7
+   "model_seconds": 41.0
   }
  ],
  "all_identical": true,
- "date": "2026-11-06 01:00"
+ "date": "2026-11-06 02:59"
 }

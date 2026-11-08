@@ -19,8 +19,8 @@ file mkdir $rep
 
 set rtl [file join $here .. rtl]
 set mid [file join $here .. .. midterm_mtr-22 2_code_and_results_by_phase 09_P7-P8_RTL code]
-foreach f {top_boolean.v host_if.v uart_rx.v uart_tx.v board_io.v exp_core.v payload_lfsr.v rx_chain_syn.v lms_rx_syn.v
-           chan_front_syn.v var_ctrl_syn.v} { read_verilog [file join $rtl $f] }
+foreach f {top_boolean.v host_if.v uart_rx.v uart_tx.v board_io.v exp_core.v payload_lfsr.v payload_io.v fifo_sync.v
+           rx_chain_syn.v lms_rx_syn.v chan_front_syn.v var_ctrl_syn.v} { read_verilog [file join $rtl $f] }
 foreach f {lfsr_noise.v prbs15.v} { read_verilog [file join $mid $f] }
 read_xdc [file join $here boolean.xdc]
 

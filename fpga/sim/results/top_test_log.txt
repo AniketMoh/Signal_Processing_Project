@@ -1,5 +1,5 @@
 # top_boolean (UART protocol, exp_core, payload LFSR) vs L2, iverilog, level L3
-identification: {'B_MUL': 12, 'B_ACC': 16, 'RND': 1, 'version': 1}
-run 0: board-model report identical to L2: True | report {'running': False, 'done': True, 'tracking': False, 'host': True, 'sym_idx': 5000, 'counters': [3500, 197, 28, 2, 10951014920, 5096577150, 4257, 79813]} | L2 [3500, 197, 28, 2, 10951014920, 5096577150, 4257, 79813]
-run 1: board-model report identical to L2: True | report {'running': False, 'done': True, 'tracking': False, 'host': True, 'sym_idx': 3000, 'counters': [2000, 6, 2, 6, 3538316381, 3784251024, 125, 47861]} | L2 [2000, 6, 2, 6, 3538316381, 3784251024, 125, 47861]
+identification: {'B_MUL': 12, 'B_ACC': 16, 'RND': 1, 'version': 2}
+run 0: board-model report identical to L2: True | report {'running': False, 'done': True, 'tracking': False, 'host': True, 'payload': False, 'sym_idx': 5000, 'counters': [3500, 197, 28, 2, 10951014920, 5096577150, 4257, 79813]} | L2 [3500, 197, 28, 2, 10951014920, 5096577150, 4257, 79813]
+run 1: board-model report identical to L2: True | report {'running': False, 'done': True, 'tracking': False, 'host': True, 'payload': False, 'sym_idx': 3000, 'counters': [2000, 6, 2, 6, 3538316381, 3784251024, 125, 47861]} | L2 [2000, 6, 2, 6, 3538316381, 3784251024, 125, 47861]
 ALL PASS

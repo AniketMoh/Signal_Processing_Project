@@ -1,0 +1,7 @@
+# payload transport through top_boolean vs L2, iverilog, level L3
+play_R3: mu=2^-8 S=28 8.0 dB, 64 bytes: decisions R1/R2/R3 identical to L2: [True, True, True] | counters identical: True | bit errors R1/R2/R3 6/0/0
+play_R3: mu=2^-5 S=None 10.0 dB, 40 bytes: decisions R1/R2/R3 identical to L2: [True, True, True] | counters identical: True | bit errors R1/R2/R3 1/0/0
+play_R3: played samples identical to the selected receiver's bytes: True (64 samples) | clocks with the output buffer full: 33586
+play_R1: mu=2^-8 S=5 6.0 dB, 48 bytes: decisions R1/R2/R3 identical to L2: [True, True, True] | counters identical: True | bit errors R1/R2/R3 29/11/5
+play_R1: played samples identical to the selected receiver's bytes: True (48 samples) | clocks with the output buffer full: 15361
+ALL PASS

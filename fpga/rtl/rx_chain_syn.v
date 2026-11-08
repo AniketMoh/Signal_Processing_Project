@@ -36,7 +36,11 @@ module rx_chain_syn #(
     output wire signed [15:0] o_r, o_d, o_ya, o_yf, o_ea, o_ef,
     output reg  [31:0]       n_eval, err1, err2, err3,
     output reg  [63:0]       sse2, sse3,
-    output wire [31:0]       stalls, updates
+    output wire [31:0]       stalls, updates,
+    // decisions of one tracking symbol (n >= N_T), valid together with dec_valid:
+    //   dec1 = R1 decision of bit n, dec2 / dec3 = R2 / R3 decisions of bit n-2 (Delta = 2)
+    output wire              dec_valid,
+    output wire              dec1, dec2, dec3
 );
     // ---- noise (teammates' lfsr_noise.v, synthesisable as written) ----
     wire signed [19:0] noise;
@@ -118,6 +122,11 @@ module rx_chain_syn #(
             end
         end
     end
+
+    assign dec_valid = rx_valid && run;
+    assign dec1 = r1_bit;
+    assign dec2 = (yf >= 0);
+    assign dec3 = (ya >= 0);
 
     // synthesis translate_off
     always @(posedge clk) if (!rst && fvalid && rx_busy) $display("ERROR rx_chain_syn: symbol overlap at %0t", $time);

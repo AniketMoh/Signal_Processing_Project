@@ -10,7 +10,7 @@ import protocol as P
 RTL = os.path.join(R.REPO, "fpga", "rtl")
 MID = os.path.join(R.PKG, "09_P7-P8_RTL", "code")
 SRC = [os.path.join(R.HERE, "tb_top.v")] + [os.path.join(RTL, f) for f in (
-    "top_boolean.v", "host_if.v", "uart_rx.v", "uart_tx.v", "board_io.v", "exp_core.v", "payload_lfsr.v",
+    "top_boolean.v", "host_if.v", "uart_rx.v", "uart_tx.v", "board_io.v", "exp_core.v", "payload_lfsr.v", "payload_io.v", "fifo_sync.v",
     "rx_chain_syn.v", "lms_rx_syn.v", "chan_front_syn.v", "var_ctrl_syn.v")] + [os.path.join(MID, f) for f in ("lfsr_noise.v", "prbs15.v")]
 LOG = os.path.join(R.HERE, "results", "top_test_log.txt")
 

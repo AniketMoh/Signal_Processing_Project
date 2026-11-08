@@ -1,7 +1,10 @@
 // top_boolean.v -- top level for the Real Digital Boolean Board (XC7S50), 100 MHz.
-// Two ways to run the experiment on the same hardware (exp_core):
+// Three ways to run the experiment on the same hardware (exp_core):
 //   * host mode: the PC sends a complete configuration over the USB-UART (host_if.v) and receives all counters at the end
 //     of the run; used for the L5 measurements, which are compared with the L2 model count for count;
+//   * payload mode (host mode with the payload flag): the payload bits come from the PC (audio, image, live microphone),
+//     and the delay-aligned decisions of R1, R2, R3 go back to the PC (payload_io.v); one receiver can be played on the
+//     board's audio output (8 kHz PWM, both channels);
 //   * demo mode (after power-up and after BTN0): configuration from the switches, training (N_T = 30000) and then continuous
 //     tracking; error counts of the receivers per window of 2^20 tracking symbols (about 0.17 s) on the displays.
 // Switches (demo mode):
@@ -10,9 +13,11 @@
 //   SW[7:6]  noise: Eb/N0 = 8, 10, 12, 14 dB
 //   SW[8]    channel: 0 primary (c 40..116, a = 0.31..0.91), 1 control (c 26..77, a = 0.20..0.60)  -- a change retrains
 //   SW[9]    display 1 shows R1 instead of R2
-// Displays: display 1 = R2 (or R1) errors per window, display 0 = R3 errors per window (errors per 2^20 bits ~ BER in ppm).
+//   SW[11:10] receiver on the audio output in payload mode with playback: 0 R3, 1 R2, 2 R1, 3 R3
+// Displays: display 1 = R2 (or R1) errors per window, display 0 = R3 errors per window (errors per 2^20 bits ~ BER in ppm;
+//           in payload mode per 2^16 bits, about 1 s of live audio).
 // Buttons:  BTN0 retrain with the switch settings (and leave host mode); BTN1 clear the counters; BTN3 reset.
-// LEDs: LED[9:0] = SW[9:0]; LED13 host mode; LED14 tracking; LED15 training.
+// LEDs: LED[11:0] = SW[11:0]; LED12 payload mode; LED13 host mode; LED14 tracking; LED15 training; RGB0 red = audio playing.
 // RGB0: blue = training, green = tracking.   RGB1 (R3 errors per window): green < 100, yellow 100..999, red >= 1000.
 // Level L3 (L4/L5 after implementation).  Responsible member: Bhavyam Shankar (review, verification, viva)
 // Written with AI assistance (Claude, Anthropic), project decision D-06.
@@ -20,9 +25,13 @@ module top_boolean #(
     parameter B_MUL        = 12,
     parameter B_ACC        = 16,
     parameter RND          = 1,
-    parameter CLKS_PER_BIT = 868,       // 115200 baud at 100 MHz
+    parameter CLKS_PER_BIT = 100,       // 1 Mbaud at 100 MHz
     parameter DEB_N        = 20,        // button debounce, 2^DEB_N clocks
     parameter WIN_LOG2     = 20,        // demo window, 2^WIN_LOG2 tracking symbols
+    parameter PAY_WIN_LOG2 = 16,        // window in payload mode
+    parameter TICK         = 12500,     // audio sample period in clocks (8 kHz)
+    parameter PAY_TX_AW    = 10,        // decision-word buffer, 2^PAY_TX_AW words
+    parameter PLAY_PREBUF  = 2048,      // audio samples buffered before playback starts
     parameter DEMO_NT      = 30000
 )(
     input  wire        clk,
@@ -36,7 +45,9 @@ module top_boolean #(
     output wire [3:0]  D1_AN,
     output wire [7:0]  D1_SEG,
     input  wire        UART_rxd,       // into the FPGA
-    output wire        UART_txd        // out of the FPGA
+    output wire        UART_txd,       // out of the FPGA
+    output wire        left_audio_out,
+    output wire        right_audio_out
 );
     // ---- reset: power-on and BTN3 ----
     wire b0, b0_rise, b1_rise, b3;
@@ -88,7 +99,8 @@ module top_boolean #(
     // ---- host interface ----
     wire [3:0]  h_p;   wire [15:0] h_S;  wire [6:0] h_clo, h_chi;  wire h_static;  wire [16:0] h_sig;
     wire [31:0] h_nt, h_ntot;  wire [30:0] h_pay;  wire [12*36-1:0] h_seeds;
-    wire h_start, h_stop, host_mode;
+    wire h_start, h_stop, host_mode, pay_mode, play_en, pay_valid, word_rd, word_empty;
+    wire [7:0]  pay_byte;  wire [23:0] word;
     wire running, done, tracking, sym_done;
     wire [31:0] sym_idx, n_eval, err1, err2, err3, stalls, updates;
     wire [63:0] sse2, sse3;
@@ -96,6 +108,8 @@ module top_boolean #(
         .clk(clk), .rst(rst), .rxd(UART_rxd), .txd(UART_txd),
         .p_in(h_p), .S(h_S), .c_lo(h_clo), .c_hi(h_chi), .static_mode(h_static), .sigma_q(h_sig), .n_t(h_nt), .n_total(h_ntot),
         .pay_seed(h_pay), .seeds(h_seeds), .start(h_start), .stop(h_stop), .host_mode(host_mode), .clear_host(b0_rise),
+        .pay_mode(pay_mode), .play_en(play_en), .pay_byte(pay_byte), .pay_valid(pay_valid),
+        .word_rd(word_rd), .word(word), .word_empty(word_empty),
         .running(running), .done(done), .tracking(tracking), .sym_idx(sym_idx), .n_eval(n_eval), .err1(err1), .err2(err2),
         .err3(err3), .sse2(sse2), .sse3(sse3), .stalls(stalls), .updates(updates));
 
@@ -104,6 +118,15 @@ module top_boolean #(
     always @(posedge clk) begin rst_d <= rst; ch_d <= sw_s[8]; end
     wire d_start = !host_mode && ((rst_d && !rst) || (ch_d != sw_s[8])) || b0_rise;
 
+    // ---- payload transport and audio output ----
+    wire pay_bit, pay_avail, pay_take, hold, dec_valid, dec1, dec2, dec3, audio, playing;
+    payload_io #(.TICK(TICK), .TX_AW(PAY_TX_AW), .PREBUF(PLAY_PREBUF)) u_pay (.clk(clk), .clear(rst | h_start), .in_byte(pay_byte), .in_valid(pay_valid), .in_count(),
+        .bit_avail(pay_avail), .bit_out(pay_bit), .bit_take(pay_take), .dec_valid(dec_valid & pay_mode), .d1(dec1), .d2(dec2), .d3(dec3),
+        .hold(hold), .tx_rd(word_rd), .tx_word(word), .tx_empty(word_empty), .play_en(play_en), .play_sel(sw_s[11:10]),
+        .pwm(audio), .playing(playing));
+    assign left_audio_out  = audio;
+    assign right_audio_out = audio;
+
     // ---- experiment ----
     exp_core #(.B_MUL(B_MUL), .B_ACC(B_ACC), .RND(RND)) u_exp (
         .clk(clk), .rst(rst), .start(h_start | d_start), .stop(h_stop), .clr_cnt(b1_rise),
@@ -111,8 +134,10 @@ module top_boolean #(
         .static_mode(host_mode ? h_static : d_static), .sigma_q(host_mode ? h_sig : d_sig),
         .n_t(host_mode ? h_nt : DEMO_NT), .n_total(host_mode ? h_ntot : 32'd0),
         .pay_seed(host_mode ? h_pay : 31'd12345), .seeds(host_mode ? h_seeds : DEMO_SEEDS),
+        .pay_mode(pay_mode), .pay_bit(pay_bit), .pay_avail(pay_avail), .pay_take(pay_take), .hold(hold),
         .running(running), .done(done), .tracking(tracking), .sym_done(sym_done), .sym_idx(sym_idx),
-        .n_eval(n_eval), .err1(err1), .err2(err2), .err3(err3), .sse2(sse2), .sse3(sse3), .stalls(stalls), .updates(updates));
+        .n_eval(n_eval), .err1(err1), .err2(err2), .err3(err3), .sse2(sse2), .sse3(sse3), .stalls(stalls), .updates(updates),
+        .dec_valid(dec_valid), .dec1(dec1), .dec2(dec2), .dec3(dec3));
 
     // ---- error counts per window (demo display) ----
     reg [31:0] p1, p2, p3;
@@ -120,7 +145,7 @@ module top_boolean #(
     always @(posedge clk) begin
         if (rst || b1_rise || !tracking) begin
             p1 <= err1; p2 <= err2; p3 <= err3;
-        end else if (sym_done && n_eval[WIN_LOG2-1:0] == 0) begin
+        end else if (sym_done && (pay_mode ? n_eval[PAY_WIN_LOG2-1:0] == 0 : n_eval[WIN_LOG2-1:0] == 0)) begin
             w1 <= (err1 - p1 > 9999) ? 14'd9999 : err1 - p1;
             w2 <= (err2 - p2 > 9999) ? 14'd9999 : err2 - p2;
             w3 <= (err3 - p3 > 9999) ? 14'd9999 : err3 - p3;
@@ -135,8 +160,8 @@ module top_boolean #(
     always @(posedge clk) pwm <= pwm + 4'd1;
     wire dim = (pwm == 4'd0);
     wire training = running && !tracking;
-    assign led  = {training, tracking, host_mode, 3'b000, sw_s[9:0]};
-    assign RGB0 = {training & dim, tracking & dim, 1'b0};                         // {B, G, R}
+    assign led  = {training, tracking, host_mode, pay_mode, sw_s[11:0]};
+    assign RGB0 = {training & dim, tracking & dim, playing & dim};                // {B, G, R}
     wire r3_hi  = (w3 >= 14'd1000), r3_mid = (w3 >= 14'd100);
     assign RGB1 = {1'b0, tracking & !r3_hi & dim, tracking & r3_mid & dim};       // green / yellow (R+G) / red
 endmodule
