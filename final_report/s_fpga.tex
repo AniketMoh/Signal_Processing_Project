@@ -65,13 +65,14 @@ Top level & two experiments as UART command frames & identical\\
 \begin{table}[t]
 \centering
 \footnotesize
-\setlength{\tabcolsep}{4.5pt}
+\setlength{\tabcolsep}{3pt}
 \begin{tabular}{@{}lrrrrrr@{}}
 \toprule
 Build & DSP & LUT & FF & WNS & $F_{\max}$ & Power\\
 \midrule
 $B_{\rm acc}=16$ & 51 & 4825 & 4670 & $+0.30$\,ns & 103\,MHz & 0.14\,W\\
 $B_{\rm acc}=26$ & 51 & 4851 & 4988 & $+0.72$\,ns & 108\,MHz & 0.14\,W\\
+$B_{\rm acc}=16$, payload & 51 & 5051 & 5111 & $+0.57$\,ns & 106\,MHz & \\
 \midrule
 \multicolumn{7}{@{}l}{\emph{LMS core alone, $B_{\rm mul}=12$ (out of context)}}\\
 $B_{\rm acc}=12$ & 48 & 2817 & 1515 & $+1.62$\,ns & & \\
@@ -81,7 +82,7 @@ $B_{\rm acc}=26$ & 48 & 3068 & 1962 & $+1.86$\,ns & & \\
 $B_{\rm acc}=32$ & 48 & 5080 & 2290 & $+0.97$\,ns & & \\
 \bottomrule
 \end{tabular}
-\caption{\nb{Resources and timing after routing on the XC7S50 (120 DSP48E1, 32\,600 LUT, 65\,200 FF), $B_{\rm mul}=12$, round to nearest (\lvl{L4}). Top: complete design; no block RAM. Bottom: the LMS core alone; $B_{\rm mul}=8$ and 16 give the same DSP and FF counts and LUT counts within 82 of these. Power is Vivado's estimate.}}
+\caption{\nb{Resources and timing after routing on the XC7S50 (120 DSP48E1, 32\,600 LUT, 65\,200 FF), $B_{\rm mul}=12$, round to nearest (\lvl{L4}). Top: complete design; no block RAM, except 4 tiles in the payload build (1\,Mbaud link, payload, decision and audio buffers). Bottom: the LMS core alone; $B_{\rm mul}=8$ and 16 give the same DSP and FF counts and LUT counts within 82 of these. Power is Vivado's estimate.}}
 \label{tab:fpgares}
 \end{table}
 
@@ -124,6 +125,8 @@ $2^{-6}$ & 112 & primary, 6\,dB & 1000k & 82619/33928/21144 & yes\\
 
 \nb{\emph{Accumulator width on the board.} With $B_{\rm acc}=16$, 6.6\,\% ($\mu=2^{-8}$) to 20\,\% ($\mu=2^{-10}$) of all nonzero coefficient updates round to zero, against 0.006\,\% and 0.03\,\% with 26 bits. Yet R3's BER and MSE agree between the two builds to three or four significant digits at every rate (e.g.\ $\mu=2^{-10}$, $S=28$: BER $9.77\times10^{-4}$ and $9.78\times10^{-4}$, MSE 0.0920 in both). With round-to-nearest the channel noise dithers the lost updates, as predicted by the stall analysis of \cref{sec:fxp}. On this hardware, then, update underflow is frequent but does not restrict tracking in the approved range; the PPR's hypothesis would need narrower accumulators, truncation or smaller step sizes to show.}
 
+\nb{\emph{Image and voice through the board.} For P5's payloads the link was extended: the PC streams the payload bytes at 1\,Mbaud, the board takes them as transmitted bits and returns the decisions of R1, R2 and R3 with their delays removed (0 and $\Delta=2$), pausing symbol generation whenever no payload bit is waiting, which leaves the symbol sequence unchanged. In all 15 runs --- 11 with the $128\times72\times8$-bit image, 4 with the 19.9\,s voice recording --- every returned byte of every receiver equals the bit-true model. The image (10\,dB, $\mu=2^{-8}$) shows the three-receiver story at a glance (\cref{fig:teaser}): R1 loses 2068--2432 pixels whenever the channel moves, R2 251--464, and R3 only 16--89, growing as the channel speeds up; with $\mu=2^{-5}$ at $S=1$ R3 is worse than R2 (992 against 464 pixels), as in simulation (\cref{sec:image}). For the voice (14\,dB, $\mu=2^{-8}$) R3 makes 2, 14 and 43 bit errors in $1.27\times10^6$ at $S=1000$, 28 and 1, with waveform SNR 30.6, 24.6 and 20.9\,dB, against 29.6, 21.7 and 20.0\,dB at \lvl{L1} (\cref{sec:audio}) --- a different noise generator and finite precision, the same ordering; R1 and R2 make about 28\,000 and 1\,500 errors at every rate. Link counters on the board (bytes, framing errors) located an early byte loss in the PC software, which reconfigured the serial port during a transfer; no byte was lost in the final runs.}
+
 \noindent\textbf{Engineering significance.} \nb{(i)~The design question of the PPR, which precision and what hardware a given tracking rate needs, has a measured answer: a 12-bit multiplier word and a 16-bit accumulator with round-to-nearest track as well as the 26-bit baseline, cost 51 DSP slices and about 4.8k LUTs, and close timing at 100\,MHz without delayed LMS. (ii)~Because the board equals the model, the step-size and word-length conclusions of \cref{sec:results14,sec:fxp} carry over to the hardware for these configurations without a separate hardware sweep. (iii)~The DSP budget is set by the number of taps and receivers, not by word length; word length is paid for in flip-flops and, above 26 bits, LUTs.}
 
-\noindent\textbf{Limits.} \nb{Hardware BER is quoted only down to about $10^{-4}$ (bounded noise). The board sweeps use one seed. Supervised adaptation only; decision-directed operation, NLMS and payload transport of audio and images over the UART were not implemented on the board. The bitstream is loaded over JTAG at each power-up. The RTL was written with AI assistance \cite{claude} and reviewed, executed and tested by the team; each module names the team member responsible for it.}
+\noindent\textbf{Limits.} \nb{Hardware BER is quoted only down to about $10^{-4}$ (bounded noise). The board sweeps use one seed. Supervised adaptation only; decision-directed operation and NLMS were not implemented on the board. A live-microphone mode (the board plays the selected receiver on its audio output) is implemented but was not evaluated and is not reported. The bitstream is loaded over JTAG at each power-up. The RTL was written with AI assistance \cite{claude} and reviewed, executed and tested by the team; each module names the team member responsible for it.}

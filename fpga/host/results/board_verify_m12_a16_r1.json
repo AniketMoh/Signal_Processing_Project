@@ -38,8 +38,8 @@
     6396853
    ],
    "identical": true,
-   "board_seconds": 0.07,
-   "model_seconds": 16.7
+   "board_seconds": 0.08,
+   "model_seconds": 42.0
   },
   {
    "p": 8,
@@ -72,8 +72,8 @@
     6397189
    ],
    "identical": true,
-   "board_seconds": 0.07,
-   "model_seconds": 16.8
+   "board_seconds": 0.08,
+   "model_seconds": 65.7
   },
   {
    "p": 8,
@@ -106,8 +106,8 @@
     6397269
    ],
    "identical": true,
-   "board_seconds": 0.07,
-   "model_seconds": 16.3
+   "board_seconds": 0.08,
+   "model_seconds": 60.5
   },
   {
    "p": 5,
@@ -141,7 +141,7 @@
    ],
    "identical": true,
    "board_seconds": 0.06,
-   "model_seconds": 13.1
+   "model_seconds": 24.9
   },
   {
    "p": 11,
@@ -175,7 +175,7 @@
    ],
    "identical": true,
    "board_seconds": 0.06,
-   "model_seconds": 14.2
+   "model_seconds": 22.0
   },
   {
    "p": 8,
@@ -209,7 +209,7 @@
    ],
    "identical": true,
    "board_seconds": 0.06,
-   "model_seconds": 13.1
+   "model_seconds": 44.3
   },
   {
    "p": 8,
@@ -243,7 +243,7 @@
    ],
    "identical": true,
    "board_seconds": 0.06,
-   "model_seconds": 11.9
+   "model_seconds": 42.5
   },
   {
    "p": 6,
@@ -276,10 +276,10 @@
     15995189
    ],
    "identical": true,
-   "board_seconds": 0.17,
-   "model_seconds": 41.0
+   "board_seconds": 0.16,
+   "model_seconds": 111.4
   }
  ],
  "all_identical": true,
- "date": "2026-11-06 02:59"
+ "date": "2026-11-08 12:41"
 }

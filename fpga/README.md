@@ -16,7 +16,8 @@ L3 = RTL simulation, L4 = Vivado synthesis/implementation, L5 = measured on the 
 | `rtl/lms_rx_syn.v` | R3 adaptive LMS + R2 frozen bank, real widths, 10-clock sequence per symbol, run-time μ | Pradeep Kumar |
 | `rtl/chan_front_syn.v`, `var_ctrl_syn.v`, `rx_chain_syn.v` | Channel + noise front end, variation counter, complete chain with counters | Aniket Mohapatra |
 | `rtl/payload_lfsr.v`, `exp_core.v` | On-chip payload (x³¹+x²⁸+1) and run control (load, train, track, stop after N symbols) | Aniket Mohapatra |
-| `rtl/uart_rx.v`, `uart_tx.v`, `host_if.v`, `board_io.v` | 115200-baud UART, PC command protocol, debounce, seven-segment displays | Gautam Garg |
+| `rtl/uart_rx.v`, `uart_tx.v`, `host_if.v`, `board_io.v` | 1-Mbaud UART (glitch filter, framing-error count), PC command protocol incl. 'D' link diagnostics, debounce, seven-segment displays | Gautam Garg |
+| `rtl/payload_io.v`, `fifo_sync.v` | Payload transport: PC bytes -> transmitted bits, delay-aligned R1/R2/R3 bytes back, 8 kHz PWM playback on the audio jack | Gautam Garg |
 | `rtl/top_boolean.v`, `vivado/boolean.xdc` | Board top level (host mode + switch demo), pins | Bhavyam Shankar |
 | `sim/` | Testbenches and bit-exact regressions (`run_lms_syn_tests.py`, `run_xsim_check.py`, `run_chain_syn_tests.py`, `run_top_test.py`), shared L2 reference `l2_ref.py`, protocol `protocol.py`; logs in `sim/results/` | per file |
 | `vivado/` | `build_top.tcl` (full design + bitstream), `ooc_lms_rx_syn.tcl` (core only), `program_board.tcl`; reports in `vivado/reports/` | Bhavyam Shankar |
@@ -37,6 +38,10 @@ vivado -mode batch -nojournal -nolog -source program_board.tcl -tclargs build/to
 cd ../host
 python run_board.py verify         # board counters == L2 counters (needs pyserial; port auto-detected, or --port COM8)
 python run_board.py sweep --ebn0 10 --p 8
+python run_payload.py image       # P5 image through the board, every byte checked vs L2
+python run_payload.py audio       # P5 voice recording (about 5 min because of the L2 check)
+python run_payload.py live --seconds 20 --pc-play R3      # microphone demo (not yet evaluated)
+python diag_link.py --trials 20   # PC -> board link test using the board's link counters
 python plot_board.py
 ```
 
@@ -52,6 +57,7 @@ Noise word complete → front end (2 clocks) → LMS (10 clocks: coefficients, p
 | SW[7:6] | Eb/N0 = 8 / 10 / 12 / 14 dB |
 | SW[8] | channel: 0 primary (a 0.31–0.91), 1 control (a 0.20–0.60); changing it retrains |
 | SW[9] | display 1 shows R1 instead of R2 |
+| SW[11:10] | receiver on the audio jack in payload mode with playback: 0 R3, 1 R2, 2 R1 |
 | BTN0 | retrain with the switch settings (also leaves host mode) |
 | BTN1 | clear counters |
 | BTN3 | reset |

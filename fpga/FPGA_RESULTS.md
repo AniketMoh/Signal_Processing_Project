@@ -91,10 +91,25 @@ What it shows:
 
 With round-to-nearest, a fifth of the updates can be lost without any visible change: the noise dithers the rounding, as in the L2 study (P6A T3). The price of the 26-bit accumulator is 318 flip-flops and nothing in DSPs; its benefit at these μ is nil.
 
+### 4.4 Image and voice through the board (payload transport)
+`host/run_payload.py`: the PC streams payload bytes at 1 Mbaud; the board uses them as the transmitted bits, pauses symbol generation while no payload bit is waiting (the symbol sequence is unchanged), and returns the decisions of R1, R2, R3 with their delays removed (R1 0, R2/R3 Delta = 2). Payloads are the mid-term P5 ones: the 128 x 72 x 8-bit image and the 19.9 s, 8 kHz, 8-bit voice recording. **Every returned byte of every receiver equals the L2 model in all 15 runs** (`results/payload/image_metrics.json`, `audio_metrics.json`; PNGs and WAVs in `results/payload/`).
+
+| Image, 10 dB | static | S = 1000 | S = 28 | S = 5 | S = 1 | S = 1, mu = 2^-5 |
+|---|---|---|---|---|---|---|
+| wrong pixels R1 / R2 / R3 (mu = 2^-8 unless stated) | 53 / 1 / 2 | 2068 / 251 / 16 | 2423 / 365 / 44 | 2432 / 336 / 77 | 2398 / 344 / 89 | 2398 / 464 / 992 |
+
+| Voice, 14 dB, mu = 2^-8 | static | S = 1000 | S = 28 | S = 1 |
+|---|---|---|---|---|
+| bit errors R1 / R2 / R3 (of 1 271 128) | 0 / 0 / 0 | 27 818 / 1 472 / 2 | 28 822 / 1 593 / 14 | 28 619 / 1 491 / 43 |
+| R3 waveform SNR (L1 in the mid-term) | exact | 30.6 dB (29.6) | 24.6 dB (21.7) | 20.9 dB (20.0) |
+
+Link reliability: an early loss of single payload bytes was traced with the board's link counters ('D' command, `host/diag_link.py`) to the PC script reconfiguring the serial port during a transfer; fixed (0 of 30 test runs short afterwards). Payload build (L4): 51 DSP48E1, 5051 LUT, 5111 FF, 4 BRAM tiles, WNS +0.572 ns.
+
 ## 5. What was not done / limits
 - **Seven-segment digit and segment order** follow the usual convention but are not stated in the board manual; not checked by eye in this session (only the UART path was observed). If digits appear mirrored, the fix is the mapping in `board_io.v`.
 - **The bitstream is loaded over JTAG (volatile).** It must be loaded again after a power cycle (`vivado/program_board.tcl`); writing it to the configuration flash was not done.
 - **USB-serial dropouts:** twice in about 130 runs the Windows serial port returned "Access is denied" during a run; `run_board.py` now reopens the port and repeats the run (each run restarts from its seeds, so a repeat gives the same counts). No wrong report was ever received (each report has a checksum).
-- **Not implemented (optional in PPR-22):** audio/image payload transport over UART with block-RAM buffers, NLMS, decision-directed mode on the board, a delayed-LMS variant (not needed: timing closes without it).
+- **Not implemented (optional in PPR-22):** NLMS, decision-directed mode on the board, a delayed-LMS variant (not needed: timing closes without it).
+- **Live microphone mode** (`run_payload.py live`, board audio jack via SW[11:10]) is implemented but has not been run or listened to; it is not reported.
 - **Post-synthesis functional simulation** was not run separately; the board's exact agreement with L2 is the stronger check of the implemented netlist.
 - Board BER values below about 10⁻⁴ are not BER claims (bounded noise, D-12).
