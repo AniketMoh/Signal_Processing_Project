@@ -101,6 +101,8 @@ module top_boolean #(
     wire [31:0] h_nt, h_ntot;  wire [30:0] h_pay;  wire [12*36-1:0] h_seeds;
     wire h_start, h_stop, host_mode, pay_mode, play_en, pay_valid, word_rd, word_empty;
     wire [7:0]  pay_byte;  wire [23:0] word;
+    wire [12:0] pay_count;                                    // payload buffer fill (4096 bytes)
+    wire        pay_full = (pay_count == 13'd4096);
     wire running, done, tracking, sym_done;
     wire [31:0] sym_idx, n_eval, err1, err2, err3, stalls, updates;
     wire [63:0] sse2, sse3;
@@ -111,7 +113,7 @@ module top_boolean #(
         .pay_mode(pay_mode), .play_en(play_en), .pay_byte(pay_byte), .pay_valid(pay_valid),
         .word_rd(word_rd), .word(word), .word_empty(word_empty),
         .running(running), .done(done), .tracking(tracking), .sym_idx(sym_idx), .n_eval(n_eval), .err1(err1), .err2(err2),
-        .err3(err3), .sse2(sse2), .sse3(sse3), .stalls(stalls), .updates(updates));
+        .err3(err3), .sse2(sse2), .sse3(sse3), .stalls(stalls), .updates(updates), .pay_drop(pay_valid && pay_full));
 
     // ---- demo start: after reset, BTN0, or a change of the channel switch ----
     reg rst_d = 1'b1, ch_d = 1'b0;
@@ -120,7 +122,7 @@ module top_boolean #(
 
     // ---- payload transport and audio output ----
     wire pay_bit, pay_avail, pay_take, hold, dec_valid, dec1, dec2, dec3, audio, playing;
-    payload_io #(.TICK(TICK), .TX_AW(PAY_TX_AW), .PREBUF(PLAY_PREBUF)) u_pay (.clk(clk), .clear(rst | h_start), .in_byte(pay_byte), .in_valid(pay_valid), .in_count(),
+    payload_io #(.TICK(TICK), .TX_AW(PAY_TX_AW), .PREBUF(PLAY_PREBUF)) u_pay (.clk(clk), .clear(rst | h_start), .in_byte(pay_byte), .in_valid(pay_valid), .in_count(pay_count),
         .bit_avail(pay_avail), .bit_out(pay_bit), .bit_take(pay_take), .dec_valid(dec_valid & pay_mode), .d1(dec1), .d2(dec2), .d3(dec3),
         .hold(hold), .tx_rd(word_rd), .tx_word(word), .tx_empty(word_empty), .play_en(play_en), .play_sel(sw_s[11:10]),
         .pwm(audio), .playing(playing));

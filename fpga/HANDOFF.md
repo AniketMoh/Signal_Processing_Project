@@ -36,16 +36,21 @@ Goal: send the P5 voice recording, the P5 image and live laptop-microphone audio
 - Vivado build OK: 51 DSP, 5031 LUT, 4980 FF, 4 BRAM, WNS +0.482 ns. Bitstream at `fpga/vivado/build/top_m12_a16_r1/top_boolean.bit` (version 2; **not yet copied to `bitstreams/`**).
 - Board: 1 Mbaud works; `run_board.py verify` still **ALL IDENTICAL** with the new build.
 
-### OPEN BUG (must fix before audio/image/live results)
-On the board, in payload mode, **one payload byte is sometimes lost on the PC→board path** (≈30–40 % of runs):
-- Most often the **first payload byte** (the one right after the 82-byte `'X'` frame); the run is otherwise identical to L2 with that byte removed, so the frame is intact.
-- Sometimes 2 bytes around the same data position (~5862 in the image) in repeated runs.
-- Simulation at CPB=16 never shows it. A simulation with real timing (CPB=100, N_T=30000) was started and killed (exit 137, probably memory/time) — it did not finish.
-
-Next steps to try, in order:
-1. Re-run the hardware-timing simulation smaller (e.g. N_T=3000, 100 payload bytes, CPB=100, `-Ptb_payload.MAXCLK` large) and check whether byte 0 is lost; if yes, it is RTL — inspect host_if receive path at `apply`/`start` and payload_io `clear` (clear = `rst | h_start`).
-2. If simulation is clean: suspect the UART receiver at 1 Mbaud. Try making `uart_rx` start-bit detection more robust (require 2 consecutive low samples) and/or sample stop bit earlier; or try 500 kbaud (`CLKS_PER_BIT=200`, `BAUD=500_000`) and see if losses disappear.
-3. Workaround either way: host waits ~2 ms after sending the `'X'` frame before the first payload byte; host checks `report.sym_idx == n_total` and repeats the run if short (runs are deterministic).
+### Lost-byte bug: FIXED (8 Nov)
+Symptom: in payload mode one PC->board byte was sometimes lost (often the first payload byte after the `'X'` frame).
+How it was located: a new `'D'` command returns link counters (bytes received, framing errors, payload bytes accepted,
+bytes dropped because the buffer was full); `fpga/host/diag_link.py` reads them around each trial. Every lost byte was a
+**framing error** at the board's UART. The FPGA was cleared by experiment: 400 000 bytes with the board idle, computing and
+transmitting, and 30 run starts followed immediately by bytes, all with 0 framing errors; a real-timing simulation (1 Mbaud)
+was also clean.
+**Root cause: the PC scripts.** `run_payload.stream()` and `diag_link.py` set `serial.timeout = 0.01` right after writing
+the `'X'` frame. On Windows, pyserial applies a timeout change by reconfiguring the port (`SetCommState`), and the FTDI
+re-applies its settings, which corrupted a byte still being transmitted.
+**Fix:** `run_board.Board` opens the port once with `timeout=0.01` (its `read_exact` keeps its own deadline) and nothing
+changes port settings during a transfer. Result: 0 of 30 diag runs short (before: 5/20 and 16/30); the image payload is
+identical to L2 in all 11 scenarios.
+Also kept (harmless, more robust): `uart_rx.v` now has a 40 ns glitch filter, a 3-sample majority vote and a framing-error
+output; `host_if.v` has the `'D'` diagnostics command. Two stop bits from the PC were tried and are NOT needed (they did not help).
 
 ### Then finish
 ```

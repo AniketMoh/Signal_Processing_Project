@@ -34,7 +34,6 @@ def stream(board, frame, data, rate=None, source=None, on_words=None, quiet_end=
     s = board.s
     s.reset_input_buffer()
     s.write(frame)
-    s.timeout = 0.01
     sent, out, t0, last = 0, bytearray(), time.time(), time.time()
     buf = bytearray(data) if source is None else bytearray()
     ended = source is None

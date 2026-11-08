@@ -5,6 +5,8 @@
 //                     flags: bit0 static channel, bit1 payload from the PC, bit2 play the payload on the board's audio output
 //   'Q'            -> report now (current counters)
 //   'S'            -> stop the running experiment (a report follows)
+//   'D'            -> link diagnostics: "DBG", bytes received(4), framing errors(4), payload bytes accepted(4),
+//                     payload bytes dropped because the payload buffer was full(4)  (19 bytes; counters since reset)
 // Payload mode (flags bit1): every byte received after the 'X' frame is payload (payload_io.v) until the run ends; the run also
 // ends when no byte has arrived for PAY_TIMEOUT clocks (0.5 s).  During the run the board sends one 3-byte word per 8 payload
 // bits (R1, R2, R3 decisions, delay-aligned); the report follows the last word.
@@ -55,13 +57,22 @@ module host_if #(
     input  wire              tracking,
     input  wire [31:0]       sym_idx, n_eval, err1, err2, err3,
     input  wire [63:0]       sse2, sse3,
-    input  wire [31:0]       stalls, updates
+    input  wire [31:0]       stalls, updates,
+    input  wire              pay_drop        // a payload byte arrived while the payload buffer was full
 );
     localparam NCFG = 81;
 
     wire [7:0] rx_data;
     wire       rx_valid;
-    uart_rx #(.CLKS_PER_BIT(CLKS_PER_BIT)) u_rx (.clk(clk), .rst(rst), .rxd(rxd), .data(rx_data), .valid(rx_valid));
+    wire       rx_ferr;
+    uart_rx #(.CLKS_PER_BIT(CLKS_PER_BIT)) u_rx (.clk(clk), .rst(rst), .rxd(rxd), .data(rx_data), .valid(rx_valid), .ferr(rx_ferr));
+    reg [31:0] n_rx = 0, n_ferr = 0, n_pay = 0, n_drop = 0;      // link diagnostics ('D')
+    always @(posedge clk) begin
+        if (rx_valid)  n_rx   <= n_rx + 1'b1;
+        if (rx_ferr)   n_ferr <= n_ferr + 1'b1;
+        if (pay_valid) n_pay  <= n_pay + 1'b1;
+        if (pay_drop)  n_drop <= n_drop + 1'b1;
+    end
 
     reg  [7:0] tx_data;
     reg        tx_start;
@@ -73,12 +84,12 @@ module host_if #(
     reg [6:0]        ncnt;            // configuration bytes still expected
     reg [22:0]       idle;
     reg [25:0]       pidle;
-    reg              send_id, send_q, done_d, apply, rep_pending;
+    reg              send_id, send_q, send_d, done_d, apply, rep_pending;
     reg [1:0]        arm;             // clocks after a start during which the previous run's 'done' is ignored
     reg [5:0]        settle;          // after the end of a run: let the last decision word reach the FIFO
     integer i;
     always @(posedge clk) begin
-        start <= 1'b0; stop <= 1'b0; send_id <= 1'b0; send_q <= 1'b0; apply <= 1'b0; pay_valid <= 1'b0;
+        start <= 1'b0; stop <= 1'b0; send_id <= 1'b0; send_q <= 1'b0; send_d <= 1'b0; apply <= 1'b0; pay_valid <= 1'b0;
         done_d <= done;
         if (rst) begin
             ncnt <= 7'd0; host_mode <= 1'b0; idle <= 23'd0; pay_mode <= 1'b0; play_en <= 1'b0; pidle <= 26'd0; arm <= 2'd0;
@@ -105,6 +116,7 @@ module host_if #(
                     if (ncnt == 7'd1) apply <= 1'b1;
                 end else case (rx_data)
                     "I": send_id <= 1'b1;
+                    "D": send_d  <= 1'b1;
                     "Q": send_q  <= 1'b1;
                     "S": stop    <= 1'b1;
                     "X": ncnt    <= NCFG[6:0];
@@ -136,7 +148,7 @@ module host_if #(
     reg [8*46-1:0] tbuf;              // bytes still to send, next byte in [7:0]
     reg [5:0]      tleft;
     reg            hdr2;              // the second header byte (5A) of a report is still to be sent
-    reg            busy, wpend, wpend2, id_pend, q_pend;
+    reg            busy, wpend, wpend2, id_pend, q_pend, d_pend;
     wire [7:0] status = {3'd0, pay_mode, host_mode, tracking, done, running};
     wire [8*45-1:0] rep = {updates, stalls, sse3, sse2, err3, err2, err1, n_eval, sym_idx, status};
     function [7:0] xor_bytes;
@@ -152,9 +164,10 @@ module host_if #(
         word_rd  <= 1'b0;
         if (rst) begin
             tleft <= 6'd0; busy <= 1'b0; wpend <= 1'b0; wpend2 <= 1'b0; rep_pending <= 1'b0; settle <= 6'd0;
-            id_pend <= 1'b0; q_pend <= 1'b0;
+            id_pend <= 1'b0; q_pend <= 1'b0; d_pend <= 1'b0;
         end else begin
             if (send_id) id_pend <= 1'b1;
+            if (send_d)  d_pend  <= 1'b1;
             if (send_q)  q_pend  <= 1'b1;
             wpend2 <= wpend;                                     // FIFO output is valid two clocks after word_rd is set
             wpend  <= 1'b0;
@@ -170,6 +183,11 @@ module host_if #(
                     tbuf    <= {{38{8'h00}}, 8'd2, RND[7:0], B_ACC[7:0], B_MUL[7:0], "F", "S", "M"};
                     tx_data <= "L"; tx_start <= 1'b1;
                     tleft   <= 6'd7; hdr2 <= 1'b0; busy <= 1'b1;
+                end else if (d_pend) begin
+                    d_pend  <= 1'b0;
+                    tbuf    <= {{28{8'h00}}, n_drop, n_pay, n_ferr, n_rx, "G", "B"};
+                    tx_data <= "D"; tx_start <= 1'b1;
+                    tleft   <= 6'd18; hdr2 <= 1'b0; busy <= 1'b1;
                 end else if (!word_empty) begin
                     word_rd <= 1'b1; wpend <= 1'b1; busy <= 1'b1;
                 end else if (q_pend || (rep_pending && settle == 6'd63)) begin

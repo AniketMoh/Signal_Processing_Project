@@ -1,0 +1,156 @@
+{
+ "level": "L5 measured on the Boolean Board; LFSR sum-of-uniforms noise; supervised LMS; bit-true build B_mul=12 B_acc=16 RND=1",
+ "payload": "P5 voice recording, 8 kHz mono 8-bit unsigned PCM, MSB first",
+ "N_T": 30000,
+ "channel": [
+  40,
+  116
+ ],
+ "rows": [
+  {
+   "scenario": "static",
+   "mu": "2^-8",
+   "S": null,
+   "ebn0_db": 14.0,
+   "noise_seed": 700000,
+   "bytes": 158891,
+   "board_seconds": 7.66,
+   "bit_errors": [
+    0,
+    0,
+    0
+   ],
+   "bits": 1271128,
+   "counters_L5": [
+    1271136,
+    0,
+    0,
+    0,
+    465856643543,
+    461718049941,
+    913385,
+    20804757
+   ],
+   "BER": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "identical_to_L2": true,
+   "waveform_SNR_dB": [
+    Infinity,
+    Infinity,
+    Infinity
+   ]
+  },
+  {
+   "scenario": "slow_S1000",
+   "mu": "2^-8",
+   "S": 1000,
+   "ebn0_db": 14.0,
+   "noise_seed": 700000,
+   "bytes": 158891,
+   "board_seconds": 6.98,
+   "bit_errors": [
+    27818,
+    1472,
+    2
+   ],
+   "bits": 1271128,
+   "counters_L5": [
+    1271136,
+    27818,
+    1472,
+    2,
+    2730978381126,
+    657342150798,
+    1519314,
+    20805670
+   ],
+   "BER": [
+    0.021884499436720772,
+    0.0011580265716749217,
+    1.5734056680365785e-06
+   ],
+   "identical_to_L2": true,
+   "waveform_SNR_dB": [
+    -8.362692040149785,
+    5.577535082659085,
+    30.608521677957565
+   ]
+  },
+  {
+   "scenario": "boundary_S28",
+   "mu": "2^-8",
+   "S": 28,
+   "ebn0_db": 14.0,
+   "noise_seed": 700000,
+   "bytes": 158891,
+   "board_seconds": 6.96,
+   "bit_errors": [
+    28822,
+    1593,
+    14
+   ],
+   "bits": 1271128,
+   "counters_L5": [
+    1271136,
+    28822,
+    1593,
+    14,
+    2797872775633,
+    866076698517,
+    1363741,
+    20806309
+   ],
+   "BER": [
+    0.022674349082075135,
+    0.0012532176145911348,
+    1.101383967625605e-05
+   ],
+   "identical_to_L2": true,
+   "waveform_SNR_dB": [
+    -8.702192753309555,
+    5.113729641038027,
+    24.58759045714305
+   ]
+  },
+  {
+   "scenario": "fast_S1",
+   "mu": "2^-8",
+   "S": 1,
+   "ebn0_db": 14.0,
+   "noise_seed": 700000,
+   "bytes": 158891,
+   "board_seconds": 7.07,
+   "bit_errors": [
+    28619,
+    1491,
+    43
+   ],
+   "bits": 1271128,
+   "counters_L5": [
+    1271136,
+    28619,
+    1491,
+    43,
+    2796028176135,
+    1207029469055,
+    1215110,
+    20808021
+   ],
+   "BER": [
+    0.022514648406769422,
+    0.0011729739255212693,
+    3.382822186278644e-05
+   ],
+   "identical_to_L2": true,
+   "waveform_SNR_dB": [
+    -8.606213344525163,
+    5.44955617124426,
+    20.87619996118267
+   ]
+  }
+ ],
+ "date": "2026-11-08 12:17"
+}

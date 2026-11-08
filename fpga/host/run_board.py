@@ -18,6 +18,7 @@ import protocol as P
 RESULTS = os.path.join(HERE, "results")
 SYM_RATE = 100e6 / 16                      # symbols per second on the board (one symbol per 16 clocks at 100 MHz)
 BAUD = 1_000_000                           # host_if.v CLKS_PER_BIT = 100 at 100 MHz
+STOPBITS = serial.STOPBITS_ONE
 
 
 def find_port():
@@ -33,7 +34,7 @@ class Board:
         self.open()
 
     def open(self):
-        self.s = serial.Serial(self.port, BAUD, timeout=0.5)
+        self.s = serial.Serial(self.port, BAUD, timeout=0.01, stopbits=STOPBITS)   # set once: changing it later reconfigures the port, which can corrupt a byte in flight
         try:
             self.s.set_buffer_size(rx_size=1 << 20, tx_size=1 << 16)   # Windows: default 4 KB overflows at 1 Mbaud
         except (AttributeError, serial.SerialException):
