@@ -69,3 +69,5 @@ Noise word complete → front end (2 clocks) → LMS (10 clocks: coefficients, p
 Suggested demonstration (μ = 2^-8: SW[5:3] = 3; 10 dB: SW[7:6] = 1): step SW[2:0] from 1 (S = 5000) to 7 (S = 1). From the L5 sweep (`host/results/board_sweep_10dB_mu2-8.json`), per 2^20-symbol window: R2 stays at about 7500 errors at every rate (it cannot follow the channel); R3 stays near 380 for S ≥ 224 (RGB1 yellow), reaches about 670 at S = 28 and about 1500–1700 at S = 5 and 1 (RGB1 red) — the adaptive equalizer losing track while still beating R2. With μ = 2^-6 (SW[5:3] = 1) the loss happens at faster variation; with μ = 2^-10 (SW[5:3] = 5) at slower variation.
 
 Checked by eye on the board (13 Nov): digits read correctly; display 0 (R3) is the left display, display 1 (R2/R1) the right one.
+
+Known demo-mode limit: the 32-bit symbol index wraps after 2^32 symbols (about 11.5 min of continuous running at 6.25 Msymbol/s); the chain then retrains for N_T symbols at the current channel point, so R2 is refrozen there and the right display can stick near 9999. Press BTN0 before demonstrating. Host-mode runs (all measurements, at most 2*10^7 symbols) are unaffected.
