@@ -61,11 +61,11 @@ Noise word complete → front end (2 clocks) → LMS (10 clocks: coefficients, p
 | BTN0 | retrain with the switch settings (also leaves host mode) |
 | BTN1 | clear counters |
 | BTN3 | reset |
-| Display 1 / display 0 | errors of R2 (or R1) / R3 per window of 2^20 tracking symbols (≈ BER in parts per million), refreshed every 0.17 s |
+| Display 1 (right) / display 0 (left) | errors of R2 (or R1) / R3 per window of 2^20 tracking symbols (≈ BER in parts per million), refreshed every 0.17 s |
 | LED[9:0] | switch positions; LED13 host mode, LED14 tracking, LED15 training |
 | RGB0 | blue training, green tracking |
 | RGB1 | R3 errors per window: green < 100, yellow 100–999, red ≥ 1000 |
 
 Suggested demonstration (μ = 2^-8: SW[5:3] = 3; 10 dB: SW[7:6] = 1): step SW[2:0] from 1 (S = 5000) to 7 (S = 1). From the L5 sweep (`host/results/board_sweep_10dB_mu2-8.json`), per 2^20-symbol window: R2 stays at about 7500 errors at every rate (it cannot follow the channel); R3 stays near 380 for S ≥ 224 (RGB1 yellow), reaches about 670 at S = 28 and about 1500–1700 at S = 5 and 1 (RGB1 red) — the adaptive equalizer losing track while still beating R2. With μ = 2^-6 (SW[5:3] = 1) the loss happens at faster variation; with μ = 2^-10 (SW[5:3] = 5) at slower variation.
 
-The seven-segment digit order and segment order (SEG[0..6] = a..g) follow the usual Boolean convention but are not stated in the Real Digital manual; if a display shows mirrored digits, the fix is the `an`/`font` mapping in `board_io.v`.
+Checked by eye on the board (13 Nov): digits read correctly; display 0 (R3) is the left display, display 1 (R2/R1) the right one.

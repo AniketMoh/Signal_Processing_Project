@@ -6,7 +6,8 @@
 #   python run_payload.py image     the P5 128x72 8-bit image for the P5 image scenarios; checked against L2
 #   python run_payload.py live      the laptop microphone, streamed in real time; the board plays the receiver selected by
 #                                   SW[11:10] (0 R3, 1 R2, 2 R1) on its audio jack; optional playback on the PC (--pc-play)
-# Options: --port COMx, --no-l2 (skip the bit-true comparison), live: --seconds, --S, --p, --ebn0, --pc-play R1|R2|R3
+# Options: --port COMx, audio: --file my_clip.mp3 [--max-seconds 20] (your own clip; results in results/payload/custom_<name>/),
+#           --no-l2 (skip the bit-true comparison), live: --seconds, --S, --p, --ebn0, --pc-play R1|R2|R3
 # The payload goes out MSB first (np.unpackbits order) with one padding byte; the board returns per payload byte one word
 # (R1, R2, R3 bytes) with the receiver delays removed, so byte j of each stream is that receiver's copy of payload byte j.
 # Live audio is a demonstration (not repeatable), never a measurement for the tracking results.
@@ -123,9 +124,39 @@ def run_set(board, ident, data, scen, check_l2, kind):
     return rows
 
 
-def cmd_audio(board, ident, check_l2):
-    fs, orig = wavfile.read(os.path.join(P5, "audio", "p5", "original_8k.wav"))
-    assert fs == 8000 and orig.dtype == np.uint8
+def load_clip(path, max_seconds):
+    """Any audio file -> 8 kHz mono 8-bit unsigned PCM (the P5 format), cut to max_seconds. Uses ffmpeg when available
+    (any format: wav, mp3, m4a, ...), otherwise reads a WAV with scipy and resamples it."""
+    import shutil, subprocess, tempfile
+    if shutil.which("ffmpeg"):
+        tmp = os.path.join(tempfile.mkdtemp(), "clip_8k.wav")
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", path, "-t", str(max_seconds), "-ac", "1", "-ar", "8000",
+                        "-acodec", "pcm_u8", tmp], check=True)
+        fs, x = wavfile.read(tmp)
+        return x.astype(np.uint8)
+    from scipy.signal import resample_poly
+    fs, x = wavfile.read(path)
+    x = x.astype(np.float64)
+    if x.ndim > 1:
+        x = x.mean(axis=1)
+    x = x[: int(max_seconds * fs)]
+    x = resample_poly(x - x.mean(), 8000, fs)
+    x = x / max(1e-9, np.max(np.abs(x)))
+    return np.clip(np.round(x * 127 + 128), 0, 255).astype(np.uint8)
+
+
+def cmd_audio(board, ident, check_l2, clip=None, max_seconds=20.0):
+    global OUT
+    if clip:
+        orig = load_clip(clip, max_seconds)
+        name = os.path.splitext(os.path.basename(clip))[0]
+        OUT = os.path.join(HERE, "results", "payload", "custom_" + "".join(c if c.isalnum() else "_" for c in name))
+        os.makedirs(OUT, exist_ok=True)
+        wavfile.write(os.path.join(OUT, "original_8k.wav"), 8000, orig)
+        print(f"clip: {clip} -> {len(orig) / 8000:.1f} s at 8 kHz, 8-bit ({8 * len(orig)} bits); results in {OUT}")
+    else:
+        fs, orig = wavfile.read(os.path.join(P5, "audio", "p5", "original_8k.wav"))
+        assert fs == 8000 and orig.dtype == np.uint8
     data = orig.tobytes()
     scen = [("static", 8, None, 14.0, 700000), ("slow_S1000", 8, 1000, 14.0, 700000),
             ("boundary_S28", 8, 28, 14.0, 700000), ("fast_S1", 8, 1, 14.0, 700000)]
@@ -140,7 +171,8 @@ def cmd_audio(board, ident, check_l2):
         print(f"      waveform SNR R1/R2/R3 = " + " / ".join(f"{v:.1f}" for v in row["waveform_SNR_dB"]) + " dB")
     meta = dict(level="L5 measured on the Boolean Board; LFSR sum-of-uniforms noise; supervised LMS; bit-true build "
                       f"B_mul={ident['B_MUL']} B_acc={ident['B_ACC']} RND={ident['RND']}",
-                payload="P5 voice recording, 8 kHz mono 8-bit unsigned PCM, MSB first", N_T=N_T, channel=[C_LO, C_HI],
+                payload=(f"user clip {os.path.basename(clip)}" if clip else "P5 voice recording")
+                        + ", 8 kHz mono 8-bit unsigned PCM, MSB first", N_T=N_T, channel=[C_LO, C_HI],
                 rows=res, date=time.strftime("%Y-%m-%d %H:%M"))
     json.dump(meta, open(os.path.join(OUT, "audio_metrics.json"), "w"), indent=1)
     return all(r.get("identical_to_L2", True) for r in res)
@@ -257,6 +289,8 @@ def main():
     ap.add_argument("--p", type=int, default=8)
     ap.add_argument("--ebn0", type=float, default=10.0)
     ap.add_argument("--pc-play", choices=["R1", "R2", "R3"])
+    ap.add_argument("--file", help="audio: your own clip (any format ffmpeg reads) instead of the P5 recording")
+    ap.add_argument("--max-seconds", type=float, default=20.0, help="audio --file: use at most this many seconds")
     a = ap.parse_args()
     b = Board(a.port or find_port())
     ident = b.ident()
@@ -264,7 +298,7 @@ def main():
     if ident["version"] < 2:
         raise SystemExit("the loaded bitstream has no payload transport (version < 2)")
     if a.cmd == "audio":
-        ok = cmd_audio(b, ident, not a.no_l2)
+        ok = cmd_audio(b, ident, not a.no_l2, a.file, a.max_seconds)
     elif a.cmd == "image":
         ok = cmd_image(b, ident, not a.no_l2)
     else:
