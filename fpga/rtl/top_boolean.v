@@ -12,6 +12,7 @@
 //   SW[5:3]  mu = 2^-p, p = 5 + SW[5:3] (value 7 gives p = 11 as well)
 //   SW[7:6]  noise: Eb/N0 = 8, 10, 12, 14 dB
 //   SW[8]    channel: 0 primary (c 40..116, a = 0.31..0.91), 1 control (c 26..77, a = 0.20..0.60)  -- a change retrains
+//   SW[12]   1: channel held static at its maximum a (primary a = 0.906, control a = 0.60); overrides SW[2:0]; a change retrains
 //   SW[9]    display 1 shows R1 instead of R2
 //   SW[11:10] receiver on the audio output in payload mode with playback: 0 R3, 1 R2, 2 R1, 3 R3
 // Displays: display 1 = R2 (or R1) errors per window, display 0 = R3 errors per window (errors per 2^20 bits ~ BER in ppm;
@@ -70,7 +71,7 @@ module top_boolean #(
     reg [15:0] d_S;
     reg        d_static;
     always @(*) begin
-        d_static = 1'b0;
+        d_static = sw_s[12];                                      // SW12: channel held static at its maximum a (c = c_hi)
         case (sw_s[2:0])
             3'd0: begin d_S = 16'd1; d_static = 1'b1; end
             3'd1: d_S = 16'd5000;
@@ -90,8 +91,8 @@ module top_boolean #(
         2'd2: d_sig = 17'd11640;                                  // 12 dB
         default: d_sig = 17'd9246;                                // 14 dB
     endcase
-    wire [6:0] d_clo = sw_s[8] ? 7'd26 : 7'd40;
     wire [6:0] d_chi = sw_s[8] ? 7'd77 : 7'd116;
+    wire [6:0] d_clo = sw_s[12] ? d_chi : (sw_s[8] ? 7'd26 : 7'd40);   // static mode holds c = c_lo, so SW12 sets c_lo = c_hi
     // noise start values: fxp_front.lfsr_start_values(2000 + 500000) (final seed 2000)
     localparam [12*36-1:0] DEMO_SEEDS = {36'h49c47ad49, 36'h0b970298d, 36'h0263e9a52, 36'h01cc69cd3, 36'h003f4e20c, 36'h001fe8487,
                                          36'h00001f639, 36'h0001a9271, 36'h000080b96, 36'h000026a95, 36'h000012032, 36'h000008e85};
@@ -116,9 +117,9 @@ module top_boolean #(
         .err3(err3), .sse2(sse2), .sse3(sse3), .stalls(stalls), .updates(updates), .pay_drop(pay_valid && pay_full));
 
     // ---- demo start: after reset, BTN0, or a change of the channel switch ----
-    reg rst_d = 1'b1, ch_d = 1'b0;
-    always @(posedge clk) begin rst_d <= rst; ch_d <= sw_s[8]; end
-    wire d_start = !host_mode && ((rst_d && !rst) || (ch_d != sw_s[8])) || b0_rise;
+    reg rst_d = 1'b1;  reg [1:0] ch_d = 2'b00;
+    always @(posedge clk) begin rst_d <= rst; ch_d <= {sw_s[12], sw_s[8]}; end
+    wire d_start = !host_mode && ((rst_d && !rst) || (ch_d != {sw_s[12], sw_s[8]})) || b0_rise;
 
     // ---- payload transport and audio output ----
     wire pay_bit, pay_avail, pay_take, hold, dec_valid, dec1, dec2, dec3, audio, playing;

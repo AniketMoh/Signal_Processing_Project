@@ -58,6 +58,7 @@ Noise word complete → front end (2 clocks) → LMS (10 clocks: coefficients, p
 | SW[8] | channel: 0 primary (a 0.31–0.91), 1 control (a 0.20–0.60); changing it retrains |
 | SW[9] | display 1 shows R1 instead of R2 |
 | SW[11:10] | receiver on the audio jack in payload mode with playback: 0 R3, 1 R2, 2 R1 |
+| SW12 | 1: channel held static at its maximum a (primary 0.906, control 0.60), overrides SW[2:0]; a change retrains. Only in `bitstreams/top_boolean_m12_a16_r1_sw12.bit` |
 | BTN0 | retrain with the switch settings (also leaves host mode) |
 | BTN1 | clear counters |
 | BTN3 | reset |

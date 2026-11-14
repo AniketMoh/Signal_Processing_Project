@@ -47,6 +47,36 @@ Then play from `fpga\host\results\payload\custom_saiyara\`:
 
 Other demos: `python run_payload.py image` (image, 11 scenarios), `python run_payload.py audio` (mid-term voice recording).
 
+## Live screens on the laptop (run from fpga\host; close the window when done, it holds the board's port)
+- **A. Tracking curve, measured live:** `python live_sweep.py` (~10 s; BER vs S point by point; R3 rises from ~3.7e-4 at
+  S = 5000 to ~1.6e-3 at S = 1, R2 flat ~7e-3, R1 flat ~5e-2). Compare step sizes: `python live_sweep.py --mus 6 8 10`.
+- **B. Image decoded live:** `python live_payload.py image` (~3 min; original | R1 | R2 | R3 fill in row by row,
+  11 scenarios, each ticked "board == model").
+- **C. Song meters:** `python live_payload.py audio --file "C:\Users\Pradeep\OneDrive\Desktop\saiyara.mpeg"`
+  (~2 min; live bit-error bars and SNR, 4 scenarios, each ticked "board == model").
+  **With sound (demo version):** add `--play --jack --volume 0.5`: real time (~2.5 min). Laptop speakers: the on-screen
+  **R1 / R2 / R3 buttons** (or keys 1/2/3) choose what you hear, the waveform follows. Board jack: **SW10 = R2, SW11 = R1**,
+  both down = R3. 13 Nov: 4/4 board == model with both outputs on.
+- **D. Live microphone with graphs:** `python live_payload.py live` (30 s, S = 1000, 14 dB, earbuds' mic, gain 4;
+  options `--seconds --S --ebn0 --play`). Bars, SNR and waveform update as you talk; board jack plays SW10/SW11 choice.
+
+**Demo order:** B image -> C song with `--play --jack` -> D live microphone with graphs.
+
+## Extra control experiment: what equalisation buys you (not a PPR tracking scenario)
+`python run_board.py static-max` (~1 min): channel held still, at a = 0.31 and at the harshest a = 0.906, checked vs model.
+Board 13 Nov (10 dB): a = 0.31: R1 0.10 %, R2/R3 0.00 %;  a = 0.906: **R1 17.6 %**, R2 0.15 %, R3 0.24 %.
+Say: "Even on a channel that does not move, a harsh channel closes the eye: without an equaliser 1 bit in 6 is wrong;
+with one it is about 1 in 500."
+
+## Board audio jack and live microphone (headphones in the board's jack)
+- Jack check, clean (0 bit errors):
+  `python run_payload.py live --file "C:\Users\Pradeep\OneDrive\Desktop\saiyara.mpeg" --seconds 30 --volume 0.25 --S 0 --ebn0 20`
+- Song R1/R2/R3 on the jack: same command with `--S 28 --ebn0 14` (R3 ~17 bit errors in 30 s, sounds clean).
+- Live voice (earbuds' mic): `python run_payload.py live --seconds 30 --S 1000 --ebn0 14 --mic "Headset (OnePlus" --gain 4`
+  (13 Nov: R3 2 bit errors in 30 s). Flip SW10 (R2) / SW11 (R1) while talking; both down = R3.
+- On the board during live runs: LED13 host, LED12 payload, LED14 tracking; displays = errors per ~1 s
+  (left R3, right R2, or R1 with SW9 up); RGB0 green + red (playing) looks yellowish.
+
 ## If something goes wrong
 - `version: 1` or no answer: power-cycle the board, run PROGRAM_BOARD.bat again.
 - `serial problem ... repeating the run`: harmless, the script retries.

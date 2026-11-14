@@ -5,6 +5,7 @@
 #   python run_board.py verify     board counters vs the L2 model, count for count, for a set of configurations
 #   python run_board.py sweep      BER of R1/R2/R3 and MSE of R2/R3 against the variation rate S (board only, long runs)
 #   python run_board.py ident      identification of the loaded bitstream
+#   python run_board.py static-max static channel at a = 0.31 and at a = 0.906 (extra control experiment), checked vs L2
 # Options: --port COM8 (default: the first FTDI port)
 # Every output line and file is labelled with its level: L5 = measured on the board, L2 = bit-true model.
 import argparse, json, os, sys, time
@@ -153,9 +154,40 @@ def cmd_sweep(b, ident, ebn0, p, n_eval):
     return 0
 
 
+def cmd_static_max(b, ident, ebn0, p, n_eval):
+    """Extra control experiment ("what equalisation buys you"), not a PPR tracking scenario: static channel held at
+    c = 40 (a = 0.31, the usual start) and at c = 116 (a = 0.906, the harshest point of the primary trajectory);
+    training also happens at that a.  Board counters checked against L2 as in 'verify'."""
+    import l2_ref as R
+    os.makedirs(RESULTS, exist_ok=True)
+    nt, ns, ps = 30000, 2010, 4242
+    states = R.ff.lfsr_start_values(ns + 500000)
+    sq = R.ff.sigma_q_from_ebn0(ebn0)
+    rows, ok_all = [], True
+    for c in (40, 116):
+        ntot = nt + n_eval
+        rep, dt = b.run(p, None, c, c, sq, nt, ntot, ps, states)
+        _, _, l2 = R.chain(ntot, nt, ident["B_ACC"], ident["B_MUL"], ident["RND"], p, None, c, c, sq, states,
+                           R.payload_bits(ntot - nt, ps))
+        same = rep["counters"] == l2 and rep["sym_idx"] == ntot and rep["done"]
+        ok_all &= same
+        n, e1, e2, e3 = rep["counters"][:4]
+        rows.append(dict(c=c, a=c / 128, ebn0=ebn0, mu=f"2^-{p}", n_eval=n, err=[e1, e2, e3], ber=[e1 / n, e2 / n, e3 / n],
+                         board_L5=rep["counters"], model_L2=l2, identical=same))
+        print(f"static a = {c / 128:.3f} (c = {c:3d}), {ebn0:g} dB, mu = 2^-{p}: BER R1 {100 * e1 / n:6.3f} %  "
+              f"R2 {100 * e2 / n:6.3f} %  R3 {100 * e3 / n:6.3f} %   ({e1}/{e2}/{e3} of {n}) | board (L5) == model (L2): {same}")
+    print("ALL IDENTICAL" if ok_all else "SOME DIFFER")
+    out = dict(level="L5 board counters vs L2 bit-true model; extra control experiment (static channel at a = 0.31 and "
+                     "a = 0.906), not a PPR tracking scenario", build=ident, noise_seed=ns, payload_seed=ps, n_t=nt,
+               rows=rows, all_identical=ok_all, date=time.strftime("%Y-%m-%d %H:%M"))
+    with open(os.path.join(RESULTS, f"board_static_max_{ebn0:g}dB_mu2-{p}.json"), "w") as fh:
+        json.dump(out, fh, indent=1)
+    return 0 if ok_all else 1
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["ident", "verify", "sweep"])
+    ap.add_argument("cmd", choices=["ident", "verify", "sweep", "static-max"])
     ap.add_argument("--port")
     ap.add_argument("--ebn0", type=float, default=10.0)
     ap.add_argument("--p", type=int, default=8)
@@ -168,6 +200,8 @@ def main():
         return 0
     if a.cmd == "verify":
         return cmd_verify(b, ident)
+    if a.cmd == "static-max":
+        return cmd_static_max(b, ident, a.ebn0, a.p, min(a.n_eval, 1_000_000))
     return cmd_sweep(b, ident, a.ebn0, a.p, a.n_eval)
 
 

@@ -1,0 +1,28 @@
+{
+ "level": "L5 (Boolean Board), supervised LMS, LFSR sum-of-uniforms noise",
+ "channel": "control",
+ "snr": 16.0,
+ "build": {
+  "B_MUL": 12,
+  "B_ACC": 16,
+  "RND": 1,
+  "version": 2
+ },
+ "seeds": [
+  2000,
+  2099
+ ],
+ "mus": [
+  "2^-5",
+  "2^-6",
+  "2^-7",
+  "2^-8",
+  "2^-9",
+  "2^-10",
+  "2^-11"
+ ],
+ "n_t": 30000,
+ "runs": 18900,
+ "seconds": 682,
+ "date": "2026-11-14 01:39"
+}

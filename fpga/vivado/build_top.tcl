@@ -3,7 +3,7 @@
 # Written with AI assistance (Claude, Anthropic), project decision D-06.
 #
 # Usage (from fpga/vivado):
-#   vivado -mode batch -nojournal -log build/top.log -source build_top.tcl -tclargs <B_MUL> <B_ACC> <RND>
+#   vivado -mode batch -nojournal -log build/top.log -source build_top.tcl -tclargs <B_MUL> <B_ACC> <RND> [<tag suffix>]
 # Output: build/top_m<B_MUL>_a<B_ACC>_r<RND>/ (bitstream, checkpoint, reports); one summary line appended to
 #         reports/top_summary.txt; copies of the utilisation and timing reports in reports/.
 set here  [file dirname [file normalize [info script]]]
@@ -11,7 +11,8 @@ set B_MUL [expr {[llength $argv] > 0 ? [lindex $argv 0] : 12}]
 set B_ACC [expr {[llength $argv] > 1 ? [lindex $argv 1] : 16}]
 set RND   [expr {[llength $argv] > 2 ? [lindex $argv 2] : 1}]
 set part  xc7s50csga324-1
-set tag   m${B_MUL}_a${B_ACC}_r${RND}
+set sfx   [expr {[llength $argv] > 3 ? "_[lindex $argv 3]" : ""}]   ;# optional 4th argument: tag suffix for a variant build
+set tag   m${B_MUL}_a${B_ACC}_r${RND}${sfx}
 set out   [file join $here build top_$tag]
 set rep   [file join $here reports]
 file mkdir $out

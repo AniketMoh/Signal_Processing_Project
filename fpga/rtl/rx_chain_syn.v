@@ -117,8 +117,8 @@ module rx_chain_syn #(
                 sse3 <= sse3 + {32'd0, pea};
             end
             if (rx_valid) begin
-                sym_idx  <= sym_idx + 32'd1;
-                sym_done <= 1'b1;
+                if (sym_idx != 32'hFFFF_FFFF) sym_idx <= sym_idx + 32'd1;   // saturate: a wrap after 2^32 symbols (~11.5 min of
+                sym_done <= 1'b1;                                           // demo) would drop 'run' and silently retrain
             end
         end
     end

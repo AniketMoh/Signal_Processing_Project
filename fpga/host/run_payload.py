@@ -214,8 +214,23 @@ def cmd_image(board, ident, check_l2):
     return all(r.get("identical_to_L2", True) for r in res)
 
 
+def pick_device(sd, name, kind):
+    """Index of the first MME device whose name contains 'name' (case-insensitive) and that has input/output channels;
+    None (the Windows default) when name is empty."""
+    if not name:
+        return None
+    key = "max_input_channels" if kind == "in" else "max_output_channels"
+    for k, d in enumerate(sd.query_devices()):
+        if name.lower() in d["name"].lower() and d[key] > 0 and sd.query_hostapis(d["hostapi"])["name"] == "MME":
+            return k
+    raise SystemExit(f"no {kind}put audio device matching '{name}'; devices: " + ", ".join(d["name"] for d in sd.query_devices()))
+
+
 def cmd_live(board, ident, a):
     import sounddevice as sd
+    mic_dev, out_dev = pick_device(sd, a.mic, "in"), pick_device(sd, a.out, "out")
+    print("microphone:", sd.query_devices(mic_dev if mic_dev is not None else sd.default.device[0])["name"],
+          "| PC playback:", sd.query_devices(out_dev if out_dev is not None else sd.default.device[1])["name"])
     os.makedirs(OUT, exist_ok=True)
     q = queue.Queue()
     sent_audio, got = bytearray(), {"R1": bytearray(), "R2": bytearray(), "R3": bytearray()}
@@ -223,7 +238,7 @@ def cmd_live(board, ident, a):
 
     def mic_cb(indata, frames, t, status):
         x = np.frombuffer(bytes(indata), np.int16)
-        u8 = (np.clip((x.astype(np.int32) >> 8) + 128, 0, 255)).astype(np.uint8).tobytes()
+        u8 = (np.clip(np.round(x.astype(np.float64) * a.gain / 256) + 128, 0, 255)).astype(np.uint8).tobytes()
         sent_audio.extend(u8); q.put(u8)
 
     pc_out = None
@@ -235,7 +250,7 @@ def cmd_live(board, ident, a):
                 except queue.Empty: break
             if len(b) < need: b += bytes([128]) * (need - len(b))
             outdata[:] = bytes(b[:need])
-        pc_out = sd.RawOutputStream(samplerate=8000, channels=1, dtype="uint8", callback=out_cb, blocksize=400)
+        pc_out = sd.RawOutputStream(samplerate=8000, channels=1, dtype="uint8", callback=out_cb, blocksize=400, device=out_dev)
 
     stats = {"t": time.time(), "n": 0}
 
@@ -252,13 +267,30 @@ def cmd_live(board, ident, a):
                   + " / ".join(f"{v / max(1, 8 * n):.1e}" for v in e) + ")")
             stats["t"] = time.time()
 
-    frame = frame_for(0, a.p, a.S, a.ebn0, 900000, play=True, n_total=0)    # n_total = 0: until the stream stops
+    frame = frame_for(0, a.p, a.S or None, a.ebn0, 900000, play=True, n_total=0)    # --S 0: static channel    # n_total = 0: until the stream stops
     print(f"live: {a.seconds} s, mu = 2^-{a.p}, S = {a.S}, {a.ebn0} dB; board audio jack plays the receiver chosen by SW[11:10]"
           + (f"; PC plays {a.pc_play}" if a.pc_play else ""))
 
     def stopper():
         time.sleep(a.seconds); q.put(None)
-    mic = sd.RawInputStream(samplerate=8000, channels=1, dtype="int16", callback=mic_cb, blocksize=400)
+    if a.tone or a.file:                         # test sine or an audio file instead of the microphone, paced in real time
+        clip = None if a.tone else load_clip(a.file, a.seconds).astype(np.float64) - 128
+        class _Tone:
+            def __enter__(self):
+                def run():
+                    k, t0 = 0, time.time()
+                    while not self.stop:
+                        n = np.arange(k, k + 400)
+                        x = 100 * np.sin(2 * np.pi * a.tone * n / 8000) if a.tone else np.resize(clip, len(clip))[n % len(clip)]
+                        u8 = np.clip(np.round(128 + a.volume * x), 0, 255).astype(np.uint8).tobytes()
+                        sent_audio.extend(u8); q.put(u8); k += 400
+                        time.sleep(max(0.0, t0 + k / 8000 - time.time()))
+                self.stop = False; threading.Thread(target=run, daemon=True).start(); return self
+            def __exit__(self, *e):
+                self.stop = True
+        mic = _Tone()
+    else:
+        mic = sd.RawInputStream(samplerate=8000, channels=1, dtype="int16", callback=mic_cb, blocksize=400, device=mic_dev)
     with mic:
         if pc_out: pc_out.start()
         threading.Thread(target=stopper, daemon=True).start()
@@ -289,7 +321,12 @@ def main():
     ap.add_argument("--p", type=int, default=8)
     ap.add_argument("--ebn0", type=float, default=10.0)
     ap.add_argument("--pc-play", choices=["R1", "R2", "R3"])
-    ap.add_argument("--file", help="audio: your own clip (any format ffmpeg reads) instead of the P5 recording")
+    ap.add_argument("--gain", type=float, default=4.0, help="live: microphone gain before 8-bit conversion (clipped)")
+    ap.add_argument("--volume", type=float, default=1.0, help="live --tone/--file: scale the signal (e.g. 0.3)")
+    ap.add_argument("--tone", type=float, default=0, help="live: send a sine of this frequency (Hz) instead of the microphone")
+    ap.add_argument("--mic", default="Microphone Array", help="live: input device name (part); '' = Windows default")
+    ap.add_argument("--out", default="", help="live: PC playback device name (part); default = Windows default output")
+    ap.add_argument("--file", help="audio: your own clip instead of the P5 recording; live: stream this clip instead of the microphone")
     ap.add_argument("--max-seconds", type=float, default=20.0, help="audio --file: use at most this many seconds")
     a = ap.parse_args()
     b = Board(a.port or find_port())
