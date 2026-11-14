@@ -1,0 +1,32 @@
+{
+ "level": "L5 live demonstration (microphone input, not repeatable; not a tracking measurement)",
+ "seconds": 29.9,
+ "mu": "2^-8",
+ "S": 1000,
+ "ebn0_db": 14.0,
+ "counters_L5": [
+  1913608,
+  45933,
+  2365,
+  59,
+  4371412671145,
+  1007712179789,
+  2459592,
+  31078727
+ ],
+ "R1": {
+  "bit_errors": 45933,
+  "BER": 0.02400344899665552,
+  "waveform_SNR_dB": 4.1245238209453845
+ },
+ "R2": {
+  "bit_errors": 2365,
+  "BER": 0.0012358904682274248,
+  "waveform_SNR_dB": 17.802668081834014
+ },
+ "R3": {
+  "bit_errors": 59,
+  "BER": 3.0831939799331106e-05,
+  "waveform_SNR_dB": 33.369104859573255
+ }
+}
