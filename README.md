@@ -16,6 +16,7 @@ then in RTL (L3), in Vivado (L4) and measured on a Real Digital Boolean Board (S
 |---|---|
 | The mid-term report | [`midterm_mtr-22/mtr-22.pdf`](midterm_mtr-22/mtr-22.pdf) |
 | The final report source | [`final_report/main.tex`](final_report/main.tex) (FPGA, board confirmation and live demo: [`s_fpga.tex`](final_report/s_fpga.tex)) |
+| **Run the live demo on the board (first time? start here)** | [`fpga/LIVE_MODE.md`](fpga/LIVE_MODE.md) |
 | FPGA design, how to build and program the board | [`fpga/README.md`](fpga/README.md) |
 | Board results (L3–L5) | [`fpga/FPGA_RESULTS.md`](fpga/FPGA_RESULTS.md) |
 | Board re-measurement of the mid-term findings | [`fpga/host/results/confirm/CONFIRMATION_REPORT.md`](fpga/host/results/confirm/CONFIRMATION_REPORT.md) |

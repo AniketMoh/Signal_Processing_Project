@@ -1,0 +1,8 @@
+# PC side of the Boolean Board experiments and live dashboards:  python -m pip install -r requirements.txt
+numpy
+scipy
+numba
+matplotlib
+pyserial
+sounddevice
+scikit-image
